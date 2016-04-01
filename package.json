@@ -11,5 +11,15 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.7.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-react": "^6.5.0",
+    "flux": "^2.1.1",
+    "jquery": "^2.2.2",
+    "react": "^0.14.8",
+    "react-dom": "^0.14.8",
+    "webpack": "^1.12.14"
+  }
 }
