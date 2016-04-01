@@ -1,6 +1,6 @@
 module.exports = {
   context: __dirname,
-  entry: './StellarisSpeciesCreator.jsx',
+  entry: './lib/assets/StellarisSpeciesCreator.jsx',
   output: {
     path: './',
     filename: 'bundle.js'
