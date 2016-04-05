@@ -1,0 +1,24 @@
+.government {
+  height: 300px;
+  border: blue 1px solid;
+}
+
+.ethos-holder {
+  height: 260px;
+  width: 260px;
+  border: black 1px solid;
+}
+
+.ethos {
+  background-image: url(http://www.stellariswiki.com/images/thumb/0/0c/Individualist.png/42px-Individualist.png);
+  background-size: cover;
+  height: 36px;
+  width: 36px;
+  position: relative;
+  clear: none;
+}
+
+.ethos.fanatic-militarist {
+    left: 112px;
+    top: 10px;
+}
