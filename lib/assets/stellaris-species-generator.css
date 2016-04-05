@@ -26,12 +26,13 @@
   position: relative;
   clear: none;
   margin: 1px;
+  border-radius: 50%;
 }
 
 .ethos:hover {
   background-color: rgba(210,210,210,0.3);
   background-blend-mode: screen;
-  border-radius: 50%;
+  cursor: pointer;
 }
 
 /* Individual Ethos images and positioning */
