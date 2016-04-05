@@ -1,10 +1,17 @@
 /* Government Section */
 .government {
-  height: 320px;
+  height: 340px;
   border: blue 1px solid;
 }
 
 /* Ethos */
+.ethos-wrapper {
+  height: 340px;
+  width: 260px;
+  border: black 1px solid;
+}
+
+
 .ethos-holder {
   height: 260px;
   width: 260px;
@@ -19,6 +26,12 @@
   position: relative;
   clear: none;
   margin: 1px;
+}
+
+.ethos:hover {
+  background-color: rgba(210,210,210,0.3);
+  background-blend-mode: screen;
+  border-radius: 50%;
 }
 
 /* Individual Ethos images and positioning */
@@ -116,4 +129,29 @@
   left: 112px;
   top: -312px;
   background-image: url(http://www.stellariswiki.com/images/thumb/a/ab/Fanatic_Pacifist.png/42px-Fanatic_Pacifist.png);
+}
+
+/* Ethics points and reset */
+.ethos-points {
+  margin: 4px;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  text-decoration: none;
+  font-weight: 500;
+  border: black 1px solid;
+}
+
+.reset-ethos {
+  font-family: 'Lato', sans-serif;
+  outline: none;
+  display: block;
+  cursor: pointer;
+  width: 90%;
+  margin: 4px;
+  border: 1px solid black;
+  /*background: transparent;*/
+  margin: auto;
+  font-size: 1.17em;
+  text-decoration: none;
+  font-weight: 500;
 }
