@@ -1,6 +1,5 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
-var EthosInfo = require('./ethos_info');
 var EthosSelector = require('./ethos_selector');
 var EthosStore = require('../stores/ethos');
 window.EthosStore = EthosStore;
@@ -26,17 +25,10 @@ var Ethos = React.createClass({
     this.ethosListener.remove();
   },
 
-  onHover: function (e) {
-    console.log(e.target.id);
-    var pos = [e.pageX, e.pageY];
-    console.log(pos);
-  },
-
-
   render: function() {
     return (
       <section className="ethos-wrapper">
-
+        <EthosSelector />
         <h3 className="ethos-points">Ethic Points Left: {this.state.ethicsPoints}</h3>
         <button className="reset-ethos">Cancel</button>
       </section>
