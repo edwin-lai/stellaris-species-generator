@@ -5,14 +5,7 @@ var EthosInfo = require('./ethos_info');
 
 var EthosItem = React.createClass({
   getInitialState: function () {
-    return(this.blankAttrs());
-  },
-
-  blankAttrs: function () {
-    return({
-      ethos: "",
-      pos: [-200, -200]
-    });
+    return({ pos: [-200, -200] });
   },
 
   onHover: function (e) {
@@ -22,14 +15,11 @@ var EthosItem = React.createClass({
       ethos: ethos,
       pos: pos
     });
-    console.log(pos);
-    console.log(ethos);
   },
 
   onLeave: function () {
     this.setState({
-      ethos: "",
-      pos: [-200, -200]
+      pos: [-300, -300]
     });
   },
 
@@ -38,8 +28,6 @@ var EthosItem = React.createClass({
     var CSSClass = "ethos " + EthosNames[this.props.id];
     var top = this.state.pos[1];
     var left = this.state.pos[0];
-    console.log(top);
-    console.log(left);
 
     var divStyle = {
       top: top,
