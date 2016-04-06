@@ -1,0 +1,165 @@
+/* Government Section */
+.government {
+  height: 340px;
+  border: blue 1px solid;
+}
+
+/* Ethos */
+.ethos-wrapper {
+  height: 340px;
+  width: 260px;
+  border: black 1px solid;
+}
+
+
+.ethos-holder {
+  height: 260px;
+  width: 260px;
+  border: black 1px solid;
+}
+
+.ethos {
+  background-image: url(http://www.stellariswiki.com/images/thumb/0/0c/Individualist.png/42px-Individualist.png);
+  background-size: cover;
+  height: 36px;
+  width: 36px;
+  position: relative;
+  clear: none;
+  margin: 1px;
+  border-radius: 50%;
+}
+
+.ethos:hover {
+  background-color: rgba(210,210,210,0.3);
+  background-blend-mode: screen;
+  cursor: pointer;
+}
+
+/* Individual Ethos images and positioning */
+.ethos.fanatic-militarist {
+  left: 112px;
+  top: 11px;
+  background-image: url(http://www.stellariswiki.com/images/thumb/5/55/Fanatic_Militarist.png/42px-Fanatic_Militarist.png);
+}
+
+.ethos.militarist {
+  top: 14px;
+  left: 112px;
+  background-image: url(http://www.stellariswiki.com/images/thumb/4/44/Militarist.png/42px-Militarist.png);
+}
+
+.ethos.spiritualist {
+  left: 79px;
+  top: -37px;
+  background-image: url(http://www.stellariswiki.com/images/thumb/b/be/Spiritualist.png/42px-Spiritualist.png);
+}
+
+.ethos.fanatic-spiritualist {
+  top: -28px;
+  left: 50px;
+  background-image: url(http://www.stellariswiki.com/images/thumb/1/11/Fanatic_Spiritualist.png/42px-Fanatic_Spiritualist.png);
+}
+
+.ethos.xenophobe {
+  top: -113px;
+  left: 145px;
+  background-image: url(http://www.stellariswiki.com/images/thumb/e/ed/Xenophobe.png/42px-Xenophobe.png);
+}
+
+.ethos.fanatic-xenophobe {
+  top: -104px;
+  left: 174px;
+  background-image: url(http://www.stellariswiki.com/images/thumb/8/81/Fanatic_Xenophobe.png/42px-Fanatic_Xenophobe.png);
+}
+
+.ethos.collectivist {
+  top: -150px;
+  left: 60px;
+  background-image: url(http://www.stellariswiki.com/images/thumb/5/5c/Collectivist.png/42px-Collectivist.png);
+}
+
+.ethos.fanatic-collectivist {
+  top: -112px;
+  left: 20px;
+  background-image: url(http://www.stellariswiki.com/images/thumb/e/e4/Fanatic_Collectivist.png/42px-Fanatic_Collectivist.png);
+}
+
+.ethos.individualist {
+  top: -226px;
+  left: 163px;
+  background-image: url(http://www.stellariswiki.com/images/thumb/0/0c/Individualist.png/42px-Individualist.png);
+}
+
+.ethos.fanatic-individualist {
+  top: -188px;
+  left: 203px;
+  background-image: url(http://www.stellariswiki.com/images/thumb/0/0c/Fanatic_Individualist.png/42px-Fanatic_Individualist.png);
+}
+
+.ethos.xenophile {
+  top: -263px;
+  left: 79px;
+  background-image: url(http://www.stellariswiki.com/images/thumb/b/b0/Xenophile.png/42px-Xenophile.png);
+}
+
+.ethos.fanatic-xenophile {
+  left: 51px;
+  top: -197px;
+  background-image: url(http://www.stellariswiki.com/images/thumb/6/68/Fanatic_Xenophile.png/42px-Fanatic_Xenophile.png);
+}
+
+.ethos.materialist {
+  left: 145px;
+  top: -339px;
+  background-image: url(http://www.stellariswiki.com/images/thumb/e/ef/Materialist.png/42px-Materialist.png);
+}
+
+.ethos.fanatic-materialist {
+  left: 173px;
+  top: -273px;
+  background-image: url(http://www.stellariswiki.com/images/thumb/3/3e/Fanatic_Materialist.png/42px-Fanatic_Materialist.png);
+}
+
+.ethos.pacifist {
+  left: 112px;
+  top: -389px;
+  background-image: url(http://www.stellariswiki.com/images/thumb/4/4a/Pacifist.png/42px-Pacifist.png);
+}
+
+.ethos.fanatic-pacifist {
+  left: 112px;
+  top: -312px;
+  background-image: url(http://www.stellariswiki.com/images/thumb/a/ab/Fanatic_Pacifist.png/42px-Fanatic_Pacifist.png);
+}
+
+/* Ethics points and reset */
+.ethos-points {
+  margin: 4px;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  text-decoration: none;
+  font-weight: 500;
+  border: black 1px solid;
+}
+
+.reset-ethos {
+  font-family: 'Lato', sans-serif;
+  outline: none;
+  display: block;
+  cursor: pointer;
+  width: 90%;
+  margin: 4px;
+  border: 1px solid black;
+  /*background: transparent;*/
+  margin: auto;
+  font-size: 1.17em;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Ethos Info  */
+.ethos-info {
+  position: absolute;
+  left: 500px;
+  top: 500px;
+}
