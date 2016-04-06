@@ -5,6 +5,10 @@ var EthosInfo = require('./ethos_info');
 
 var EthosItem = React.createClass({
   getInitialState: function () {
+    return(this.blankAttrs());
+  },
+
+  blankAttrs: function () {
     return({
       ethos: "",
       pos: [-200, -200]
@@ -18,16 +22,41 @@ var EthosItem = React.createClass({
       ethos: ethos,
       pos: pos
     });
+    console.log(pos);
+    console.log(ethos);
+  },
+
+  onLeave: function () {
+    this.setState({
+      ethos: "",
+      pos: [-200, -200]
+    });
   },
 
   render: function() {
-    var id = this.props.id
-    var CSSClass = "ethos " + EthosNames[this.props.id]
+    var id = this.props.id;
+    var CSSClass = "ethos " + EthosNames[this.props.id];
+    var top = this.state.pos[1];
+    var left = this.state.pos[0];
+    console.log(top);
+    console.log(left);
+
+    var divStyle = {
+      top: top,
+      left: left
+    };
 
     return (
       <div>
-        <div onMouseOver={this.onHover} className={CSSClass} id={id} />
-        <EthosInfo ethos={this.state.ethos} pos={this.state.pos} />
+        <div
+          onMouseOver={this.onHover}
+          onMouseOut={this.onLeave}
+          className={CSSClass}
+          id={id} />
+        <EthosInfo
+          styling={divStyle}
+          ethos={this.state.ethos}
+          pos={this.state.pos} />
       </div>
     );
   }

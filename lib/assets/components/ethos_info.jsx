@@ -25,10 +25,10 @@ var EthosInfo = React.createClass({
     if (ethos) {
       return Object.keys(EthosModifiers[ethos]).map (function (effect) {
         return(
-          <ul className="effect" id="ethos" key="ethos">
-            <li className="effect-name">{effect}</li>
-            <li className="net-effect">{EthosModifiers[ethos][effect]}</li>
-          </ul>
+          <li className="effect" id="ethos" key={effect}>
+            <h5 className="effect-name">{UtilFunctions.textCleaner(effect)}</h5>
+            <h5 className="net-effect">{EthosModifiers[ethos][effect]}%</h5>
+          </li>
         );
       });
     }
@@ -39,9 +39,11 @@ var EthosInfo = React.createClass({
     var effects = this.effects();
 
     return (
-      <section className="ethos-info">
+      <section style={this.props.styling} className="ethos-info">
         <h4 className="ethos-name">{ethosName}</h4>
-        {effects}
+        <ul>
+          {effects}
+        </ul>
       </section>
     );
   }
