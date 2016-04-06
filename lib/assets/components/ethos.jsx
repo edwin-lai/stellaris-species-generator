@@ -2,7 +2,6 @@ var React = require('react');
 var PropTypes = React.PropTypes;
 var EthosSelector = require('./ethos_selector');
 var EthosStore = require('../stores/ethos');
-window.EthosStore = EthosStore;
 
 var Ethos = React.createClass({
   getInitialState: function () {

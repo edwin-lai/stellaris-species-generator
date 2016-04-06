@@ -132,6 +132,10 @@
   background-image: url(http://www.stellariswiki.com/images/thumb/a/ab/Fanatic_Pacifist.png/42px-Fanatic_Pacifist.png);
 }
 
+.ethos-selected {
+  box-shadow: 0 0 2px 2px gold;
+}
+
 /* Ethics points and reset */
 .ethos-points {
   margin: 4px;
