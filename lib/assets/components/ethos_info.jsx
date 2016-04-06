@@ -3,7 +3,6 @@ var PropTypes = React.PropTypes;
 var EthosDescriptions = require('../constants/ethos_descriptions');
 var EthosModifiers = require('../constants/ethos_modifiers');
 var UtilFunctions = require('../util/util_functions');
-var EthosEffects = require('./ethos_effects');
 
 var EthosInfo = React.createClass({
 
