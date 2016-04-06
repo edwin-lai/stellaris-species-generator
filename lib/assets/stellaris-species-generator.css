@@ -156,3 +156,10 @@
   text-decoration: none;
   font-weight: 500;
 }
+
+/* Ethos Info  */
+.ethos-info {
+  position: absolute;
+  left: 500px;
+  top: 500px;
+}

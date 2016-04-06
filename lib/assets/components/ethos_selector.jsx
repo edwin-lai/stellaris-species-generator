@@ -7,7 +7,7 @@ var EthosSelector = React.createClass({
 
   ethosItems: function () {
     return Object.keys(EthosNames).map ( function(id) {
-      return <EthosItem id={id} />
+      return <EthosItem id={id} key={id} />
     });
   },
 
