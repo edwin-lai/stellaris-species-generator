@@ -3,7 +3,6 @@ var PropTypes = React.PropTypes;
 var EthosDescriptions = require('../constants/ethos_descriptions');
 var EthosModifiers = require('../constants/ethos_modifiers');
 var UtilFunctions = require('../util/util_functions');
-var EthosEffects = require('./ethos_effects');
 
 var EthosInfo = React.createClass({
 
@@ -26,8 +25,8 @@ var EthosInfo = React.createClass({
       return Object.keys(EthosModifiers[ethos]).map (function (effect) {
         return(
           <li className="effect" id="ethos" key={effect}>
-            <h5 className="effect-name">{UtilFunctions.textCleaner(effect)}</h5>
-            <h5 className="net-effect">{EthosModifiers[ethos][effect]}%</h5>
+            <h5 className="effect-name">{UtilFunctions.textCleaner(effect)}:</h5>
+            <h5 className="net-effect">{EthosModifiers[ethos][effect]}.0%</h5>
           </li>
         );
       });
@@ -40,10 +39,14 @@ var EthosInfo = React.createClass({
 
     return (
       <section style={this.props.styling} className="ethos-info">
-        <h4 className="ethos-name">{ethosName}</h4>
-        <ul>
-          {effects}
-        </ul>
+        <section className="ethos-padding">
+          <h4 className="ethos-name">{ethosName}</h4>
+          <ul>
+            {effects}
+          </ul>
+          <hr className="ethos-divider" />
+          <p>{EthosDescriptions[ethos]}</p>
+        </section>
       </section>
     );
   }

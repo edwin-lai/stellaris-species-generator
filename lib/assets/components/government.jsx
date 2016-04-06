@@ -1,6 +1,7 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
 var Ethos = require('./ethos');
+var GovernmentWrapper = require('./government_wrapper');
 
 var Government = React.createClass({
 
@@ -8,6 +9,7 @@ var Government = React.createClass({
     return (
       <div className="government">
         <Ethos />
+        <GovernmentWrapper />
       </div>
     );
   }

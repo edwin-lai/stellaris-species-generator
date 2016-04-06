@@ -1,7 +1,7 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
 
-var EthosEffects = React.createClass({
+var GovernmentSelector = React.createClass({
 
   render: function() {
     return (
@@ -11,4 +11,4 @@ var EthosEffects = React.createClass({
 
 });
 
-module.exports = EthosEffects;
+module.exports = GovernmentSelector;
