@@ -45,7 +45,7 @@ var GovernmentSelector = React.createClass({
         ethicLocks.forEach (function (unGov) {
           var idx = availableGovernments.indexOf(unGov);
           if (idx !== -1) {
-            availableGovernments = availableGovernments.splice(idx, 1);
+            availableGovernments.splice(idx, 1);
           }
         });
       }
