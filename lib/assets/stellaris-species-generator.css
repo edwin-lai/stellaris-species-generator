@@ -9,6 +9,7 @@
   height: 340px;
   width: 260px;
   border: black 1px solid;
+  float: left;
 }
 
 
@@ -206,3 +207,29 @@
 }
 
 /* Government Box */
+
+.government-selector {
+  margin-top: 40px;
+  width: 150px;
+  height: 250px;
+  border: 1px solid red;
+  float: right;
+}
+
+.government-roundel {
+  background-image: url(http://www.stellariswiki.com/images/thumb/0/0c/Individualist.png/42px-Individualist.png);
+  background-size: cover;
+  position: relative;
+  height: 42px;
+  width: 42px;
+  clear: none;
+  margin: 4px;
+  border-radius: 50%;
+  float: left;
+}
+
+.government-roundel:hover {
+  background-color: rgba(210,210,210,0.3);
+  background-blend-mode: screen;
+  cursor: pointer;
+}
