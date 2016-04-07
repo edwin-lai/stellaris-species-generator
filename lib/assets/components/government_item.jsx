@@ -5,11 +5,19 @@ var GovernmentUnlocks = require('../constants/government_unlocks');
 var GovernmentNames = require('../constants/government_names');
 var EthosStore = require('../stores/ethos');
 var GovernmentStore = require('../stores/government');
+var GovernmentActions = require('../actions/government_actions');
+
+window.GovernmentStore = GovernmentStore;
 
 var GovernmentItem = React.createClass({
   getInitialState: function () {
     return({
       currentGovernment: GovernmentStore.currentGovernment(),
+      availableGovernments: [
+        'indirect_democracy',
+        'plutocratic_oligarchy',
+        'despotic_empire'
+      ]
     });
   },
 
@@ -34,6 +42,13 @@ var GovernmentItem = React.createClass({
     });
   },
 
+  onClick: function(e) {
+    var government = e.target.id;
+    if (this.state.availableGovernments.includes(government)) {
+      GovernmentActions.updateGovernment(government);
+    }
+  },
+
   render: function() {
     var government = this.props.government;
     var unlocked = this.props.unlocked;
@@ -46,7 +61,7 @@ var GovernmentItem = React.createClass({
     }
 
     return (
-      <div className={CSSClass} />
+      <div onClick={this.onClick} className={CSSClass} id={government} />
     );
   }
 

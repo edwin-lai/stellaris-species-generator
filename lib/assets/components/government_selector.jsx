@@ -1,5 +1,4 @@
 var React = require('react');
-var Underscore = require('underscore');
 var PropTypes = React.PropTypes;
 var GovernmentNames = require('../constants/government_names');
 var GovernmentItem = require('./government_item');
@@ -7,6 +6,7 @@ var EthosStore = require('../stores/ethos');
 var GovernmentStore = require('../stores/government');
 var GovernmentLocks = require('../constants/government_locks');
 var GovernmentUnlocks = require('../constants/government_unlocks');
+var GovernmentActions = require('../actions/government_actions');
 
 var GovernmentSelector = React.createClass({
   getInitialState: function () {
@@ -40,7 +40,7 @@ var GovernmentSelector = React.createClass({
     });
 
     ethos.forEach (function (ethic) {
-      var ethicLocks = GovernmentLocks[ethic]
+      var ethicLocks = GovernmentLocks[ethic];
       if (ethicLocks) {
         ethicLocks.forEach (function (unGov) {
           var idx = availableGovernments.indexOf(unGov);
@@ -50,6 +50,9 @@ var GovernmentSelector = React.createClass({
         });
       }
     });
+    if (!availableGovernments.includes(GovernmentStore.currentGovernment())) {
+      GovernmentActions.updateGovernment('none');
+    }
 
     return availableGovernments;
   },
