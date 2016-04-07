@@ -328,6 +328,11 @@
 .government-info h5 {
   display: inline;
 }
+.government-info .text-effect {
+  display: inline;
+  margin: 0;
+  top: -0.5em;
+}
 
 .government-info h5:last-of-type {
   margin-left: 10px;
