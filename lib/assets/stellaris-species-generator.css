@@ -20,7 +20,6 @@
 }
 
 .ethos {
-  background-image: url(http://www.stellariswiki.com/images/thumb/0/0c/Individualist.png/42px-Individualist.png);
   background-size: cover;
   height: 36px;
   width: 36px;
@@ -217,7 +216,6 @@
 }
 
 .government-roundel {
-  background-image: url(http://www.stellariswiki.com/images/thumb/0/0c/Individualist.png/42px-Individualist.png);
   background-size: cover;
   position: relative;
   height: 42px;
@@ -232,4 +230,64 @@
   background-color: rgba(210,210,210,0.3);
   background-blend-mode: screen;
   cursor: pointer;
+}
+
+.government-roundel.military-republic {
+  background-image: url(http://www.stellariswiki.com/images/thumb/b/b8/Military_Republic.png/42px-Military_Republic.png);
+}
+
+.government-roundel.military-junta {
+  background-image: url(http://www.stellariswiki.com/images/thumb/9/9a/Military_Junta.png/42px-Military_Junta.png);
+}
+
+.government-roundel.military-dictatorship {
+  background-image: url(http://www.stellariswiki.com/images/thumb/4/4c/Military_Dictatorship.png/42px-Military_Dictatorship.png);
+}
+
+.government-roundel.theocratic-republic {
+  background-image: url(http://www.stellariswiki.com/images/thumb/9/9f/Theocratic_Republic.png/42px-Theocratic_Republic.png);
+}
+
+.government-roundel.theocratic-oligarchy {
+  background-image: url(http://www.stellariswiki.com/images/thumb/5/57/Theocratic_Oligarchy.png/42px-Theocratic_Oligarchy.png);
+}
+
+.government-roundel.divine-mandate {
+  background-image: url(http://www.stellariswiki.com/images/thumb/7/7f/Divine_Mandate.png/42px-Divine_Mandate.png);
+}
+
+.government-roundel.direct-democracy {
+  background-image: url(http://www.stellariswiki.com/images/thumb/0/02/Direct_Democracy.png/42px-Direct_Democracy.png);
+}
+
+.government-roundel.science-directorate {
+  background-image: url(http://www.stellariswiki.com/images/thumb/c/cd/Science_Directorate.png/42px-Science_Directorate.png);
+}
+
+.government-roundel.despotic-hegemony {
+  background-image: url(http://www.stellariswiki.com/images/thumb/a/a7/Despotic_Hegemony.png/42px-Despotic_Hegemony.png);
+}
+
+.government-roundel.moral-democracy {
+  background-image: url(http://www.stellariswiki.com/images/thumb/6/67/Moral_Democracy.png/42px-Moral_Democracy.png);
+}
+
+.government-roundel.peaceful-bureaucracy {
+  background-image: url(http://www.stellariswiki.com/images/thumb/c/cd/Peaceful_Bureaucracy.png/42px-Peaceful_Bureaucracy.png);
+}
+
+.government-roundel.enlightened-monarchy {
+  background-image: url(http://www.stellariswiki.com/images/thumb/2/2b/Enlightened_Monarchy.png/42px-Enlightened_Monarchy.png);
+}
+
+.government-roundel.indirect-democracy {
+  background-image: url(http://www.stellariswiki.com/images/thumb/a/a1/Indirect_Democracy.png/42px-Indirect_Democracy.png);
+}
+
+.government-roundel.plutocratic-oligarchy {
+  background-image: url(http://www.stellariswiki.com/images/thumb/3/3e/Plutocratic_Oligarchy.png/42px-Plutocratic_Oligarchy.png);
+}
+
+.government-roundel.despotic-empire {
+  background-image: url(http://www.stellariswiki.com/images/thumb/1/1d/Despotic_Empire.png/42px-Despotic_Empire.png);
 }

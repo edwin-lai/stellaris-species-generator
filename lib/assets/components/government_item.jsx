@@ -40,7 +40,7 @@ var GovernmentItem = React.createClass({
     var government = this.props.government;
     var CSSClass = "government-roundel " + GovernmentNames[government];
     if ( this.state.currentGovernment === government ) {
-      CSSClass += "government-selected";
+      CSSClass += " government-selected";
     }
     return (
       <div className={CSSClass} />
