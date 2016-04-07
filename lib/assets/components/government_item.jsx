@@ -13,18 +13,14 @@ var GovernmentItem = React.createClass({
   getInitialState: function () {
     return({
       currentGovernment: GovernmentStore.currentGovernment(),
-      availableGovernments: [
-        'indirect_democracy',
-        'plutocratic_oligarchy',
-        'despotic_empire'
-      ]
+      unlocked: false
     });
   },
 
   componentWillReceiveProps: function () {
-    var availableGovernments = this.props.availableGovernments;
-    if (availableGovernments) {
-      this.setState({ availableGovernments: availableGovernments });
+    var unlocked = this.props.unlocked;
+    if (unlocked) {
+      this.setState({ unlocked: unlocked });
     }
   },
 
@@ -44,7 +40,7 @@ var GovernmentItem = React.createClass({
 
   onClick: function(e) {
     var government = e.target.id;
-    if (this.state.availableGovernments.includes(government)) {
+    if (this.props.unlocked) {
       GovernmentActions.updateGovernment(government);
     }
   },

@@ -304,3 +304,32 @@
   filter: gray;
   filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
 }
+
+/* Government Info */
+.government-info {
+  font-family: 'Lato', sans-serif;
+  float: right;
+  width: 240px;
+  height: 340px;
+  padding: 0 20px;
+  border: 1px solid green;
+}
+
+.government-info p {
+  font-size: 0.875em;
+}
+
+.government-info ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.government-info h5 {
+  display: inline;
+}
+
+.government-info h5:last-of-type {
+  margin-left: 10px;
+  color: green;
+}

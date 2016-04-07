@@ -11,7 +11,7 @@ var GovernmentActions = require('../actions/government_actions');
 var GovernmentSelector = React.createClass({
   getInitialState: function () {
     return({
-      availableGovernments: this.availableGovernments()
+      availableGovernments: this.availableGovernments(),
     });
   },
 
@@ -50,9 +50,6 @@ var GovernmentSelector = React.createClass({
         });
       }
     });
-    if (!availableGovernments.includes(GovernmentStore.currentGovernment())) {
-      GovernmentActions.updateGovernment('none');
-    }
 
     return availableGovernments;
   },
@@ -68,6 +65,7 @@ var GovernmentSelector = React.createClass({
 
   render: function() {
     var governmentItems = this.governmentItems();
+
     return (
       <section className="government-selector">
         {governmentItems}
