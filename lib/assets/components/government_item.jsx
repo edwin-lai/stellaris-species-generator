@@ -10,24 +10,22 @@ var GovernmentItem = React.createClass({
   getInitialState: function () {
     return({
       currentGovernment: GovernmentStore.currentGovernment(),
-      currentEthos: EthosStore.all()
     });
   },
 
+  componentWillReceiveProps: function () {
+    var availableGovernments = this.props.availableGovernments;
+    if (availableGovernments) {
+      this.setState({ availableGovernments: availableGovernments });
+    }
+  },
+
   componentDidMount: function () {
-    this.ethosListener = EthosStore.addListener(this._ethosChange);
     this.governmentListener = GovernmentStore.addListener(this._governmentChange);
   },
 
   componentWillUnmount: function () {
-    this.ethosListener.remove();
     this.governmentListener.remove();
-  },
-
-  _ethosChange: function () {
-    this.setState({
-      currentEthos: EthosStore.all()
-    });
   },
 
   _governmentChange: function () {
@@ -38,10 +36,15 @@ var GovernmentItem = React.createClass({
 
   render: function() {
     var government = this.props.government;
+    var unlocked = this.props.unlocked;
     var CSSClass = "government-roundel " + GovernmentNames[government];
     if ( this.state.currentGovernment === government ) {
       CSSClass += " government-selected";
     }
+    if (!unlocked) {
+      CSSClass += " locked";
+    }
+
     return (
       <div className={CSSClass} />
     );
