@@ -11,7 +11,6 @@ var EthosItem = React.createClass({
     return({
       pos: [-200, -200],
       ethicsPoints: EthosStore.points(),
-      selected: false,
       currentEthos: EthosStore.all()
     });
   },
@@ -87,8 +86,8 @@ var EthosItem = React.createClass({
 
   render: function() {
     var id = this.props.id;
-    var CSSClass = "ethos " + EthosNames[this.props.id];
-    if (this.state.currentEthos.includes(id)) {
+    var CSSClass = "ethos " + EthosNames[id];
+    if ( this.state.currentEthos.includes(id) ) {
       CSSClass += " ethos-selected"
     }
     var top = this.state.pos[1];

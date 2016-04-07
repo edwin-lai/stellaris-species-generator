@@ -7,9 +7,9 @@ var GovernmentWrapper = React.createClass({
 
   render: function() {
     return (
-      <section>
-        <GovernmentSelector />
+      <section className="government-wrapper">
         <GovernmentInfo />
+        <GovernmentSelector />
       </section>
     );
   }
