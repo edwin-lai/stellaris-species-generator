@@ -1,19 +1,23 @@
 var React = require('react');
-    PlanetStore = require('../stores/planet'),
-    planet_info = require('../../constants/planet_info');
+    PropTypes = React.PropTypes,
+    PlanetStore = require('../../stores/planet'),
+    PlanetData = require('../../constants/planet_data'),
+    PlanetInfo = require('./planet_info'),
+    PlanetActions = require('../../actions/planet_actions');
 
 var PlanetSelector = React.createClass({
-  var currentHighlight = 1;
-  highLight: function(){
+  getInitialState: function () {
+    return {currentHighlight: PlanetStore.currentPlanet};
+  },
 
+  handleClick: function(planet){
+    PlanetActions.recievePlanetUpdate(e.target.id);
   },
 
   planetItems: function () {
-    return Object.keys(PlanetConstants).map ( function(planet, index) {
+    return Object.keys(PlanetData).map ( function(planet, index) {
       return (
-        <div id=("planet-" + {index}) key={planet.name} className="planet-container" onClick={this.highLight}>
-          <img src={planet.imageUrl}/>
-        </div>
+        <img onClick={PlanetSelector.handleClick} id={planet} key={planet} className="planet-pic" src={PlanetData[planet].imageUrl}/>
       );
     });
   },
@@ -30,3 +34,4 @@ var PlanetSelector = React.createClass({
 });
 
 module.exports = PlanetSelector;
+window.PlanetData = PlanetData;

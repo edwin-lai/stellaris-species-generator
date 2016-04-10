@@ -1,0 +1,74 @@
+.planets-holder {
+  position: relative;
+  width: 30em;
+  height: 20em;
+  border-radius: 50%;
+  padding: 0;
+  list-style: none;
+  margin: 5em auto 0;
+}
+
+.planets-holder > * {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -3em;
+  width: 5em;
+  height: 5em;
+}
+
+.planets-holder > *:nth-of-type(1) {
+  -moz-transform: rotate(270deg) translate(6em) rotate(0deg);
+  -o-transform: rotate(270deg) translate(6em) rotate(0deg);
+  -webkit-transform: rotate(270deg) translate(6em) rotate(0deg);
+          transform: rotate(270deg) translate(6em) rotate(0deg);
+}
+
+.planets-holder > *:nth-of-type(2) {
+  -moz-transform: rotate(321.42857deg) translate(6em) rotate(-51.42857deg);
+  -o-transform: rotate(321.42857deg) translate(6em) rotate(-51.42857deg);
+  -webkit-transform: rotate(321.42857deg) translate(6em) rotate(-51.42857deg);
+          transform: rotate(321.42857deg) translate(6em) rotate(-51.42857deg);
+}
+
+.planets-holder > *:nth-of-type(3) {
+  -moz-transform: rotate(12.42857deg) translate(6em) rotate(-102.85714deg);
+  -o-transform: rotate(12.42857deg) translate(6em) rotate(-102.85714deg);
+  -webkit-transform: rotate(12.42857deg) translate(6em) rotate(-102.85714deg);
+          transform: rotate(12.42857deg) translate(6em) rotate(-102.85714deg);
+}
+
+.planets-holder > *:nth-of-type(4) {
+  -moz-transform: rotate(64.28571deg) translate(6em) rotate(-154.28571deg);
+  -o-transform: rotate(64.28571deg) translate(6em) rotate(-154.28571deg);
+  -webkit-transform: rotate(64.28571deg) translate(6em) rotate(-154.28571deg);
+          transform: rotate(64.28571deg) translate(6em) rotate(-154.28571deg);
+}
+
+.planets-holder > *:nth-of-type(5) {
+  -moz-transform: rotate(115.71429deg) translate(6em) rotate(-205.71429deg);
+  -o-transform: rotate(115.71429deg) translate(6em) rotate(-205.71429deg);
+  -webkit-transform: rotate(115.71429deg) translate(6em) rotate(-205.71429deg);
+          transform: rotate(115.71429deg) translate(6em) rotate(-205.71429deg);
+}
+
+.planets-holder > *:nth-of-type(6) {
+  -moz-transform: rotate(167.14286deg) translate(6em) rotate(-257.14286deg);
+  -o-transform: rotate(167.14286deg) translate(6em) rotate(-257.14286deg);
+  -webkit-transform: rotate(167.14286deg) translate(6em) rotate(-257.14286deg);
+          transform: rotate(167.14286deg) translate(6em) rotate(-257.14286deg);
+}
+
+.planets-holder > *:nth-of-type(7) {
+  -moz-transform: rotate(218.57143deg) translate(6em) rotate(-308.57143deg);
+  -o-transform: rotate(218.57143deg) translate(6em) rotate(-308.57143deg);
+  -webkit-transform: rotate(218.57143deg) translate(6em) rotate(-308.57143deg);
+          transform: rotate(218.57143deg) translate(6em) rotate(-308.57143deg);
+}
+
+.planet-pic:hover {
+  background-color: rgba(210,210,210,0.3);
+  background-blend-mode: screen;
+  cursor: pointer;
+}

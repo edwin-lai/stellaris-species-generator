@@ -1,6 +1,6 @@
 var React = require('react'),
-    PlanetStore = require('../stores/planet'),
-    PlanetInfo = require('../constants/planet_info');
+    PlanetStore = require('../../stores/planet'),
+    PlanetData= require('../../constants/planet_data');
 
 var PlanetInfo = React.createClass({
   getInitialState: function () {
@@ -23,13 +23,13 @@ var PlanetInfo = React.createClass({
 
   render: function() {
     var planet = this.state.currentPlanet;
-
+    console.log(planet);
     return (
       <section className="planet-info">
-        <h3 className="planet-name">{PlanetInfo[planet].description}</h3>
-        <p className="planet-description">{PlanetInfo[planet].description}</p>
+        <h3 className="planet-name">{planet.name}</h3>
+        <p className="planet-description">{planet.description}</p>
         <img className="light-bulb" src=""/>
-        <h3 className="planet-preference">{PlanetInfo[planet].name} Preference</h3>
+        <h3 className="planet-preference">{planet.name} Preference</h3>
       </section>
     );
   }
