@@ -1,5 +1,6 @@
 var React = require('react');
-var PlanetSelector = require('./planet_selector');
+var PlanetSelector = require('./planet_selector'),
+    PlanetInfo = require('./planet_info');
 
 var Planets = React.createClass({
 
@@ -7,6 +8,7 @@ var Planets = React.createClass({
     return (
       <div className="planets">
         <PlanetSelector />
+        <PlanetInfo />
       </div>
     );
   }

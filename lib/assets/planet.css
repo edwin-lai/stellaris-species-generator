@@ -72,3 +72,8 @@
   background-blend-mode: screen;
   cursor: pointer;
 }
+
+.planet-highlight {
+  border: 2px solid #FFA500;
+  z-index: 2;
+}
