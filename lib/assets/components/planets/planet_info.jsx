@@ -4,7 +4,7 @@ var React = require('react'),
 
 var PlanetInfo = React.createClass({
   getInitialState: function () {
-    return {currentPlanet: PlanetStore.currentPlanet()};
+    return ({currentPlanet: PlanetStore.currentPlanet()});
   },
 
   componentDidMount: function () {
@@ -17,13 +17,13 @@ var PlanetInfo = React.createClass({
 
   _planetChange: function () {
     this.setState({
-      currentPlanet: PlanetStore.currentPlanet(),
+      currentPlanet: PlanetStore.currentPlanet()
     });
   },
 
   render: function() {
     var planet = this.state.currentPlanet;
-    console.log(planet);
+
     return (
       <section className="planet-info">
         <h3 className="planet-name">{planet.name}</h3>
@@ -33,7 +33,6 @@ var PlanetInfo = React.createClass({
       </section>
     );
   }
-
 });
 
 module.exports = PlanetInfo;

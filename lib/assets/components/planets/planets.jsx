@@ -12,7 +12,6 @@ var Planets = React.createClass({
       </div>
     );
   }
-
 });
 
 module.exports = Planets;

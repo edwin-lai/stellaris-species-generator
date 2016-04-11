@@ -13,6 +13,7 @@ var ReactDOM = require('react-dom');
 var Government = require('./components/government');
 var Planets = require('./components/planets/planets');
 // var PlanetInfo = require('./components/planets/planet_info');
+// var PlanetSelector = require('./components/planets/planet_selector');
 
 // var routes = (
 //   <Router history={History.HashHistory}>
