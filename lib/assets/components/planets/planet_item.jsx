@@ -6,32 +6,32 @@ var PlanetActions = require('../../actions/planet_actions');
 
 var PlanetItem = React.createClass({
   getInitialState: function () {
-    return{
+    return({
       currentPlanet: PlanetStore.currentPlanet()
-    };
-  },
-
-  componentDidMount: function () {
-    this.PlanetListener = PlanetStore.addListener(this._PlanetChange);
-  },
-
-  componentWillUnmount: function () {
-    this.PlanetListener.remove();
-  },
-
-  _PlanetChange: function () {
-    this.setState({
-      currentPlanet: PlanetStore.currentPlanet(),
     });
+  },
+
+  componentDidMount: function() {
+    this.planetListener = PlanetStore.addListener(this._planetChange);
+  },
+
+  componentWillUnmount: function() {
+    this.planetListener.remove();
+  },
+
+  _planetChange: function() {
+    this.setState({currentPlanet: PlanetStore.currentPlanet()});
   },
 
   handleClick: function(e) {
     var planet = e.target.id;
+
     PlanetActions.recievePlanetUpdate(planet);
   },
 
   render: function() {
     var planet = this.props.planet;
+
     if (this.state.currentPlanet.name.toUpperCase() === planet){
       return(
         <img id={planet} key={planet} className="planet-pic planet-highlight" src={PlanetData[planet].imageUrl}/>
