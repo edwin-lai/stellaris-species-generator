@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Government = require('./components/government');
+var Government = require('./components/government/government');
 
 document.addEventListener("DOMContentLoaded", function () {
   ReactDOM.render(<Government />, document.getElementById('root'));

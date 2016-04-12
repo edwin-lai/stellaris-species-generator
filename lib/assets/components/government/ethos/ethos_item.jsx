@@ -1,9 +1,8 @@
 var React = require('react');
-var PropTypes = React.PropTypes;
-var EthosActions = require('../actions/ethos_actions');
-var EthosNames = require('../constants/ethos_names');
-var EthosGroups = require('../constants/ethos_groups');
-var EthosStore = require('../stores/ethos');
+var EthosActions = require('../../../actions/government/ethos_actions');
+var EthosNames = require('../../../constants/government/ethos/ethos_names');
+var EthosGroups = require('../../../constants/government/ethos/ethos_groups');
+var EthosStore = require('../../../stores/ethos');
 var EthosInfo = require('./ethos_info');
 
 var EthosItem = React.createClass({

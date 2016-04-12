@@ -1,7 +1,6 @@
 var React = require('react');
-var PropTypes = React.PropTypes;
-var Ethos = require('./ethos');
-var GovernmentWrapper = require('./government_wrapper');
+var Ethos = require('./ethos/ethos');
+var GovernmentWrapper = require('./government/government_wrapper');
 
 var Government = React.createClass({
 

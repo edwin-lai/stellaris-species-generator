@@ -1,9 +1,8 @@
 var React = require('react');
-var PropTypes = React.PropTypes;
-var GovernmentStore = require('../stores/government');
-var GovernmentDescriptions = require('../constants/government_descriptions');
-var GovernmentModifiers = require('../constants/government_modifiers');
-var UtilFunctions = require('../util/util_functions');
+var GovernmentStore = require('../../../stores/government');
+var GovernmentDescriptions = require('../../../constants/government/government/government_descriptions');
+var GovernmentModifiers = require('../../../constants/government/government/government_modifiers');
+var UtilFunctions = require('../../../util/util_functions');
 window.GovernmentModifiers = GovernmentModifiers;
 
 var GovernmentInfo = React.createClass({
