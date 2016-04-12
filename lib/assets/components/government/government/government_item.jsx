@@ -1,11 +1,10 @@
 var React = require('react');
-var PropTypes = React.PropTypes;
-var GovernmentLocks = require('../constants/government_locks');
-var GovernmentUnlocks = require('../constants/government_unlocks');
-var GovernmentNames = require('../constants/government_names');
-var EthosStore = require('../stores/ethos');
-var GovernmentStore = require('../stores/government');
-var GovernmentActions = require('../actions/government_actions');
+var GovernmentLocks = require('../../../constants/government/government/government_locks');
+var GovernmentUnlocks = require('../../../constants/government/government/government_unlocks');
+var GovernmentNames = require('../../../constants/government/government/government_names');
+var EthosStore = require('../../../stores/ethos');
+var GovernmentStore = require('../../../stores/government');
+var GovernmentActions = require('../../../actions/government/government_actions');
 
 window.GovernmentStore = GovernmentStore;
 

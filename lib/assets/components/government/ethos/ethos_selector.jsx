@@ -1,6 +1,5 @@
 var React = require('react');
-var PropTypes = React.PropTypes;
-var EthosNames = require('../constants/ethos_names');
+var EthosNames = require('../../../constants/government/ethos/ethos_names');
 var EthosItem = require('./ethos_item');
 
 var EthosSelector = React.createClass({

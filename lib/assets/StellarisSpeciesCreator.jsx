@@ -10,6 +10,9 @@ var React = require('react'),
 
 var React = require('react');
 var ReactDOM = require('react-dom');
+<<<<<<< HEAD
+var Government = require('./components/government/government');
+=======
 var Government = require('./components/government');
 var Planets = require('./components/planets/planets');
 // var PlanetInfo = require('./components/planets/planet_info');
@@ -24,6 +27,7 @@ var Planets = require('./components/planets/planets');
 //     </Route>
 //   </Router>
 // )
+>>>>>>> master
 
 document.addEventListener("DOMContentLoaded", function () {
   ReactDOM.render(<Planets />, document.getElementById('root'));

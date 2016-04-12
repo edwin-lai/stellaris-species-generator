@@ -1,9 +1,8 @@
 var React = require('react');
-var PropTypes = React.PropTypes;
 var EthosSelector = require('./ethos_selector');
-var EthosStore = require('../stores/ethos');
-var EthosActions = require('../actions/ethos_actions');
-var GovernmentActions = require('../actions/government_actions');
+var EthosStore = require('../../../stores/ethos');
+var EthosActions = require('../../../actions/government/ethos_actions');
+var GovernmentActions = require('../../../actions/government/government_actions');
 
 var Ethos = React.createClass({
   getInitialState: function () {
