@@ -1,12 +1,13 @@
 var React = require('react');
 
-var Weapon = React.createClass({
+var FTLMethod = React.createClass({
   render: function () {
     return (
-      <div className="weapon">
+      <div className="ftl">
         <img src={this.props.imageUrl}/>
         <div>
           <h3>{this.props.name}</h3>
+          <h3>{this.props.recommendation}</h3>
           <p>{this.props.description}</p>
         </div>
       </div>
@@ -14,4 +15,4 @@ var Weapon = React.createClass({
   }
 });
 
-module.exports = Weapon;
+module.exports = FTLMethod;
