@@ -5,7 +5,7 @@ var FTLBox = React.createClass({
   getFTLMethods: function () {
     MethodStore.all().forEach(function (method, i) {
       return (
-        <Weapon
+        <FTLMethod
           key={i}
           name={method.name}
           description={method.description}
