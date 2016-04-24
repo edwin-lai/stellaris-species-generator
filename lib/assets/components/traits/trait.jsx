@@ -12,8 +12,12 @@ var Trait = React.createClass({
     }
   },
 
+  setTooltip: function () {
+    TraitActions.mouseover(this.props.trait);
+  },
+
   render: function () {
-    return <li className='trait' onClick={this.toggleSelected}>
+    return <li className='trait' onClick={this.toggleSelected} onMouseOver={this.setTooltip}>
       <img src={this.props.trait.icon_url} className='trait-icon' />
       <content className='trait-name'>{this.props.trait.name}</content>
       <content className='trait-cost'>{this.props.trait.cost}</content>
