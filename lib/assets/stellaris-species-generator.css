@@ -233,6 +233,40 @@
   cursor: pointer;
 }
 
+.government-hover {
+  position: absolute;
+  background-color: rgba(55,55,55,0.6);
+  font-family: 'Lato', sans-serif;
+  border-style: ridge;
+  border-width: medium;
+  border-color: #36594f ;
+  width: 260px;
+  color: white;
+}
+
+.government-padding {
+  padding: 5px 15px;
+}
+
+.government-hover h4 {
+  margin: 10px 0;
+}
+
+.government-hover ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.government-hover h5 {
+  display: inline;
+}
+
+.government-hover p {
+  font-size: .7em;
+  font-weight: normal;
+}
+
 .government-roundel.government-selected {
   box-shadow: 0 0 2px 2px gold;
 }

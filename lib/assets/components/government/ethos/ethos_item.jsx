@@ -91,7 +91,8 @@ var EthosItem = React.createClass({
     }
     var top = this.state.pos[1];
     var left = this.state.pos[0];
-
+    console.log(top);
+    console.log(left);
     var divStyle = {
       top: top,
       left: left
