@@ -10,11 +10,9 @@ var React = require('react'),
 
 var React = require('react');
 var ReactDOM = require('react-dom');
-<<<<<<< HEAD
 var Government = require('./components/government/government');
-=======
-var Government = require('./components/government');
 var Planets = require('./components/planets/planets');
+var TraitsMenu = require('./components/traits/traits.jsx');
 // var PlanetInfo = require('./components/planets/planet_info');
 // var PlanetSelector = require('./components/planets/planet_selector');
 
@@ -27,8 +25,8 @@ var Planets = require('./components/planets/planets');
 //     </Route>
 //   </Router>
 // )
->>>>>>> master
+window.TraitStore = require('./stores/trait.js');
 
 document.addEventListener("DOMContentLoaded", function () {
-  ReactDOM.render(<Planets />, document.getElementById('root'));
+  ReactDOM.render(<TraitsMenu />, document.getElementById('root'));
 });
