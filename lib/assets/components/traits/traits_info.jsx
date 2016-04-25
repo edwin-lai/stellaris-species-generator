@@ -11,6 +11,18 @@ var getTraitsState = function () {
   };
 };
 
+var effectValue = function (name) {
+  var activeTrait = TraitStore.mouseover();
+  var result = activeTrait.effects[name].toString();
+  if (!activeTrait.not_percentage) {
+    result += '%';
+  }
+  if (result[0] !== '-') {
+    result = '+' + result;
+  }
+  return result;
+};
+
 var TraitsInfo = React.createClass({
   getInitialState: function () {
     return getTraitsState();
@@ -43,17 +55,17 @@ var TraitsInfo = React.createClass({
   },
 
   traitEffects: function () {
-    var that = this;
+    var activeTrait = this.state.trait;
     return <tbody>
-      {Object.keys(that.state.trait.effects).map(function (name) {
+      {Object.keys(activeTrait.effects).map(function (name) {
         return <tr key={name}>
           <td>
             {name.split('_').map(function (word) {
               return word[0].toUpperCase() + word.slice(1);
             }).join(' ') + ': '}
           </td>
-          <td className={that.state.trait.negative ? 'bad' : 'good'}>
-            {that.state.trait.effects[name]}
+          <td className={activeTrait.negative ? 'bad' : 'good'}>
+            {effectValue(name)}
           </td>
         </tr>;
       })}
@@ -63,6 +75,7 @@ var TraitsInfo = React.createClass({
   render: function () {
     return <div className='traits-info'>
       <h1 className='title'>Racial Traits</h1>
+      <hr />
       <p className='instructions'>Pick genetic Traits for your Species.</p>
       <table className='items-left'>
         <tbody>

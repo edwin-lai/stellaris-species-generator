@@ -360,8 +360,13 @@
   font-size: 18px;
 }
 
+.traits-info hr {
+  border-color: #2C473B
+}
+
 .items-left {
   border: 0;
+  margin-bottom: 7.5%;
 }
 
 .unselected-traits {
