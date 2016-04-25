@@ -1,4 +1,5 @@
 var React = require('react');
+var GovernmentHover = require('./government_hover');
 var GovernmentLocks = require('../../../constants/government/government/government_locks');
 var GovernmentUnlocks = require('../../../constants/government/government/government_unlocks');
 var GovernmentNames = require('../../../constants/government/government/government_names');
@@ -11,7 +12,9 @@ window.GovernmentStore = GovernmentStore;
 var GovernmentItem = React.createClass({
   getInitialState: function () {
     return({
+      pos: [-500, -500],
       currentGovernment: GovernmentStore.currentGovernment(),
+      government: "",
       unlocked: false
     });
   },
@@ -44,6 +47,21 @@ var GovernmentItem = React.createClass({
     }
   },
 
+  onHover: function (e) {
+    var government = e.target.id;
+    var pos = [30, 30];
+    this.setState({
+      government: government,
+      pos: pos
+    });
+  },
+
+  onLeave: function () {
+    this.setState({
+      pos: [-500, -500]
+    });
+  },
+
   render: function() {
     var government = this.props.government;
     var unlocked = this.props.unlocked;
@@ -55,8 +73,27 @@ var GovernmentItem = React.createClass({
       CSSClass += " locked";
     }
 
+    var top = this.state.pos[1];
+    var left = this.state.pos[0];
+    console.log(left);
+    console.log(top);
+
+    var divStyle = {
+      top: top,
+      left: left
+    };
+
     return (
-      <div onClick={this.onClick} className={CSSClass} id={government} />
+      <div onMouseOver={this.onHover}
+        onMouseOut={this.onLeave}
+        onClick={this.onClick}
+        className={CSSClass}
+        id={government} >
+        <GovernmentHover
+          styling={divStyle}
+          government={this.state.government}
+          pos={this.state.pos} />
+      </div>
     );
   }
 
