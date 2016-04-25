@@ -35,9 +35,15 @@ var UnselectedTraits = React.createClass({
     return <div className='unselected-traits'>
       {
         Object.keys(TraitList).map(function(key) {
-          if (!that.state.active.has(TraitList[key])) {
+          var value = TraitList[key];
+          if (!that.state.active.has(value)) {
             return (
-              <Trait key={key} trait={TraitList[key]}/>
+              <Trait
+                key={key}
+                trait={value}
+                banned={that.state.banned.has(value)
+                  || value.cost > TraitStore.pointsLeft()
+                  || TraitStore.picksLeft() < 1}/>
             );
           }
         })

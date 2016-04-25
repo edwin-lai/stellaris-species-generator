@@ -9,7 +9,7 @@ var TraitsInfo = require('./traits_info.jsx');
 
 var TraitsMenu = React.createClass({
   render: function () {
-    return <div>
+    return <div className='traits'>
       <TraitsInfo />
       <UnselectedTraits />
       <SelectedTraits />

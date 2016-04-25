@@ -32,20 +32,32 @@ var TraitsInfo = React.createClass({
 
   mouseoverTrait: function () {
     if (this.state.trait) {
-      return <content className='mouseover-trait'>
+      return <div className='mouseover-trait'>
         <h2 className='mouseover-trait-name'>{this.state.trait.name}</h2>
         <p className='trait-description'>{this.state.trait.description}</p>
         <p className='trait-effects'>{JSON.stringify(this.state.trait.effects)}</p>
-      </content>;
+      </div>;
+    } else {
+      return <div className='mouseover-trait'></div>;
     }
   },
 
   render: function () {
     return <div className='traits-info'>
       <h1 className='title'>Racial Traits</h1>
-      <p className='instructions'>Pick genetic traits for your species.</p>
-      <p className='points-left'>Trait Points Left: {this.state.pointsLeft}</p>
-      <p className='picks-left'>Trait Picks Left: {this.state.picksLeft}</p>
+      <p className='instructions'>Pick genetic Traits for your Species.</p>
+      <p className='points-left'>
+        Trait Points Left:
+        <content className={this.state.pointsLeft > 0 ? 'good' : 'neutral'}>
+          {this.state.pointsLeft}
+        </content>
+      </p>
+      <p className='picks-left'>
+        Trait Picks Left:
+        <content className={this.state.picksLeft > 0 ? 'good' : 'neutral'}>
+          {this.state.picksLeft}
+        </content>
+      </p>
       {this.mouseoverTrait()}
     </div>;
   }

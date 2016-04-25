@@ -338,3 +338,90 @@
   margin-left: 10px;
   color: green;
 }
+
+/* Traits Section */
+
+.traits {
+  box-sizing: border-box;
+  background: #101A14;
+  color: #FFFFFF;
+  font-family: sans-serif;
+  padding: 2%;
+}
+
+.traits-info {
+  width: 50%;
+  height: 300px;
+  float: left;
+}
+
+.traits-info h1 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.unselected-traits {
+  background: #09110C;
+  width: 23%;
+  margin: 0 1%;
+  height: 300px;
+  overflow-y: scroll;
+  display: inline-block;
+}
+
+.selected-traits {
+  background: #09110C;
+  float: right;
+  height: 300px;
+  margin: 0 1%;
+  width: 23%;
+}
+
+.trait {
+  background: #1E2D24;
+  list-style: none;
+  margin: 4px 8px;
+  padding: 1%;
+}
+
+.mouseover-trait {
+  background: #09110C;
+  width: 95%;
+  height: 37%;
+  padding: 1%;
+  overflow-y: scroll;
+}
+
+.mouseover-trait h2 {
+  font-size: 18px;
+  margin: 0;
+  font-weight: normal;
+}
+
+.trait-description {
+  color: #8D8A7D;
+}
+
+.trait-name {
+  display: inline-block;
+  transform: translateY(-50%);
+  padding-left: 4%;
+}
+
+.trait-cost {
+  float: right;
+  padding-right: 4%;
+  transform: translateY(50%);
+}
+
+.good {
+  color: #45A641;
+}
+
+.bad {
+  color: red;
+}
+
+.neutral {
+  color: #939F6D;
+}
