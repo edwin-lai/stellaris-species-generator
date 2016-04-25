@@ -35,29 +35,51 @@ var TraitsInfo = React.createClass({
       return <div className='mouseover-trait'>
         <h2 className='mouseover-trait-name'>{this.state.trait.name}</h2>
         <p className='trait-description'>{this.state.trait.description}</p>
-        <p className='trait-effects'>{JSON.stringify(this.state.trait.effects)}</p>
+        <table className='trait-effects'>{this.traitEffects()}</table>
       </div>;
     } else {
       return <div className='mouseover-trait'></div>;
     }
   },
 
+  traitEffects: function () {
+    var that = this;
+    return <tbody>
+      {Object.keys(that.state.trait.effects).map(function (name) {
+        return <tr key={name}>
+          <td>
+            {name.split('_').map(function (word) {
+              return word[0].toUpperCase() + word.slice(1);
+            }).join(' ') + ': '}
+          </td>
+          <td className={that.state.trait.negative ? 'bad' : 'good'}>
+            {that.state.trait.effects[name]}
+          </td>
+        </tr>;
+      })}
+    </tbody>;
+  },
+
   render: function () {
     return <div className='traits-info'>
       <h1 className='title'>Racial Traits</h1>
       <p className='instructions'>Pick genetic Traits for your Species.</p>
-      <p className='points-left'>
-        Trait Points Left:
-        <content className={this.state.pointsLeft > 0 ? 'good' : 'neutral'}>
-          {this.state.pointsLeft}
-        </content>
-      </p>
-      <p className='picks-left'>
-        Trait Picks Left:
-        <content className={this.state.picksLeft > 0 ? 'good' : 'neutral'}>
-          {this.state.picksLeft}
-        </content>
-      </p>
+      <table className='items-left'>
+        <tbody>
+          <tr className='points-left'>
+            <td>Trait Points Left:</td>
+            <td className={this.state.pointsLeft > 0 ? 'good' : 'neutral'}>
+              {this.state.pointsLeft}
+            </td>
+          </tr>
+          <tr className='picks-left'>
+            <td>Trait Picks Left:</td>
+            <td className={this.state.picksLeft > 0 ? 'good' : 'neutral'}>
+              {this.state.picksLeft}
+            </td>
+          </tr>
+        </tbody>
+      </table>
       {this.mouseoverTrait()}
     </div>;
   }
