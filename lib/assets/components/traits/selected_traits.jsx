@@ -32,15 +32,11 @@ var SelectedTraits = React.createClass({
   render: function () {
     var that = this;
     return <div className='selected-traits'>
-      {
-        Object.keys(TraitList).map(function(key) {
-          if (that.state.active.has(TraitList[key])) {
-            return (
-              <Trait key={key} trait={TraitList[key]}/>
-            );
-          }
-        })
-      }
+      {Object.keys(TraitList).map(function(key) {
+        if (that.state.active.has(TraitList[key])) {
+          return <Trait key={key} trait={TraitList[key]}/>;
+        }
+      })}
     </div>;
   }
 });

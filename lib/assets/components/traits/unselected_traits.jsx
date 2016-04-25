@@ -33,21 +33,17 @@ var UnselectedTraits = React.createClass({
   render: function () {
     var that = this;
     return <div className='unselected-traits'>
-      {
-        Object.keys(TraitList).map(function(key) {
-          var value = TraitList[key];
-          if (!that.state.active.has(value)) {
-            return (
-              <Trait
-                key={key}
-                trait={value}
-                banned={that.state.banned.has(value)
-                  || value.cost > TraitStore.pointsLeft()
-                  || TraitStore.picksLeft() < 1}/>
-            );
-          }
-        })
-      }
+      {Object.keys(TraitList).map(function(key) {
+        var value = TraitList[key];
+        if (!that.state.active.has(value)) {
+          return <Trait
+              key={key}
+              trait={value}
+              banned={that.state.banned.has(value)
+                || value.cost > TraitStore.pointsLeft()
+                || TraitStore.picksLeft() < 1}/>;
+        }
+      })}
     </div>;
   }
 });

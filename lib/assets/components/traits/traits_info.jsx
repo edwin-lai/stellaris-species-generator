@@ -23,6 +23,10 @@ var effectValue = function (name) {
   return result;
 };
 
+var capitalize = function (word) {
+  return word[0].toUpperCase() + word.slice(1);
+};
+
 var TraitsInfo = React.createClass({
   getInitialState: function () {
     return getTraitsState();
@@ -60,9 +64,7 @@ var TraitsInfo = React.createClass({
       {Object.keys(activeTrait.effects).map(function (name) {
         return <tr key={name}>
           <td>
-            {name.split('_').map(function (word) {
-              return word[0].toUpperCase() + word.slice(1);
-            }).join(' ') + ': '}
+            {name.split('_').map(capitalize).join(' ') + ': '}
           </td>
           <td className={activeTrait.negative ? 'bad' : 'good'}>
             {effectValue(name)}
