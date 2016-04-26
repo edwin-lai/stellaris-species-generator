@@ -12,7 +12,7 @@ window.GovernmentStore = GovernmentStore;
 var GovernmentItem = React.createClass({
   getInitialState: function () {
     return({
-      pos: [-500, -500],
+      pos: [-2000, -2000],
       currentGovernment: GovernmentStore.currentGovernment(),
       government: this.props.government,
       unlocked: false
@@ -60,7 +60,7 @@ var GovernmentItem = React.createClass({
   onLeave: function (e) {
     e.target.style.zIndex = 0;
     this.setState({
-      pos: [-500, -500]
+      pos: [-2000, -2000]
     });
   },
 
