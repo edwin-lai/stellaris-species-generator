@@ -48,6 +48,7 @@ var GovernmentItem = React.createClass({
   },
 
   onHover: function (e) {
+    e.target.style.zIndex = 1;
     var government = e.target.id;
     var pos = [43, 43];
     this.setState({
@@ -56,7 +57,8 @@ var GovernmentItem = React.createClass({
     });
   },
 
-  onLeave: function () {
+  onLeave: function (e) {
+    e.target.style.zIndex = 0;
     this.setState({
       pos: [-500, -500]
     });
