@@ -49,7 +49,7 @@ var GovernmentItem = React.createClass({
 
   onHover: function (e) {
     var government = e.target.id;
-    var pos = [e.pageX, e.pageY];
+    var pos = [43, 43];
     this.setState({
       government: government,
       pos: pos
@@ -87,11 +87,12 @@ var GovernmentItem = React.createClass({
           onMouseOut={this.onLeave}
           onClick={this.onClick}
           className={CSSClass}
-          id={government} />
-        <GovernmentHover
-          styling={divStyle}
-          government={this.state.government}
-          pos={this.state.pos} />
+          id={government}>
+          <GovernmentHover
+            styling={divStyle}
+            government={this.state.government}
+            pos={this.state.pos} />
+        </div>
       </div>
     );
   }

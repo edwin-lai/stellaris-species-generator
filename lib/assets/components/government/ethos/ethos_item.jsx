@@ -32,7 +32,7 @@ var EthosItem = React.createClass({
 
   onHover: function (e) {
     var ethos = e.target.id;
-    var pos = [e.pageX, e.pageY];
+    var pos = [35, 35];
     this.setState({
       ethos: ethos,
       pos: pos
@@ -105,11 +105,12 @@ var EthosItem = React.createClass({
           onMouseOut={this.onLeave}
           onClick={this.onClick}
           className={CSSClass}
-          id={id} />
-        <EthosInfo
-          styling={divStyle}
-          ethos={this.state.ethos}
-          pos={this.state.pos} />
+          id={id}>
+          <EthosInfo
+            styling={divStyle}
+            ethos={this.state.ethos}
+            pos={this.state.pos} />
+        </div>
       </div>
     );
   }

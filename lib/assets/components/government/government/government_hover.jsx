@@ -10,7 +10,7 @@ var GovernmentHover = React.createClass({
 
   componentWillReceiveProps: function () {
     var government = this.props.government;
-    var pos = this.props.pos
+    var pos = this.props.pos;
     if (government) {
       this.setState({ government: government, pos: pos });
     }
