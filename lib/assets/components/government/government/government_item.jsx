@@ -14,7 +14,7 @@ var GovernmentItem = React.createClass({
     return({
       pos: [-500, -500],
       currentGovernment: GovernmentStore.currentGovernment(),
-      government: "",
+      government: this.props.government,
       unlocked: false
     });
   },
@@ -48,8 +48,9 @@ var GovernmentItem = React.createClass({
   },
 
   onHover: function (e) {
+    console.log(e);
     var government = e.target.id;
-    var pos = [30, 30];
+    var pos = [e.pageX, e.pageY];
     this.setState({
       government: government,
       pos: pos
@@ -75,8 +76,6 @@ var GovernmentItem = React.createClass({
 
     var top = this.state.pos[1];
     var left = this.state.pos[0];
-    console.log(left);
-    console.log(top);
 
     var divStyle = {
       top: top,
@@ -84,11 +83,12 @@ var GovernmentItem = React.createClass({
     };
 
     return (
-      <div onMouseOver={this.onHover}
-        onMouseOut={this.onLeave}
-        onClick={this.onClick}
-        className={CSSClass}
-        id={government} >
+      <div>
+        <div onMouseOver={this.onHover}
+          onMouseOut={this.onLeave}
+          onClick={this.onClick}
+          className={CSSClass}
+          id={government} />
         <GovernmentHover
           styling={divStyle}
           government={this.state.government}

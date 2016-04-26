@@ -5,7 +5,7 @@ var UtilFunctions = require('../../../util/util_functions');
 var GovernmentHover = React.createClass({
 
   getInitialState: function () {
-    return({ government: "", pos: [500, 500] });
+    return({ government: this.props.government, pos: [500, 500] });
   },
 
   componentWillReceiveProps: function () {

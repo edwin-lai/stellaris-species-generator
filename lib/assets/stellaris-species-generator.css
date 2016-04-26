@@ -236,6 +236,7 @@
 .government-hover {
   position: absolute;
   background-color: rgba(55,55,55,0.6);
+  z-index: 40;
   font-family: 'Lato', sans-serif;
   border-style: ridge;
   border-width: medium;
