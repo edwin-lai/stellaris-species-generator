@@ -96,6 +96,7 @@ var TraitsInfo = React.createClass({
         </tbody>
       </table>
       {this.mouseoverTrait()}
+      <button onClick={TraitActions.resetTraits}>Cancel</button>
     </div>;
   }
 });

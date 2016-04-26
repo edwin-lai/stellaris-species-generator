@@ -395,12 +395,20 @@
 }
 
 .traits-info hr {
-  border-color: #2C473B
+  border-color: #2C473B;
+}
+
+.traits-info button {
+  box-sizing: border-box;
+  border: 1px solid #253930;
+  background: #192A22;
+  color: #FFFFFF;
+  width: 60%;
 }
 
 .items-left {
   border: 0;
-  margin-bottom: 7.5%;
+  margin-bottom: 2%;
 }
 
 .unselected-traits {
@@ -440,6 +448,7 @@
   background: #09110C;
   width: 95%;
   height: 37%;
+  margin: 2% 0;
   padding: 1%;
   overflow-y: scroll;
 }
