@@ -1,14 +1,14 @@
 /* Government Section */
 .government {
+  background: #101A14;
+  color: #FFFFFF;
   height: 340px;
-  border: blue 1px solid;
 }
 
 /* Ethos */
 .ethos-wrapper {
   height: 340px;
   width: 260px;
-  border: black 1px solid;
   float: left;
 }
 
@@ -16,7 +16,6 @@
 .ethos-holder {
   height: 260px;
   width: 260px;
-  border: black 1px solid;
 }
 
 .ethos {
@@ -143,7 +142,6 @@
   font-family: 'Lato', sans-serif;
   text-decoration: none;
   font-weight: 500;
-  border: black 1px solid;
 }
 
 .reset-ethos {
@@ -154,12 +152,13 @@
   cursor: pointer;
   width: 90%;
   margin: 4px;
-  border: 1px solid black;
   /*background: transparent;*/
   margin: auto;
   font-size: 1.17em;
   text-decoration: none;
   font-weight: 500;
+  border: 1px solid #253930;
+  background: #192A22;
 }
 
 /* Ethos Info  */
@@ -212,7 +211,6 @@
   margin-top: 40px;
   width: 150px;
   height: 250px;
-  border: 1px solid red;
   float: right;
 }
 
@@ -346,7 +344,7 @@
   width: 240px;
   height: 340px;
   padding: 0 20px;
-  border: 1px solid green;
+  background: #09110C;
 }
 
 .government-info p {

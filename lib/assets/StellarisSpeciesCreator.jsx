@@ -25,5 +25,5 @@ var TraitsMenu = require('./components/traits/traits.jsx');
 // )
 
 document.addEventListener("DOMContentLoaded", function () {
-  ReactDOM.render(<TraitsMenu />, document.getElementById('root'));
+  ReactDOM.render(<Government />, document.getElementById('root'));
 });
