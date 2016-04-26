@@ -1,11 +1,21 @@
+.planets {
+  background-color: #101A14;
+  color: #FFFFFF;
+  font-family: sans-serif;
+}
+
+.planet-info {
+  float: right;
+  width: 25%;
+}
+
 .planets-holder {
+  display: inline-block;
   position: relative;
-  width: 30em;
   height: 20em;
   border-radius: 50%;
   padding: 0;
   list-style: none;
-  margin: 5em auto 0;
 }
 
 .planets-holder > * {

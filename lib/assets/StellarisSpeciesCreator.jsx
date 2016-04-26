@@ -12,7 +12,7 @@ var Government = require('./components/government/government');
 var Planets = require('./components/planets/planets');
 // var PlanetInfo = require('./components/planets/planet_info');
 // var PlanetSelector = require('./components/planets/planet_selector');
-var TraitsMenu = require('./components/traits/traits.jsx');
+var Traits = require('./components/traits/traits.jsx');
 
 // var routes = (
 //   <Router history={History.HashHistory}>
@@ -20,10 +20,11 @@ var TraitsMenu = require('./components/traits/traits.jsx');
 //       <IndexRoute component={LandingPage} />
 //       <Route path='governments' component={Government} />
 //       <Route path="planets" component={Planet} />
+//       <Route path='traits' component={Traits} />
 //     </Route>
 //   </Router>
 // )
 
 document.addEventListener("DOMContentLoaded", function () {
-  ReactDOM.render(<Government />, document.getElementById('root'));
+  ReactDOM.render(<Planets />, document.getElementById('root'));
 });
