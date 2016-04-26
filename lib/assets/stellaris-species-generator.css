@@ -1,3 +1,10 @@
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
 /* Government Section */
 .government {
   background: #101A14;
@@ -390,6 +397,7 @@
 .traits-info h1 {
   margin: 0;
   font-size: 18px;
+  font-weight: normal;
 }
 
 .traits-info hr {

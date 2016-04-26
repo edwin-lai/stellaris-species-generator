@@ -1,7 +1,31 @@
 .planets {
-  background-color: #101A14;
+  background: #101A14;
   color: #FFFFFF;
   font-family: sans-serif;
+}
+
+.planet-naming {
+  width: 25%;
+  float: left;
+  box-sizing: border-box;
+  padding: 16px;
+}
+
+.planet-naming h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.planet-naming hr {
+  border-color: #2C473B;
+}
+
+.planet-naming input {
+  border: 0;
+  background: #09110C;
+  color: #FFFFFF;
+  padding: 4px;
 }
 
 .planet-info {
@@ -9,13 +33,19 @@
   width: 25%;
 }
 
+.planet-description {
+  color: #8D8A7D;
+}
+
 .planets-holder {
   display: inline-block;
   position: relative;
   height: 20em;
+  width: 20em;
   border-radius: 50%;
   padding: 0;
   list-style: none;
+  transform: translateX(50%);
 }
 
 .planets-holder > * {
