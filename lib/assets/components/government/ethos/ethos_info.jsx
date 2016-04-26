@@ -6,7 +6,7 @@ var UtilFunctions = require('../../../util/util_functions');
 var EthosInfo = React.createClass({
 
   getInitialState: function () {
-    return({ ethos: "", pos: [500, 500] });
+    return({ ethos: this.props.ethos, pos: [500, 500] });
   },
 
   componentWillReceiveProps: function () {

@@ -8,7 +8,8 @@ var EthosInfo = require('./ethos_info');
 var EthosItem = React.createClass({
   getInitialState: function () {
     return({
-      pos: [-200, -200],
+      ethos: this.props.id,
+      pos: [-500, -500],
       ethicsPoints: EthosStore.points(),
       currentEthos: EthosStore.all()
     });
@@ -40,7 +41,7 @@ var EthosItem = React.createClass({
 
   onLeave: function () {
     this.setState({
-      pos: [-300, -300]
+      pos: [-500, -500]
     });
   },
 
