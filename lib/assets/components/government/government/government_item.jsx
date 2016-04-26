@@ -48,7 +48,6 @@ var GovernmentItem = React.createClass({
   },
 
   onHover: function (e) {
-    console.log(e);
     var government = e.target.id;
     var pos = [e.pageX, e.pageY];
     this.setState({
