@@ -20,6 +20,7 @@ var routes = (
       <Route path='governments' component={Government} />
       <Route path="planets" component={Planets} />
       <Route path='traits' component={Traits} />
+      <Route path='ship' component={Traits} />
     </Route>
   </Router>
 );
