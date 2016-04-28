@@ -4,7 +4,7 @@ var React = require('react'),
 
 var WeaponBox = React.createClass({
   getWeapons: function () {
-    WeaponStore.all().forEach(function (weapon, i) {
+    var weapons = WeaponStore.all().map(function (weapon, i) {
       return (
         <Weapon
           key={i}
@@ -13,6 +13,8 @@ var WeaponBox = React.createClass({
           imageUrl={weapon.imageUrl}/>
       );
     });
+
+    return weapons;
   },
   render: function () {
     return (
