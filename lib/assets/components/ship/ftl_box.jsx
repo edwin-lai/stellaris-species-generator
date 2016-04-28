@@ -3,7 +3,7 @@ var React = require('react'),
 
 var FTLBox = React.createClass({
   getFTLMethods: function () {
-    MethodStore.all().forEach(function (method, i) {
+    var methods = MethodStore.all().map(function (method, i) {
       return (
         <FTLMethod
           key={i}
@@ -13,6 +13,8 @@ var FTLBox = React.createClass({
           imageUrl={method.imageUrl}/>
       );
     });
+
+    return methods;
   },
   render: function () {
     return (
