@@ -1,9 +1,10 @@
 var React = require('react'),
+    FTLMethodStore = require('../../stores/ftl'),
     FTLMethod = require('./ftl_method');
 
 var FTLBox = React.createClass({
   getFTLMethods: function () {
-    var methods = MethodStore.all().map(function (method, i) {
+    var methods = FTLMethodStore.all().map(function (method, i) {
       return (
         <FTLMethod
           key={i}
