@@ -496,10 +496,12 @@ button:focus {
 
 .weapon-box, .ftl-box {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .weapon, .ftl {
   display: flex;
+  margin: 10px;
 }
 
 .weapon img, .ftl img {
@@ -510,9 +512,13 @@ button:focus {
 .weapon h3, .ftl h3 {
   font-size: 14px;
   color: white;
+  margin: 10px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
 }
 
 .weapon p, .ftl p {
-  font-size: 12px;
+  font-size: 11px;
   color: rgb(140, 136, 122);
+  margin: 10px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
 }
