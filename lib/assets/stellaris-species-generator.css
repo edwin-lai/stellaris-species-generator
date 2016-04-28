@@ -493,3 +493,26 @@ button:focus {
 .neutral {
   color: #939F6D;
 }
+
+.weapon-box, .ftl-box {
+  display: flex;
+}
+
+.weapon, .ftl {
+  display: flex;
+}
+
+.weapon img, .ftl img {
+  height: 160px;
+  width: 260px;
+}
+
+.weapon h3, .ftl h3 {
+  font-size: 14px;
+  color: white;
+}
+
+.weapon p, .ftl p {
+  font-size: 12px;
+  color: rgb(140, 136, 122);
+}
