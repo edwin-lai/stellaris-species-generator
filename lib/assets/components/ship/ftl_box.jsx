@@ -25,4 +25,4 @@ var FTLBox = React.createClass({
   }
 });
 
-module.exports = WeaponBox;
+module.exports = FTLBox;
