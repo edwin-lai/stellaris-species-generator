@@ -552,3 +552,19 @@ button:focus {
   float: right;
   font-size: 12px;
 }
+
+.weapon-box button, .ftl-box button {
+  display: inline-block;
+  box-sizing: border-box;
+  border: 1px solid #253930;
+  background: #192A22;
+  color: #FFFFFF;
+  width: 48%;
+  margin: 10px;
+}
+
+.button-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}

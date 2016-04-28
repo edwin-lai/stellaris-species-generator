@@ -21,6 +21,10 @@ var FTLBox = React.createClass({
     return (
       <div className="ftl-box">
         {this.getFTLMethods()}
+        <div className="button-box">
+          <button>Cancel</button>
+          <button>OK</button>
+        </div>
       </div>
     );
   }
