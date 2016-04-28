@@ -509,6 +509,7 @@ button:focus {
 .weapon img, .ftl img {
   height: 100px;
   width: 160px;
+  margin: 10px
 }
 
 .weapon h3, .ftl h3 {
@@ -516,6 +517,7 @@ button:focus {
   color: white;
   margin: 10px;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+  display: inline-block;
 }
 
 .weapon p, .ftl p {
@@ -526,11 +528,13 @@ button:focus {
 }
 
 .weapon div, .ftl div {
-  width: 400px;
+  width: 325px;
 }
 
 .weapon a, .ftl a {
   border: 2px solid rgb(14, 20, 16);
+  display: inherit;
+  flex-wrap: wrap;
 }
 
 .weapon a:focus, .ftl a:focus {
@@ -542,4 +546,9 @@ button:focus {
 
 .weapon a:hover, .ftl a:hover {
   text-decoration: none;
+}
+
+.ftl .recommendation {
+  float: right;
+  font-size: 12px;
 }
