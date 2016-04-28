@@ -7,7 +7,7 @@ button:focus {
 
 /* Government Section */
 .government {
-  background: #101A14;
+  background-color: rgba(16, 26, 20, 0.7);
   color: #FFFFFF;
   height: 340px;
 }
@@ -352,7 +352,7 @@ button:focus {
   width: 240px;
   height: 340px;
   padding: 0 20px;
-  background: #09110C;
+  background-color: rgba(9, 17, 12, 0.7);
 }
 
 .government-info p {
@@ -383,7 +383,7 @@ button:focus {
 
 .traits {
   box-sizing: border-box;
-  background: #101A14;
+  background-color: rgba(16, 26, 20, 0.7);
   color: #FFFFFF;
   font-family: sans-serif;
   padding: 2%;
@@ -419,7 +419,7 @@ button:focus {
 }
 
 .unselected-traits {
-  background: #09110C;
+  background-color: rgba(9, 17, 12, 0.7);
   width: 23%;
   margin: 0 1%;
   height: 300px;
@@ -428,7 +428,7 @@ button:focus {
 }
 
 .selected-traits {
-  background: #09110C;
+  background-color: rgba(9, 17, 12, 0.7);
   float: right;
   height: 300px;
   margin: 0 1%;
@@ -452,7 +452,7 @@ button:focus {
 }
 
 .mouseover-trait {
-  background: #09110C;
+  background-color: rgba(9, 17, 12, 0.7);
   width: 95%;
   height: 37%;
   margin: 2% 0;
