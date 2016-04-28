@@ -5,5 +5,5 @@ var WeaponBox = require('./components/ship/weapon_box');
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  ReactDOM.render(<WeaponBox/>, document.getElementById('root'));
+  ReactDOM.render(<Government/>, document.getElementById('root'));
 });
