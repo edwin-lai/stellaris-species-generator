@@ -1,4 +1,5 @@
 var React = require('react'),
+    WeaponStore = require('../../stores/weapon'),
     Weapon = require('./weapon');
 
 var WeaponBox = React.createClass({
