@@ -146,13 +146,13 @@ button:focus {
 .ethos-points {
   margin: 4px;
   text-align: center;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Orbitron', sans-serif;
   text-decoration: none;
   font-weight: 500;
 }
 
 .reset-ethos {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Orbitron', sans-serif;
   outline: none;
   display: block;
   text-align: center;
@@ -173,7 +173,7 @@ button:focus {
   position: absolute;
   z-index: 40;
   background-color: rgba(55,55,55,0.6);
-  font-family: 'Lato', sans-serif;
+  font-family: 'Orbitron', sans-serif;
   border-style: ridge;
   border-width: medium;
   border-color: #36594f ;
@@ -242,7 +242,7 @@ button:focus {
   position: absolute;
   background-color: rgba(55,55,55,0.6);
   z-index: 40;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Orbitron', sans-serif;
   border-style: ridge;
   border-width: medium;
   border-color: #36594f ;
@@ -347,7 +347,7 @@ button:focus {
 
 /* Government Info */
 .government-info {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Orbitron', sans-serif;
   float: right;
   width: 240px;
   height: 340px;
@@ -385,7 +385,7 @@ button:focus {
   box-sizing: border-box;
   background-color: rgba(16, 26, 20, 0.7);
   color: #FFFFFF;
-  font-family: sans-serif;
+  font-family: 'Orbitron' sans-serif;
   padding: 2%;
 }
 
@@ -472,6 +472,7 @@ button:focus {
 
 .trait-name {
   display: inline-block;
+  font-size: 12px;
   transform: translateY(-50%);
   padding-left: 4%;
 }
