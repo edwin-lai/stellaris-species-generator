@@ -1,42 +1,54 @@
 html, body{
+  padding: 0px;
+  margin: 0px;
   height: 100%;
   background-image: url("http://vignette3.wikia.nocookie.net/stellarisgame/images/5/50/Wiki-background/revision/latest?cb=20150807230301");
   font-family: 'Orbitron', sans-serif !important;
 }
 
+.me-container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  align-items: stretch;
+  min-height: 100%;
+  min-height: 100vh;
+}
+
 ul {
   list-style-type: none;
-  margin: 20px 0px 0px 20px;
   padding: 0px;
-}
-
-#main-row{
-  height: 100vh;
-}
-
-.container-fluid {
-  padding: 0px;
-  margin: 0px;
 }
 
 nav {
   -webkit-box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);
   box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);
-
   width: 300px;
-  height: 100%;
   background-color: #152620;
+  padding: 10px;
 }
 
-h4 {
+main {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 5px 30px;
+}
+
+.me-categories h4 {
   text-align: center;
   font-weight: 100;
   margin-top: 0px;
 }
 
-li {
-
+.me-categories li {
   -webkit-box-shadow: inset 0px 0px 0px 1px rgba(255,255,255,0.61);
   -moz-box-shadow: inset 0px 0px 0px 1px rgba(255,255,255,0.61);
   box-shadow: inset 0px 0px 0px 1px rgba(255,255,255,0.61);
@@ -45,41 +57,38 @@ li {
 }
 
 
-li:hover{
+.me-categories  li:hover{
   background-color: rgba(255,255,255,0.6);
 }
 
-.empty, .empty:hover {
+.me-categories .empty, .me-categories .empty:hover {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
   background-color: #152620;
 }
 
-.categories {
+.me-categories {
   margin-bottom: 30px;
+  text-align: center;
+  line-height: 30px;
 }
 
-.categories * {
+.me-categories * {
   font-weight: 100;
   color: white;
 }
 
-.categories a {
+.me-categories a {
   font-size: 13px;
 }
 
-main {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 .profile {
     width: 100%;
-    background-color: rgba(8, 15, 13, 0.7);
-    -webkit-box-shadow: inset -12px -12px 13px -8px rgba(255,255,255,0.5);
-    -moz-box-shadow: inset -12px -12px 13px -8px rgba(255,255,255,0.5);
-    box-shadow: inset -12px -12px 13px -8px rgba(255,255,255,0.5);
+    background-color: #152620;
+    opacity: 0.8;
+    -webkit-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.75);
 }

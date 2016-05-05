@@ -22,6 +22,7 @@ var routes = (
       <Route path='governments' component={Government} />
       <Route path="planets" component={Planets} />
       <Route path='traits' component={Traits} />
+      <Route path='ship' component={Traits} />
       <Route path='weapons' component={WeaponBox} />
       <Route path='ftlMethods' component={FTLBox} />
     </Route>
