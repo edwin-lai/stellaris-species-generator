@@ -1,3 +1,7 @@
+body {
+  background-size: cover;
+}
+
 input:focus,
 select:focus,
 textarea:focus,
