@@ -27908,7 +27908,7 @@
 	    icon_url: 'http://www.stellariswiki.com/images/d/d8/Charismatic.png'
 	  },
 	  communal: {
-	    name: 'Enduring',
+	    name: 'Communal',
 	    effects: {
 	      happiness: 5
 	    },
@@ -28012,7 +28012,8 @@
 	  nomadic: {
 	    name: 'Nomadic',
 	    effects: {
-	      migration_time: -50
+	      migration_time: -50,
+	      resettlement_cost: -33
 	    },
 	    excludes: function () {
 	      return exclusions('sedentary');
@@ -28048,8 +28049,8 @@
 	  resilient: {
 	    name: 'Resilient',
 	    effects: {
-	      militia_health: 100,
-	      bombardment_resistance: 200
+	      garrison_health: 100,
+	      fortification_defensive_bonus: 50
 	    },
 	    cost: 1,
 	    description: 'Members of this species are physiologically resilient and will fight like enraged brood mothers to defend their worlds.',
@@ -28151,7 +28152,8 @@
 	  sedentary: {
 	    name: 'Sedentary',
 	    effects: {
-	      migration_time: 50
+	      migration_time: 50,
+	      resettlement_cost: 33
 	    },
 	    excludes: function () {
 	      return exclusions('nomadic');
