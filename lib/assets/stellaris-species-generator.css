@@ -153,6 +153,7 @@ button:focus {
   font-family: 'Orbitron', sans-serif;
   text-decoration: none;
   font-weight: 500;
+  font-size: 1em;
 }
 
 .reset-ethos {
@@ -162,10 +163,9 @@ button:focus {
   text-align: center;
   cursor: pointer;
   width: 90%;
-  margin: 4px;
-  /*background: transparent;*/
   margin: auto;
-  font-size: 1.17em;
+  padding: 4px;
+  font-size: 1em;
   text-decoration: none;
   font-weight: 500;
   border: 1px solid #253930;
