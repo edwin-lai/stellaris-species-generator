@@ -28,7 +28,7 @@ nav {
   -moz-box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);
   box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);
   width: 300px;
-  background-color: #152620;
+  background-color: rgba(21,38,32,0.75);
   padding: 10px;
 }
 
@@ -65,7 +65,7 @@ main {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  background-color: #152620;
+  background: transparent;
 }
 
 .me-categories {
@@ -80,6 +80,7 @@ main {
 }
 
 .me-categories a {
+  display: block;
   font-size: 13px;
 }
 

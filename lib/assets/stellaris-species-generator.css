@@ -357,6 +357,7 @@ button:focus {
   height: 340px;
   padding: 0 20px;
   background-color: rgba(9, 17, 12, 0.7);
+  overflow-y: scroll;
 }
 
 .government-info p {
