@@ -386,6 +386,7 @@ button:focus {
   background-color: rgba(16, 26, 20, 0.7);
   color: #FFFFFF;
   font-family: 'Orbitron' sans-serif;
+  font-size: 14px;
   padding: 2%;
 }
 
@@ -467,20 +468,21 @@ button:focus {
 }
 
 .trait-description {
+  font-size: 14px;
   color: #8D8A7D;
 }
 
 .trait-name {
   display: inline-block;
-  font-family: sans-serif;
-  transform: translateY(-50%);
+  font-size: 12px;
+  transform: translateY(-66%);
   padding-left: 4%;
 }
 
 .trait-cost {
   float: right;
   padding-right: 4%;
-  transform: translateY(50%);
+  transform: translateY(66%);
 }
 
 .good {
