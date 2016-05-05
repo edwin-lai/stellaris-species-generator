@@ -472,7 +472,7 @@ button:focus {
 
 .trait-name {
   display: inline-block;
-  font-size: 12px;
+  font-family: sans-serif;
   transform: translateY(-50%);
   padding-left: 4%;
 }
