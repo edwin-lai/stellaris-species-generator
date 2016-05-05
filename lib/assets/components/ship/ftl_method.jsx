@@ -1,9 +1,14 @@
 var React = require('react');
+var FTLActions = require('../../actions/ftl_actions.js');
 
 var FTLMethod = React.createClass({
+  handleClick: function () {
+    FTLActions.setFTL(this.props.name);
+  },
+
   render: function () {
     return (
-      <div className="ftl">
+      <div className="ftl" onClick={this.handleClick}>
         <a href="#/ftlMethods">
           <img src={this.props.imageUrl}/>
           <div>

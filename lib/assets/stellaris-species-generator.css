@@ -407,6 +407,7 @@ button:focus {
 }
 
 .traits-info button {
+  font-family: 'Orbitron' sans-serif;
   box-sizing: border-box;
   border: 1px solid #253930;
   background: #192A22;
@@ -557,6 +558,7 @@ button:focus {
 }
 
 .weapon-box button, .ftl-box button {
+  font-family: 'Orbitron' sans-serif;
   display: inline-block;
   box-sizing: border-box;
   border: 1px solid #253930;
