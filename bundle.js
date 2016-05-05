@@ -28256,11 +28256,15 @@
 	        className: this.traitClassName(),
 	        onClick: this.toggleSelected,
 	        onMouseOver: this.setTooltip },
-	      React.createElement('img', { src: this.props.trait.icon_url, className: 'trait-icon' }),
 	      React.createElement(
 	        'div',
-	        { className: 'trait-name' },
-	        this.props.trait.name
+	        { className: 'trait-wrapper' },
+	        React.createElement('img', { src: this.props.trait.icon_url, className: 'trait-icon' }),
+	        React.createElement(
+	          'div',
+	          { className: 'trait-name' },
+	          this.props.trait.name
+	        )
 	      ),
 	      React.createElement(
 	        'div',

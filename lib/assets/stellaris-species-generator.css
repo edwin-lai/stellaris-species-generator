@@ -447,6 +447,9 @@ button:focus {
   list-style: none;
   margin: 4px 8px;
   padding: 1%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .disabled img {
@@ -478,17 +481,20 @@ button:focus {
   color: #8D8A7D;
 }
 
+.trait-wrapper {
+  display: flex;
+  align-items: center;
+}
+
 .trait-name {
-  display: inline-block;
   font-size: 12px;
-  transform: translateY(-66%);
-  padding-left: 4%;
+  padding-left: 8px;
+  white-space: nowrap;
 }
 
 .trait-cost {
-  float: right;
+  font-size: 12px;
   padding-right: 4%;
-  transform: translateY(66%);
 }
 
 .good {
