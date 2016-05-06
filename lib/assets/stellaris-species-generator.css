@@ -551,7 +551,7 @@ button:focus {
   flex-wrap: wrap;
 }
 
-.weapon a:focus, .ftl a:focus {
+.weapon.selected a, .ftl.selected a {
   background-color: rgba(144, 124, 74, 0.5);
   border: 2px solid rgb(144, 124, 74);
   text-decoration: none;

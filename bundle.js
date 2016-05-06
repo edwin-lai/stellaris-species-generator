@@ -34060,18 +34060,31 @@
 
 	var React = __webpack_require__(1),
 	    WeaponStore = __webpack_require__(282),
+	    WeaponActions = __webpack_require__(284),
 	    Weapon = __webpack_require__(283);
 	
 	var WeaponBox = React.createClass({
 	  displayName: 'WeaponBox',
 	
+	  getInitialState: function () {
+	    return { selected: WeaponStore.currentWeapon() };
+	  },
+	
+	  setCurrentWeapon: function (weaponName) {
+	    WeaponActions.setWeapon(weaponName);
+	    this.setState({ selected: weaponName });
+	  },
+	
 	  getWeapons: function () {
+	    var that = this;
 	    var weapons = WeaponStore.all().map(function (weapon, i) {
 	      return React.createElement(Weapon, {
 	        key: i,
 	        name: weapon.name,
 	        description: weapon.description,
-	        imageUrl: weapon.imageUrl });
+	        imageUrl: weapon.imageUrl,
+	        selected: that.state.selected === weapon.name,
+	        setCurrentWeapon: that.setCurrentWeapon });
 	    });
 	
 	    return weapons;
@@ -34158,42 +34171,36 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var WeaponActions = __webpack_require__(284);
 	
 	var Weapon = React.createClass({
-	  displayName: 'Weapon',
-	
-	  getInitialState: function () {
-	    return { selected: WeaponActions.getWeapon() === this.props.name };
-	  },
+	  displayName: "Weapon",
 	
 	  class: function () {
-	    return this.state.selected ? "weapon selected" : "weapon";
+	    return this.props.selected ? "weapon selected" : "weapon";
 	  },
 	
 	  handleClick: function () {
-	    WeaponActions.setWeapon(this.props.name);
-	    this.setState({ selected: true });
+	    this.props.setCurrentWeapon(this.props.name);
 	  },
 	
 	  render: function () {
 	    return React.createElement(
-	      'div',
+	      "div",
 	      { className: this.class(), onClick: this.handleClick },
 	      React.createElement(
-	        'a',
-	        { href: '#/weapons' },
-	        React.createElement('img', { src: this.props.imageUrl }),
+	        "a",
+	        { href: "#/weapons" },
+	        React.createElement("img", { src: this.props.imageUrl }),
 	        React.createElement(
-	          'div',
+	          "div",
 	          null,
 	          React.createElement(
-	            'h3',
+	            "h3",
 	            null,
 	            this.props.name
 	          ),
 	          React.createElement(
-	            'p',
+	            "p",
 	            null,
 	            this.props.description
 	          )
@@ -34228,19 +34235,32 @@
 
 	var React = __webpack_require__(1),
 	    FTLMethodStore = __webpack_require__(286),
+	    FTLActions = __webpack_require__(288),
 	    FTLMethod = __webpack_require__(287);
 	
 	var FTLBox = React.createClass({
 	  displayName: 'FTLBox',
 	
+	  getInitialState: function () {
+	    return { selected: FTLMethodStore.currentFTL() };
+	  },
+	
+	  setCurrentFTL: function (FTLName) {
+	    FTLActions.setFTL(FTLName);
+	    this.setState({ selected: FTLName });
+	  },
+	
 	  getFTLMethods: function () {
+	    var that = this;
 	    var methods = FTLMethodStore.all().map(function (method, i) {
 	      return React.createElement(FTLMethod, {
 	        key: i,
 	        name: method.name,
 	        description: method.description,
 	        recommendation: method.recommendation,
-	        imageUrl: method.imageUrl });
+	        imageUrl: method.imageUrl,
+	        selected: that.state.selected === method.name,
+	        setCurrentFTL: that.setCurrentFTL });
 	    });
 	
 	    return methods;
@@ -34324,47 +34344,41 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var FTLActions = __webpack_require__(288);
 	
 	var FTLMethod = React.createClass({
-	  displayName: 'FTLMethod',
-	
-	  getInitialState: function () {
-	    return { selected: FTLActions.getFTL() === this.props.name };
-	  },
+	  displayName: "FTLMethod",
 	
 	  class: function () {
-	    return this.state.selected ? "ftl selected" : "ftl";
+	    return this.props.selected ? "ftl selected" : "ftl";
 	  },
 	
 	  handleClick: function () {
-	    FTLActions.setFTL(this.props.name);
-	    this.setState({ selected: true });
+	    this.props.setCurrentFTL(this.props.name);
 	  },
 	
 	  render: function () {
 	    return React.createElement(
-	      'div',
+	      "div",
 	      { className: this.class(), onClick: this.handleClick },
 	      React.createElement(
-	        'a',
-	        { href: '#/ftlMethods' },
-	        React.createElement('img', { src: this.props.imageUrl }),
+	        "a",
+	        { href: "#/ftlMethods" },
+	        React.createElement("img", { src: this.props.imageUrl }),
 	        React.createElement(
-	          'div',
+	          "div",
 	          null,
 	          React.createElement(
-	            'h3',
+	            "h3",
 	            null,
 	            this.props.name
 	          ),
 	          React.createElement(
-	            'h3',
-	            { className: 'recommendation' },
+	            "h3",
+	            { className: "recommendation" },
 	            this.props.recommendation
 	          ),
 	          React.createElement(
-	            'p',
+	            "p",
 	            null,
 	            this.props.description
 	          )

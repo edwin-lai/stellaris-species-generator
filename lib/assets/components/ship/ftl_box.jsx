@@ -1,9 +1,20 @@
 var React = require('react'),
     FTLMethodStore = require('../../stores/ftl'),
+    FTLActions = require('../../actions/ftl_actions.js'),
     FTLMethod = require('./ftl_method');
 
 var FTLBox = React.createClass({
+  getInitialState: function () {
+    return {selected: FTLMethodStore.currentFTL()};
+  },
+
+  setCurrentFTL: function (FTLName) {
+    FTLActions.setFTL(FTLName);
+    this.setState({selected: FTLName});
+  },
+
   getFTLMethods: function () {
+    var that = this;
     var methods = FTLMethodStore.all().map(function (method, i) {
       return (
         <FTLMethod
@@ -11,7 +22,9 @@ var FTLBox = React.createClass({
           name={method.name}
           description={method.description}
           recommendation={method.recommendation}
-          imageUrl={method.imageUrl}/>
+          imageUrl={method.imageUrl}
+          selected={that.state.selected === method.name}
+          setCurrentFTL={that.setCurrentFTL}/>
       );
     });
 

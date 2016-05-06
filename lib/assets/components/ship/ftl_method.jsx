@@ -1,18 +1,12 @@
 var React = require('react');
-var FTLActions = require('../../actions/ftl_actions.js');
 
 var FTLMethod = React.createClass({
-  getInitialState: function () {
-    return {selected: FTLActions.getFTL() === this.props.name};
-  },
-
   class: function () {
-    return this.state.selected ? "ftl selected" : "ftl";
+    return this.props.selected ? "ftl selected" : "ftl";
   },
 
   handleClick: function () {
-    FTLActions.setFTL(this.props.name);
-    this.setState({selected: true});
+    this.props.setCurrentFTL(this.props.name);
   },
 
   render: function () {
