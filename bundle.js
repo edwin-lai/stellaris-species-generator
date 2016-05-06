@@ -24916,10 +24916,7 @@
 	    if (/^fanatic/.test(ethos)) {
 	      points += 1;
 	    }
-	    var currentEthos = new Set();
-	    for (var item of this.state.currentEthos) {
-	      currentEthos.add(item);
-	    }
+	    var currentEthos = new Set(this.state.currentEthos);
 	    if (currentEthos.has(ethos)) {
 	      EthosActions.updatePoints(points);
 	      EthosActions.removeEthos(ethos);
@@ -24931,10 +24928,7 @@
 	
 	  validEthos: function (points, ethos) {
 	    var valid = true;
-	    var currentEthos = new Set();
-	    for (var item of this.state.currentEthos) {
-	      currentEthos.add(item);
-	    }
+	    var currentEthos = new Set(this.state.currentEthos);
 	    if (this.state.ethicsPoints - points < 0) {
 	      valid = false;
 	    }
@@ -34577,12 +34571,34 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
+	var SpeciesStore = __webpack_require__(290);
+	var TraitStore = __webpack_require__(274);
 	
 	var Species = React.createClass({
 	  displayName: 'Species',
 	
 	  render: function () {
-	    return React.createElement('div', null);
+	    return React.createElement(
+	      'div',
+	      { className: 'summary-species' },
+	      React.createElement(
+	        'label',
+	        null,
+	        SpeciesStore.getName()
+	      ),
+	      React.createElement(
+	        'ul',
+	        null,
+	        Array.from(TraitStore.all()).map(function (trait) {
+	          return React.createElement(
+	            'li',
+	            { key: trait.name },
+	            React.createElement('img', { src: trait.icon_url }),
+	            trait.name
+	          );
+	        })
+	      )
+	    );
 	  }
 	});
 	
@@ -34655,11 +34671,23 @@
 	    return React.createElement(
 	      'div',
 	      { className: 'summary-gov' },
-	      React.createElement('img', { src: GovIconURLs[gov] }),
+	      React.createElement('img', { src: GovIconURLs[gov], className: 'summary-gov-icon' }),
 	      React.createElement(
-	        'h3',
+	        'li',
 	        null,
-	        textCleaner(gov)
+	        React.createElement(
+	          'ul',
+	          { className: 'summary-gov-name' },
+	          textCleaner(gov)
+	        ),
+	        EthosStore.all().map(function (ethos) {
+	          return React.createElement(
+	            'ul',
+	            { key: ethos, className: 'summary-ethos' },
+	            React.createElement('img', { src: EthosIconURLs[ethos], className: 'summary-ethos-icon' }),
+	            textCleaner(ethos)
+	          );
+	        })
 	      )
 	    );
 	  }

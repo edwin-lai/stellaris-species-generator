@@ -9,8 +9,17 @@ var Government = React.createClass({
   render: function () {
     var gov = GovStore.currentGovernment();
     return <div className='summary-gov'>
-      <img src={GovIconURLs[gov]} />
-      <h3>{textCleaner(gov)}</h3>
+      <img src={GovIconURLs[gov]} className='summary-gov-icon'/>
+      <li>
+        <ul className='summary-gov-name'>{textCleaner(gov)}</ul>
+        {EthosStore.all().map(function (ethos) {
+          return <ul key={ethos} className='summary-ethos'>
+            <img src={EthosIconURLs[ethos]} className='summary-ethos-icon'/>
+            {textCleaner(ethos)}
+          </ul>;
+        })}
+      </li>
+
     </div>;
   }
 });
