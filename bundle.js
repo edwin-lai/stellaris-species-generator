@@ -34163,7 +34163,8 @@
 
 	var Store = __webpack_require__(229).Store,
 	    AppDispatcher = __webpack_require__(222),
-	    WeaponStore = new Store(AppDispatcher);
+	    WeaponStore = new Store(AppDispatcher),
+	    Util = __webpack_require__(249);
 	
 	var projectileWeapons = {
 	  name: "Projectile Weapons",
@@ -34201,20 +34202,38 @@
 	};
 	
 	WeaponStore.currentWeapon = function () {
-	  return _currentWeapon;
+	  if (Util.localStorageAvailable && localStorage.currentWeapon) {
+	    return localStorage.currentWeapon;
+	  } else {
+	    return _currentWeapon;
+	  }
 	};
 	
 	WeaponStore.currentWeaponImg = function () {
-	  if (_currentWeapon) {
-	    return _weaponMap[_currentWeapon].imageUrl;
+	  var currentWeapon;
+	  if (Util.localStorageAvailable && localStorage.currentWeapon) {
+	    currentWeapon = localStorage.currentWeapon;
+	  } else {
+	    currentWeapon = _currentWeapon;
+	  }
+	  if (currentWeapon) {
+	    return _weaponMap[currentWeapon].imageUrl;
 	  }
 	};
 	
 	WeaponStore.__onDispatch = function (payload) {
 	  switch (payload.actionType) {
 	    case 'SET_WEAPON':
-	      _currentWeapon = payload.weapon;
+	      this.setFTL(payload.weapon);
 	      break;
+	  }
+	};
+	
+	WeaponStore.setFTL = function (weapon) {
+	  if (Util.localStorageAvailable) {
+	    localStorage.currentWeapon = weapon;
+	  } else {
+	    _currentWeapon = weapon;
 	  }
 	};
 	
@@ -34350,7 +34369,8 @@
 
 	var Store = __webpack_require__(229).Store,
 	    AppDispatcher = __webpack_require__(222),
-	    FTLMethodStore = new Store(AppDispatcher);
+	    FTLMethodStore = new Store(AppDispatcher),
+	    Util = __webpack_require__(249);
 	
 	var warpTravel = {
 	  name: "Warp Travel",
@@ -34386,20 +34406,38 @@
 	};
 	
 	FTLMethodStore.currentFTL = function () {
-	  return _currentFTL;
+	  if (Util.localStorageAvailable && localStorage.currentFTL) {
+	    return localStorage.currentFTL;
+	  } else {
+	    return _currentFTL;
+	  }
 	};
 	
 	FTLMethodStore.currentFTLImg = function () {
-	  if (_currentFTL) {
-	    return _FTLMap[_currentFTL];
+	  var currentFTL;
+	  if (Util.localStorageAvailable && localStorage.currentFTL) {
+	    currentFTL = localStorage.currentFTL;
+	  } else {
+	    currentFTL = _currentFTL;
+	  }
+	  if (currentFTL) {
+	    return _FTLMap[currentFTL];
 	  }
 	};
 	
 	FTLMethodStore.__onDispatch = function (payload) {
 	  switch (payload.actionType) {
 	    case 'SET_FTL':
-	      _currentFTL = payload.ftl;
+	      this.setFTL(payload.ftl);
 	      break;
+	  }
+	};
+	
+	FTLMethodStore.setFTL = function (ftl) {
+	  if (Util.localStorageAvailable) {
+	    localStorage.currentFTL = ftl;
+	  } else {
+	    _currentFTL = ftl;
 	  }
 	};
 	
