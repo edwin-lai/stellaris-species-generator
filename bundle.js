@@ -32853,17 +32853,20 @@
 	    PlanetData = __webpack_require__(268);
 	
 	var _currentPlanet = PlanetData["CONTINENTAL"];
-	
-	// var resetPlanet = function(planet){
-	//   _currentPlanet = PlanetData[planet];
-	//   PlanetStore.__emitChange();
-	// }
+	var _homeworld, _star;
 	
 	PlanetStore.__onDispatch = function (payload) {
-	
 	  switch (payload.actionType) {
 	    case PlanetConstants.UPDATE_PLANET:
 	      this.updatePlanet(payload.planet);
+	      this.__emitChange();
+	      break;
+	    case PlanetConstants.SET_HOMEWORLD:
+	      _homeworld = payload.homeworld;
+	      this.__emitChange();
+	      break;
+	    case PlanetConstants.SET_STAR:
+	      _star = payload.star;
 	      this.__emitChange();
 	      break;
 	  }
@@ -32877,6 +32880,14 @@
 	  return _currentPlanet;
 	};
 	
+	PlanetStore.getHomeworld = function () {
+	  return _homeworld;
+	};
+	
+	PlanetStore.getStar = function () {
+	  return _star;
+	};
+	
 	module.exports = PlanetStore;
 	window.PlanetStore = PlanetStore;
 	window.PlanetData = PlanetData;
@@ -32886,7 +32897,9 @@
 /***/ function(module, exports) {
 
 	var PlanetConstants = {
-	  UPDATE_PLANET: "UPDATE_PLANET"
+	  UPDATE_PLANET: "UPDATE_PLANET",
+	  SET_HOMEWORLD: "SET_HOMEWORLD",
+	  SET_STAR: "SET_STAR"
 	};
 	
 	module.exports = PlanetConstants;
@@ -33041,6 +33054,20 @@
 	  });
 	};
 	
+	PlanetActions.setHomeworld = function (homeworld) {
+	  AppDispatcher.dispatch({
+	    actionType: PlanetConstants.SET_HOMEWORLD,
+	    homeworld: homeworld
+	  });
+	};
+	
+	PlanetActions.setStar = function (star) {
+	  AppDispatcher.dispatch({
+	    actionType: PlanetConstants.SET_STAR,
+	    star: star
+	  });
+	};
+	
 	module.exports = PlanetActions;
 
 /***/ },
@@ -33106,10 +33133,28 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
+	var PlanetStore = __webpack_require__(266);
+	var PlanetActions = __webpack_require__(270);
 	
 	var PlanetNaming = React.createClass({
 	  displayName: 'PlanetNaming',
 	
+	  getInitialState: function () {
+	    return {
+	      homeworld: PlanetStore.getHomeworld(),
+	      star: PlanetStore.getStar()
+	    };
+	  },
+	
+	  setHomeworld: function (event) {
+	    PlanetActions.setHomeworld(event.target.value);
+	    this.setState({ homeworld: event.target.value });
+	  },
+	
+	  setStar: function (event) {
+	    PlanetActions.setStar(event.target.value);
+	    this.setState({ star: event.target.value });
+	  },
 	
 	  render: function () {
 	    return React.createElement(
@@ -33127,7 +33172,10 @@
 	        'Homeworld Name'
 	      ),
 	      React.createElement('br', null),
-	      React.createElement('input', { id: 'planet-name' }),
+	      React.createElement('input', {
+	        id: 'planet-name',
+	        value: this.state.homeworld,
+	        onChange: this.setHomeworld }),
 	      React.createElement('br', null),
 	      React.createElement(
 	        'label',
@@ -33135,7 +33183,10 @@
 	        'Star Name'
 	      ),
 	      React.createElement('br', null),
-	      React.createElement('input', { id: 'star-system' })
+	      React.createElement('input', {
+	        id: 'star-system',
+	        value: this.state.star,
+	        onChange: this.setStar })
 	    );
 	  }
 	});
