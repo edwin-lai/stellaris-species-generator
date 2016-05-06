@@ -16,6 +16,7 @@ var WeaponBox = React.createClass({
 
     return weapons;
   },
+
   render: function () {
     return (
       <div className="weapon-box">
@@ -25,7 +26,7 @@ var WeaponBox = React.createClass({
           <button>OK</button>
         </div>
       </div>
-    )
+    );
   }
 });
 

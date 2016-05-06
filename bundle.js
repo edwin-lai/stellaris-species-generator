@@ -60,8 +60,8 @@
 	var Traits = __webpack_require__(273);
 	var WeaponBox = __webpack_require__(281);
 	var FTLBox = __webpack_require__(285);
-	var Species = __webpack_require__(290);
-	var App = __webpack_require__(289);
+	var Species = __webpack_require__(289);
+	var App = __webpack_require__(292);
 	
 	var routes = React.createElement(
 	  Router,
@@ -34076,6 +34076,7 @@
 	
 	    return weapons;
 	  },
+	
 	  render: function () {
 	    return React.createElement(
 	      'div',
@@ -34138,7 +34139,7 @@
 	  return _weapons.slice();
 	};
 	
-	WeaponStore.currentFTL = function () {
+	WeaponStore.currentWeapon = function () {
 	  return _currentWeapon;
 	};
 	
@@ -34162,14 +34163,23 @@
 	var Weapon = React.createClass({
 	  displayName: 'Weapon',
 	
+	  getInitialState: function () {
+	    return { selected: WeaponActions.getWeapon() === this.props.name };
+	  },
+	
+	  class: function () {
+	    return this.state.selected ? "weapon selected" : "weapon";
+	  },
+	
 	  handleClick: function () {
 	    WeaponActions.setWeapon(this.props.name);
+	    this.setState({ selected: true });
 	  },
 	
 	  render: function () {
 	    return React.createElement(
 	      'div',
-	      { className: 'weapon', onClick: this.handleClick },
+	      { className: this.class(), onClick: this.handleClick },
 	      React.createElement(
 	        'a',
 	        { href: '#/weapons' },
@@ -34319,14 +34329,23 @@
 	var FTLMethod = React.createClass({
 	  displayName: 'FTLMethod',
 	
+	  getInitialState: function () {
+	    return { selected: FTLActions.getFTL() === this.props.name };
+	  },
+	
+	  class: function () {
+	    return this.state.selected ? "ftl selected" : "ftl";
+	  },
+	
 	  handleClick: function () {
 	    FTLActions.setFTL(this.props.name);
+	    this.setState({ selected: true });
 	  },
 	
 	  render: function () {
 	    return React.createElement(
 	      'div',
-	      { className: 'ftl', onClick: this.handleClick },
+	      { className: this.class(), onClick: this.handleClick },
 	      React.createElement(
 	        'a',
 	        { href: '#/ftlMethods' },
@@ -34379,24 +34398,8 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	
-	var App = React.createClass({
-	  displayName: 'App',
-	
-	  render: function () {
-	    return this.props.children;
-	  }
-	});
-	
-	module.exports = App;
-
-/***/ },
-/* 290 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-	var SpeciesStore = __webpack_require__(291);
-	var SpeciesActions = __webpack_require__(292);
+	var SpeciesStore = __webpack_require__(290);
+	var SpeciesActions = __webpack_require__(291);
 	
 	var Species = React.createClass({
 	  displayName: 'Species',
@@ -34443,7 +34446,7 @@
 	module.exports = Species;
 
 /***/ },
-/* 291 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Store = __webpack_require__(229).Store;
@@ -34477,7 +34480,7 @@
 	module.exports = SpeciesStore;
 
 /***/ },
-/* 292 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var AppDispatcher = __webpack_require__(222);
@@ -34499,6 +34502,22 @@
 	};
 	
 	module.exports = SpeciesActions;
+
+/***/ },
+/* 292 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	
+	var App = React.createClass({
+	  displayName: 'App',
+	
+	  render: function () {
+	    return this.props.children;
+	  }
+	});
+	
+	module.exports = App;
 
 /***/ }
 /******/ ]);
