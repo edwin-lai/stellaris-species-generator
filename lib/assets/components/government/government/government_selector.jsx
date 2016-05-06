@@ -31,7 +31,7 @@ var GovernmentSelector = React.createClass({
   availableGovernments: function () {
     var ethos = EthosStore.all();
     ethos.push("always");
-    var availableGovernments = []
+    var availableGovernments = [];
 
     ethos.forEach (function (ethic) {
       ethic = ethic.replace(/fanatic_/, "");
@@ -54,11 +54,14 @@ var GovernmentSelector = React.createClass({
   },
 
   governmentItems: function() {
-    var availableGovernments = this.state.availableGovernments
+    var availableGovernments = new Set();
+    for (var govt of this.state.availableGovernments) {
+      availableGovernments.add(govt);
+    }
     return Object.keys(GovernmentNames).map ( function(government) {
       var unlocked;
-      availableGovernments.includes(government) ? unlocked = true : unlocked = false
-      return <GovernmentItem government={government} unlocked={unlocked} key={government} />
+      unlocked = availableGovernments.has(government);
+      return <GovernmentItem government={government} unlocked={unlocked} key={government} />;
     });
   },
 

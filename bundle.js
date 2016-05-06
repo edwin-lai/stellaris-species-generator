@@ -32228,10 +32228,13 @@
 	  },
 	
 	  governmentItems: function () {
-	    var availableGovernments = this.state.availableGovernments;
+	    var availableGovernments = new Set();
+	    for (var govt of this.state.availableGovernments) {
+	      availableGovernments.add(govt);
+	    }
 	    return Object.keys(GovernmentNames).map(function (government) {
 	      var unlocked;
-	      availableGovernments.includes(government) ? unlocked = true : unlocked = false;
+	      unlocked = availableGovernments.has(government);
 	      return React.createElement(GovernmentItem, { government: government, unlocked: unlocked, key: government });
 	    });
 	  },
