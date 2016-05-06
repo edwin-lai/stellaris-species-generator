@@ -18,7 +18,7 @@ var Species = React.createClass({
 
   setEmpire: function (event) {
     SpeciesActions.setEmpire(event.target.value);
-    this.setState({speciesName: event.target.value});
+    this.setState({empire: event.target.value});
   },
 
   setSpeciesHistory: function (event) {
