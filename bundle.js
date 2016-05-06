@@ -32892,7 +32892,8 @@
 	    AppDispatcher = __webpack_require__(222),
 	    PlanetStore = new Store(AppDispatcher),
 	    PlanetConstants = __webpack_require__(267),
-	    PlanetData = __webpack_require__(268);
+	    PlanetData = __webpack_require__(268),
+	    Util = __webpack_require__(249);
 	
 	var _currentPlanet = PlanetData["CONTINENTAL"];
 	var _homeworld, _star;
@@ -32904,30 +32905,62 @@
 	      this.__emitChange();
 	      break;
 	    case PlanetConstants.SET_HOMEWORLD:
-	      _homeworld = payload.homeworld;
+	      this.setHomeworld(payload.homeworld);
 	      this.__emitChange();
 	      break;
 	    case PlanetConstants.SET_STAR:
-	      _star = payload.star;
+	      this.setStar(payload.star);
 	      this.__emitChange();
 	      break;
 	  }
 	};
 	
+	PlanetStore.setHomeworld = function (homeworld) {
+	  if (Util.localStorageAvailable) {
+	    localStorage.homeworld = homeworld;
+	  } else {
+	    _homeworld = homeworld;
+	  }
+	};
+	
+	PlanetStore.setStar = function (star) {
+	  if (Util.localStorageAvailable) {
+	    localStorage.star = star;
+	  } else {
+	    _star = star;
+	  }
+	};
+	
 	PlanetStore.updatePlanet = function (planet) {
-	  _currentPlanet = PlanetData[planet];
+	  if (Util.localStorageAvailable) {
+	    localStorage.currentPlanet = JSON.stringify(PlanetData[planet]);
+	  } else {
+	    _currentPlanet = PlanetData[planet];
+	  }
 	};
 	
 	PlanetStore.currentPlanet = function () {
-	  return _currentPlanet;
+	  if (Util.localStorageAvailable && localStorage.currentPlanet) {
+	    return JSON.parse(localStorage.currentPlanet);
+	  } else {
+	    return _currentPlanet;
+	  }
 	};
 	
 	PlanetStore.getHomeworld = function () {
-	  return _homeworld;
+	  if (Util.localStorageAvailable && localStorage.homeworld) {
+	    return localStorage.homeworld;
+	  } else {
+	    return _homeworld;
+	  }
 	};
 	
 	PlanetStore.getStar = function () {
-	  return _star;
+	  if (Util.localStorageAvailable && localStorage.star) {
+	    return localStorage.star;
+	  } else {
+	    return _star;
+	  }
 	};
 	
 	module.exports = PlanetStore;
@@ -33272,7 +33305,7 @@
 	var AppDispatcher = __webpack_require__(222);
 	
 	var _mouseoverTrait;
-	var _selectedTraits = new Set();
+	var _selectedTraits = {};
 	var _excludedTraits = new Set();
 	var _traitPoints = 2;
 	var TRAIT_PICKS = 4;
@@ -33335,7 +33368,7 @@
 	};
 	
 	TraitStore.addTrait = function (trait) {
-	  _selectedTraits.add(trait);
+	  _selectedTraits[trait.name] = trait;
 	  if (trait.excludes) {
 	    trait.excludes().forEach(function (oppositeTrait) {
 	      _excludedTraits.add(oppositeTrait);
