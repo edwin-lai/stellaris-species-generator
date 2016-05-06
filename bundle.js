@@ -34441,12 +34441,18 @@
 	  getInitialState: function () {
 	    return {
 	      speciesName: SpeciesStore.getName(),
-	      speciesHistory: SpeciesStore.getHistory()
+	      speciesHistory: SpeciesStore.getHistory(),
+	      empire: SpeciesStore.getEmpire()
 	    };
 	  },
 	
 	  setSpeciesName: function (event) {
 	    SpeciesActions.setSpeciesName(event.target.value);
+	    this.setState({ speciesName: event.target.value });
+	  },
+	
+	  setEmpire: function (event) {
+	    SpeciesActions.setEmpire(event.target.value);
 	    this.setState({ speciesName: event.target.value });
 	  },
 	
@@ -34465,6 +34471,13 @@
 	        value: this.state.speciesName,
 	        onChange: this.setSpeciesName,
 	        placeholder: 'Species Name'
+	      }),
+	      React.createElement('input', {
+	        type: 'text',
+	        className: 'species-name',
+	        value: this.state.empire,
+	        onChange: this.setEmpire,
+	        placeholder: 'Empire Name'
 	      }),
 	      React.createElement('textarea', {
 	        id: 'species-history',
@@ -34486,7 +34499,7 @@
 	var Store = __webpack_require__(229).Store;
 	var AppDispatcher = __webpack_require__(222);
 	
-	var _name, _history;
+	var _name, _history, _empire;
 	
 	var SpeciesStore = new Store(AppDispatcher);
 	
@@ -34500,6 +34513,10 @@
 	      _history = payload.speciesHistory;
 	      SpeciesStore.__emitChange();
 	      break;
+	    case 'SET_EMPIRE':
+	      _empire = payload.empire;
+	      SpeciesStore.__emitChange();
+	      break;
 	  }
 	};
 	
@@ -34509,6 +34526,10 @@
 	
 	SpeciesStore.getHistory = function () {
 	  return _history;
+	};
+	
+	SpeciesStore.getEmpire = function () {
+	  return _empire;
 	};
 	
 	module.exports = SpeciesStore;
@@ -34531,6 +34552,13 @@
 	    AppDispatcher.dispatch({
 	      actionType: 'SET_SPECIES_HISTORY',
 	      speciesHistory: speciesHistory
+	    });
+	  },
+	
+	  setEmpire: function (empire) {
+	    AppDispatcher.dispatch({
+	      actionType: 'SET_EMPIRE',
+	      empire: empire
 	    });
 	  }
 	};

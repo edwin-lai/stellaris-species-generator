@@ -6,12 +6,18 @@ var Species = React.createClass({
   getInitialState: function () {
     return {
       speciesName: SpeciesStore.getName(),
-      speciesHistory: SpeciesStore.getHistory()
+      speciesHistory: SpeciesStore.getHistory(),
+      empire: SpeciesStore.getEmpire()
     };
   },
 
   setSpeciesName: function (event) {
     SpeciesActions.setSpeciesName(event.target.value);
+    this.setState({speciesName: event.target.value});
+  },
+
+  setEmpire: function (event) {
+    SpeciesActions.setEmpire(event.target.value);
     this.setState({speciesName: event.target.value});
   },
 
@@ -28,6 +34,13 @@ var Species = React.createClass({
         value={this.state.speciesName}
         onChange={this.setSpeciesName}
         placeholder='Species Name'
+        />
+      <input
+        type='text'
+        className='species-name'
+        value={this.state.empire}
+        onChange={this.setEmpire}
+        placeholder='Empire Name'
         />
       <textarea
         id='species-history'
