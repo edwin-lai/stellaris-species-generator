@@ -15,6 +15,7 @@ var Traits = require('./components/traits/traits.jsx');
 var WeaponBox = require('./components/ship/weapon_box');
 var FTLBox = require('./components/ship/ftl_box');
 var Species = require('./components/species.jsx');
+var Summary = require('./components/summary/summary.jsx');
 var App = require('./components/app.jsx');
 
 var routes = (
@@ -26,6 +27,7 @@ var routes = (
       <Route path='species' component={Species} />
       <Route path='weapons' component={WeaponBox} />
       <Route path='ftlMethods' component={FTLBox} />
+      <Route path='summary' component={Summary} />
     </Route>
   </Router>
 );

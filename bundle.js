@@ -61,6 +61,7 @@
 	var WeaponBox = __webpack_require__(281);
 	var FTLBox = __webpack_require__(285);
 	var Species = __webpack_require__(289);
+	var Summary = __webpack_require__(293);
 	var App = __webpack_require__(292);
 	
 	var routes = React.createElement(
@@ -74,7 +75,8 @@
 	    React.createElement(Route, { path: 'traits', component: Traits }),
 	    React.createElement(Route, { path: 'species', component: Species }),
 	    React.createElement(Route, { path: 'weapons', component: WeaponBox }),
-	    React.createElement(Route, { path: 'ftlMethods', component: FTLBox })
+	    React.createElement(Route, { path: 'ftlMethods', component: FTLBox }),
+	    React.createElement(Route, { path: 'summary', component: Summary })
 	  )
 	);
 	
@@ -34060,8 +34062,8 @@
 
 	var React = __webpack_require__(1),
 	    WeaponStore = __webpack_require__(282),
-	    WeaponActions = __webpack_require__(284),
-	    Weapon = __webpack_require__(283);
+	    WeaponActions = __webpack_require__(283),
+	    Weapon = __webpack_require__(284);
 	
 	var WeaponBox = React.createClass({
 	  displayName: 'WeaponBox',
@@ -34170,6 +34172,23 @@
 /* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var AppDispatcher = __webpack_require__(222);
+	
+	var WeaponActions = {
+	  setWeapon: function (weapon) {
+	    AppDispatcher.dispatch({
+	      actionType: 'SET_WEAPON',
+	      weapon: weapon
+	    });
+	  }
+	};
+	
+	module.exports = WeaponActions;
+
+/***/ },
+/* 284 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var React = __webpack_require__(1);
 	
 	var Weapon = React.createClass({
@@ -34213,30 +34232,13 @@
 	module.exports = Weapon;
 
 /***/ },
-/* 284 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var AppDispatcher = __webpack_require__(222);
-	
-	var WeaponActions = {
-	  setWeapon: function (weapon) {
-	    AppDispatcher.dispatch({
-	      actionType: 'SET_WEAPON',
-	      weapon: weapon
-	    });
-	  }
-	};
-	
-	module.exports = WeaponActions;
-
-/***/ },
 /* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1),
 	    FTLMethodStore = __webpack_require__(286),
-	    FTLActions = __webpack_require__(288),
-	    FTLMethod = __webpack_require__(287);
+	    FTLActions = __webpack_require__(287),
+	    FTLMethod = __webpack_require__(288);
 	
 	var FTLBox = React.createClass({
 	  displayName: 'FTLBox',
@@ -34343,6 +34345,23 @@
 /* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var AppDispatcher = __webpack_require__(222);
+	
+	var FTLActions = {
+	  setFTL: function (ftl) {
+	    AppDispatcher.dispatch({
+	      actionType: 'SET_FTL',
+	      ftl: ftl
+	    });
+	  }
+	};
+	
+	module.exports = FTLActions;
+
+/***/ },
+/* 288 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var React = __webpack_require__(1);
 	
 	var FTLMethod = React.createClass({
@@ -34389,23 +34408,6 @@
 	});
 	
 	module.exports = FTLMethod;
-
-/***/ },
-/* 288 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var AppDispatcher = __webpack_require__(222);
-	
-	var FTLActions = {
-	  setFTL: function (ftl) {
-	    AppDispatcher.dispatch({
-	      actionType: 'SET_FTL',
-	      ftl: ftl
-	    });
-	  }
-	};
-	
-	module.exports = FTLActions;
 
 /***/ },
 /* 289 */
@@ -34532,6 +34534,187 @@
 	});
 	
 	module.exports = App;
+
+/***/ },
+/* 293 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var Species = __webpack_require__(294);
+	var SpeciesHistory = __webpack_require__(295);
+	var Ships = __webpack_require__(296);
+	var Homeworld = __webpack_require__(297);
+	var Government = __webpack_require__(298);
+	
+	var Summary = React.createClass({
+	  displayName: 'Summary',
+	
+	  render: function () {
+	    return React.createElement(
+	      'div',
+	      { className: 'summary' },
+	      React.createElement(
+	        'div',
+	        { className: 'summary-left' },
+	        React.createElement(Government, null),
+	        React.createElement(Species, null)
+	      ),
+	      React.createElement(Homeworld, null),
+	      React.createElement(
+	        'div',
+	        { className: 'summary-right' },
+	        React.createElement(Ships, null),
+	        React.createElement(SpeciesHistory, null)
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = Summary;
+
+/***/ },
+/* 294 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	
+	var Species = React.createClass({
+	  displayName: 'Species',
+	
+	  render: function () {
+	    return React.createElement('div', null);
+	  }
+	});
+	
+	module.exports = Species;
+
+/***/ },
+/* 295 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	
+	var Species = React.createClass({
+	  displayName: 'Species',
+	
+	  render: function () {
+	    return React.createElement('div', null);
+	  }
+	});
+	
+	module.exports = Species;
+
+/***/ },
+/* 296 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	
+	var Species = React.createClass({
+	  displayName: 'Species',
+	
+	  render: function () {
+	    return React.createElement('div', null);
+	  }
+	});
+	
+	module.exports = Species;
+
+/***/ },
+/* 297 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	
+	var Species = React.createClass({
+	  displayName: 'Species',
+	
+	  render: function () {
+	    return React.createElement('div', null);
+	  }
+	});
+	
+	module.exports = Species;
+
+/***/ },
+/* 298 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var EthosStore = __webpack_require__(228);
+	var GovStore = __webpack_require__(260);
+	var GovIconURLs = __webpack_require__(299);
+	var EthosIconURLs = __webpack_require__(300);
+	var textCleaner = __webpack_require__(249).textCleaner;
+	
+	var Government = React.createClass({
+	  displayName: 'Government',
+	
+	  render: function () {
+	    var gov = GovStore.currentGovernment();
+	    return React.createElement(
+	      'div',
+	      { className: 'summary-gov' },
+	      React.createElement('img', { src: GovIconURLs[gov] }),
+	      React.createElement(
+	        'h3',
+	        null,
+	        textCleaner(gov)
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = Government;
+
+/***/ },
+/* 299 */
+/***/ function(module, exports) {
+
+	var GovIconURLs = {
+	  military_republic: 'http://www.stellariswiki.com/images/thumb/b/b8/Military_Republic.png/42px-Military_Republic.png',
+	  military_junta: 'http://www.stellariswiki.com/images/thumb/9/9a/Military_Junta.png/42px-Military_Junta.png',
+	  military_dictatorship: 'http://www.stellariswiki.com/images/thumb/4/4c/Military_Dictatorship.png/42px-Military_Dictatorship.png',
+	  theocratic_republic: 'http://www.stellariswiki.com/images/thumb/9/9f/Theocratic_Republic.png/42px-Theocratic_Republic.png',
+	  theocratic_oligarchy: 'http://www.stellariswiki.com/images/thumb/5/57/Theocratic_Oligarchy.png/42px-Theocratic_Oligarchy.png',
+	  divine_mandate: 'http://www.stellariswiki.com/images/thumb/7/7f/Divine_Mandate.png/42px-Divine_Mandate.png',
+	  direct_democracy: 'http://www.stellariswiki.com/images/thumb/0/02/Direct_Democracy.png/42px-Direct_Democracy.png',
+	  science_directorate: 'http://www.stellariswiki.com/images/thumb/c/cd/Science_Directorate.png/42px-Science_Directorate.png',
+	  despotic_hegemony: 'http://www.stellariswiki.com/images/thumb/a/a7/Despotic_Hegemony.png/42px-Despotic_Hegemony.png',
+	  moral_democracy: 'http://www.stellariswiki.com/images/thumb/6/67/Moral_Democracy.png/42px-Moral_Democracy.png',
+	  peaceful_bureaucracy: 'http://www.stellariswiki.com/images/thumb/c/cd/Peaceful_Bureaucracy.png/42px-Peaceful_Bureaucracy.png',
+	  enlightened_monarchy: 'http://www.stellariswiki.com/images/thumb/2/2b/Enlightened_Monarchy.png/42px-Enlightened_Monarchy.png',
+	  indirect_democracy: 'http://www.stellariswiki.com/images/thumb/a/a1/Indirect_Democracy.png/42px-Indirect_Democracy.png',
+	  plutocratic_oligarchy: 'http://www.stellariswiki.com/images/thumb/3/3e/Plutocratic_Oligarchy.png/42px-Plutocratic_Oligarchy.png',
+	  despotic_empire: 'http://www.stellariswiki.com/images/thumb/1/1d/Despotic_Empire.png/42px-Despotic_Empire.png'
+	};
+	
+	module.exports = GovIconURLs;
+
+/***/ },
+/* 300 */
+/***/ function(module, exports) {
+
+	var EthosIconURLs = {
+	  fanatic_militarist: 'http://www.stellariswiki.com/images/thumb/5/55/Fanatic_Militarist.png/42px-Fanatic_Militarist.png',
+	  militarist: 'http://www.stellariswiki.com/images/thumb/4/44/Militarist.png/42px-Militarist.png',
+	  spiritualist: 'http://www.stellariswiki.com/images/thumb/b/be/Spiritualist.png/42px-Spiritualist.png',
+	  fanatic_spiritualist: 'http://www.stellariswiki.com/images/thumb/1/11/Fanatic_Spiritualist.png/42px-Fanatic_Spiritualist.png',
+	  xenophobe: 'http://www.stellariswiki.com/images/thumb/e/ed/Xenophobe.png/42px-Xenophobe.png',
+	  fanatic_xenophobe: 'http://www.stellariswiki.com/images/thumb/8/81/Fanatic_Xenophobe.png/42px-Fanatic_Xenophobe.png',
+	  collectivist: 'http://www.stellariswiki.com/images/thumb/5/5c/Collectivist.png/42px-Collectivist.png',
+	  fanatic_collectivist: 'http://www.stellariswiki.com/images/thumb/e/e4/Fanatic_Collectivist.png/42px-Fanatic_Collectivist.png',
+	  individualist: 'http://www.stellariswiki.com/images/thumb/0/0c/Individualist.png/42px-Individualist.png',
+	  fanatic_individualist: 'http://www.stellariswiki.com/images/thumb/0/0c/Fanatic_Individualist.png/42px-Fanatic_Individualist.png',
+	  xenophile: 'http://www.stellariswiki.com/images/thumb/b/b0/Xenophile.png/42px-Xenophile.png',
+	  fanatic_xenophile: 'http://www.stellariswiki.com/images/thumb/6/68/Fanatic_Xenophile.png/42px-Fanatic_Xenophile.png',
+	  materialist: 'http://www.stellariswiki.com/images/thumb/e/ef/Materialist.png/42px-Materialist.png',
+	  fanatic_materialist: 'http://www.stellariswiki.com/images/thumb/3/3e/Fanatic_Materialist.png/42px-Fanatic_Materialist.png',
+	  pacifist: 'http://www.stellariswiki.com/images/thumb/4/4a/Pacifist.png/42px-Pacifist.png',
+	  fanatic_pacifist: 'http://www.stellariswiki.com/images/thumb/a/ab/Fanatic_Pacifist.png/42px-Fanatic_Pacifist.png'
+	};
+	
+	module.exports = EthosIconURLs;
 
 /***/ }
 /******/ ]);
