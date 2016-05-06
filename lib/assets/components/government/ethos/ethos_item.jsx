@@ -49,7 +49,7 @@ var EthosItem = React.createClass({
     var ethos = e.target.id;
     var points = 1;
     if (/^fanatic/.test(ethos)) {
-      points += 1
+      points += 1;
     }
     if (this.state.currentEthos.includes(ethos)) {
       EthosActions.updatePoints(points);
@@ -87,8 +87,12 @@ var EthosItem = React.createClass({
   render: function() {
     var id = this.props.id;
     var CSSClass = "ethos " + EthosNames[id];
-    if ( this.state.currentEthos.includes(id) ) {
-      CSSClass += " ethos-selected"
+    var currentEthos = new Set();
+    for (var ethos of this.state.currentEthos) {
+      currentEthos.add(ethos);
+    }
+    if ( currentEthos.has(id) ) {
+      CSSClass += " ethos-selected";
     }
     var top = this.state.pos[1];
     var left = this.state.pos[0];

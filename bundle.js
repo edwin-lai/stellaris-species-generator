@@ -24949,7 +24949,11 @@
 	  render: function () {
 	    var id = this.props.id;
 	    var CSSClass = "ethos " + EthosNames[id];
-	    if (this.state.currentEthos.includes(id)) {
+	    var currentEthos = new Set();
+	    for (var ethos of this.state.currentEthos) {
+	      currentEthos.add(ethos);
+	    }
+	    if (currentEthos.has(id)) {
 	      CSSClass += " ethos-selected";
 	    }
 	    var top = this.state.pos[1];
