@@ -34143,7 +34143,7 @@
 	
 	var _weapons = [projectileWeapons, missileWeapons, energyWeapons];
 	
-	var _currentWeapon;
+	var _currentWeapon = 'Missile Weapons';
 	
 	var _weaponMap = {
 	  'Projectile Weapons': projectileWeapons,
@@ -34328,7 +34328,7 @@
 	
 	var _methods = [warpTravel, wormholeTravel, hyperspaceTravel];
 	
-	var _currentFTL;
+	var _currentFTL = "Warp Travel";
 	
 	var _FTLMap = {
 	  "Warp Travel": warpTravel.imageUrl,
