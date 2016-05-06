@@ -1,0 +1,177 @@
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.government {
+  background-color: rgba(16, 26, 20, 0.7);
+  color: #FFFFFF;
+  height: 340px;
+}
+
+.government-selector {
+  margin-top: 40px;
+  width: 150px;
+  height: 250px;
+  float: right;
+}
+
+.government-roundel {
+  background-size: cover;
+  position: relative;
+  height: 42px;
+  width: 42px;
+  clear: none;
+  margin: 4px;
+  border-radius: 50%;
+  float: left;
+}
+
+.government-roundel:hover {
+  background-color: rgba(210,210,210,0.3);
+  background-blend-mode: screen;
+  cursor: pointer;
+}
+
+.government-hover {
+  position: absolute;
+  background-color: rgba(55,55,55,0.6);
+  z-index: 40;
+  font-family: 'Orbitron', sans-serif;
+  border-style: ridge;
+  border-width: medium;
+  border-color: #36594f ;
+  width: 260px;
+  color: white;
+}
+
+.government-padding {
+  padding: 5px 15px;
+}
+
+.government-hover h4 {
+  margin: 10px 0;
+}
+
+.government-hover ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.government-hover h5 {
+  display: inline;
+}
+
+.government-hover p {
+  font-size: .7em;
+  font-weight: normal;
+}
+
+.government-roundel.government-selected {
+  box-shadow: 0 0 2px 2px gold;
+}
+
+.government-roundel.military-republic {
+  background-image: url(http://www.stellariswiki.com/images/thumb/b/b8/Military_Republic.png/42px-Military_Republic.png);
+}
+
+.government-roundel.military-junta {
+  background-image: url(http://www.stellariswiki.com/images/thumb/9/9a/Military_Junta.png/42px-Military_Junta.png);
+}
+
+.government-roundel.military-dictatorship {
+  background-image: url(http://www.stellariswiki.com/images/thumb/4/4c/Military_Dictatorship.png/42px-Military_Dictatorship.png);
+}
+
+.government-roundel.theocratic-republic {
+  background-image: url(http://www.stellariswiki.com/images/thumb/9/9f/Theocratic_Republic.png/42px-Theocratic_Republic.png);
+}
+
+.government-roundel.theocratic-oligarchy {
+  background-image: url(http://www.stellariswiki.com/images/thumb/5/57/Theocratic_Oligarchy.png/42px-Theocratic_Oligarchy.png);
+}
+
+.government-roundel.divine-mandate {
+  background-image: url(http://www.stellariswiki.com/images/thumb/7/7f/Divine_Mandate.png/42px-Divine_Mandate.png);
+}
+
+.government-roundel.direct-democracy {
+  background-image: url(http://www.stellariswiki.com/images/thumb/0/02/Direct_Democracy.png/42px-Direct_Democracy.png);
+}
+
+.government-roundel.science-directorate {
+  background-image: url(http://www.stellariswiki.com/images/thumb/c/cd/Science_Directorate.png/42px-Science_Directorate.png);
+}
+
+.government-roundel.despotic-hegemony {
+  background-image: url(http://www.stellariswiki.com/images/thumb/a/a7/Despotic_Hegemony.png/42px-Despotic_Hegemony.png);
+}
+
+.government-roundel.moral-democracy {
+  background-image: url(http://www.stellariswiki.com/images/thumb/6/67/Moral_Democracy.png/42px-Moral_Democracy.png);
+}
+
+.government-roundel.peaceful-bureaucracy {
+  background-image: url(http://www.stellariswiki.com/images/thumb/c/cd/Peaceful_Bureaucracy.png/42px-Peaceful_Bureaucracy.png);
+}
+
+.government-roundel.enlightened-monarchy {
+  background-image: url(http://www.stellariswiki.com/images/thumb/2/2b/Enlightened_Monarchy.png/42px-Enlightened_Monarchy.png);
+}
+
+.government-roundel.indirect-democracy {
+  background-image: url(http://www.stellariswiki.com/images/thumb/a/a1/Indirect_Democracy.png/42px-Indirect_Democracy.png);
+}
+
+.government-roundel.plutocratic-oligarchy {
+  background-image: url(http://www.stellariswiki.com/images/thumb/3/3e/Plutocratic_Oligarchy.png/42px-Plutocratic_Oligarchy.png);
+}
+
+.government-roundel.despotic-empire {
+  background-image: url(http://www.stellariswiki.com/images/thumb/1/1d/Despotic_Empire.png/42px-Despotic_Empire.png);
+}
+
+.government-roundel.locked {
+  -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+  -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+/* Government Info */
+.government-info {
+  font-family: 'Orbitron', sans-serif;
+  float: right;
+  width: 240px;
+  height: 340px;
+  padding: 0 20px;
+  background-color: rgba(9, 17, 12, 0.7);
+  overflow-y: scroll;
+}
+
+.government-info p {
+  font-size: 0.875em;
+}
+
+.government-info ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.government-info h5 {
+  display: inline;
+}
+.government-info .text-effect {
+  display: inline;
+  margin: 0;
+  top: -0.5em;
+}
+
+.government-info h5:last-of-type {
+  margin-left: 10px;
+  color: green;
+}
