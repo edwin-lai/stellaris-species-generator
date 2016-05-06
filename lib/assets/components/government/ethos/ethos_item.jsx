@@ -51,7 +51,11 @@ var EthosItem = React.createClass({
     if (/^fanatic/.test(ethos)) {
       points += 1;
     }
-    if (this.state.currentEthos.includes(ethos)) {
+    var currentEthos = new Set();
+    for (var item of this.state.currentEthos) {
+      currentEthos.add(item);
+    }
+    if (currentEthos.has(ethos)) {
       EthosActions.updatePoints(points);
       EthosActions.removeEthos(ethos);
     } else if (this.validEthos(points, ethos)) {
