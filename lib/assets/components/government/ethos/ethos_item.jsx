@@ -66,7 +66,10 @@ var EthosItem = React.createClass({
 
   validEthos: function (points, ethos) {
     var valid = true;
-    var currentEthos = this.state.currentEthos;
+    var currentEthos = new Set();
+    for (var item of this.state.currentEthos) {
+      currentEthos.add(item);
+    }
     if ((this.state.ethicsPoints - points) < 0) {
       valid = false;
     }
@@ -76,7 +79,7 @@ var EthosItem = React.createClass({
         if (subEthos === ethos) {
           count += 1;
         }
-        if (currentEthos.includes(subEthos)) {
+        if (currentEthos.has(subEthos)) {
           count += 1;
         }
         if (count > 1) {
