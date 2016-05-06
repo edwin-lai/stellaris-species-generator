@@ -34060,8 +34060,8 @@
 
 	var React = __webpack_require__(1),
 	    WeaponStore = __webpack_require__(282),
-	    WeaponActions = __webpack_require__(284),
-	    Weapon = __webpack_require__(283);
+	    WeaponActions = __webpack_require__(283),
+	    Weapon = __webpack_require__(284);
 	
 	var WeaponBox = React.createClass({
 	  displayName: 'WeaponBox',
@@ -34170,6 +34170,23 @@
 /* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var AppDispatcher = __webpack_require__(222);
+	
+	var WeaponActions = {
+	  setWeapon: function (weapon) {
+	    AppDispatcher.dispatch({
+	      actionType: 'SET_WEAPON',
+	      weapon: weapon
+	    });
+	  }
+	};
+	
+	module.exports = WeaponActions;
+
+/***/ },
+/* 284 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var React = __webpack_require__(1);
 	
 	var Weapon = React.createClass({
@@ -34213,30 +34230,13 @@
 	module.exports = Weapon;
 
 /***/ },
-/* 284 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var AppDispatcher = __webpack_require__(222);
-	
-	var WeaponActions = {
-	  setWeapon: function (weapon) {
-	    AppDispatcher.dispatch({
-	      actionType: 'SET_WEAPON',
-	      weapon: weapon
-	    });
-	  }
-	};
-	
-	module.exports = WeaponActions;
-
-/***/ },
 /* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1),
 	    FTLMethodStore = __webpack_require__(286),
-	    FTLActions = __webpack_require__(288),
-	    FTLMethod = __webpack_require__(287);
+	    FTLActions = __webpack_require__(287),
+	    FTLMethod = __webpack_require__(288);
 	
 	var FTLBox = React.createClass({
 	  displayName: 'FTLBox',
@@ -34343,6 +34343,23 @@
 /* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var AppDispatcher = __webpack_require__(222);
+	
+	var FTLActions = {
+	  setFTL: function (ftl) {
+	    AppDispatcher.dispatch({
+	      actionType: 'SET_FTL',
+	      ftl: ftl
+	    });
+	  }
+	};
+	
+	module.exports = FTLActions;
+
+/***/ },
+/* 288 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var React = __webpack_require__(1);
 	
 	var FTLMethod = React.createClass({
@@ -34389,23 +34406,6 @@
 	});
 	
 	module.exports = FTLMethod;
-
-/***/ },
-/* 288 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var AppDispatcher = __webpack_require__(222);
-	
-	var FTLActions = {
-	  setFTL: function (ftl) {
-	    AppDispatcher.dispatch({
-	      actionType: 'SET_FTL',
-	      ftl: ftl
-	    });
-	  }
-	};
-	
-	module.exports = FTLActions;
 
 /***/ },
 /* 289 */
