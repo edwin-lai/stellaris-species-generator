@@ -3,7 +3,11 @@ var SpeciesStore = require('../../stores/species.js');
 
 var SpeciesHistory = React.createClass({
   render: function () {
-    return <div className='summary-history'>{SpeciesStore.getHistory()}</div>;
+    return <div className='summary-history'>
+      History
+      <hr />
+      {SpeciesStore.getHistory()}
+    </div>;
   }
 });
 

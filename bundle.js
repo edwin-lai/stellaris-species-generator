@@ -34643,6 +34643,8 @@
 	    return React.createElement(
 	      'div',
 	      { className: 'summary-history' },
+	      'History',
+	      React.createElement('hr', null),
 	      SpeciesStore.getHistory()
 	    );
 	  }
