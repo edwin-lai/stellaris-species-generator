@@ -34629,7 +34629,11 @@
 	      { className: 'summary-history' },
 	      'History',
 	      React.createElement('hr', null),
-	      SpeciesStore.getHistory()
+	      React.createElement(
+	        'div',
+	        { className: 'history-text' },
+	        SpeciesStore.getHistory()
+	      )
 	    );
 	  }
 	});

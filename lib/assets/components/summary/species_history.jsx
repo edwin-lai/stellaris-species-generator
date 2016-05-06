@@ -6,7 +6,9 @@ var SpeciesHistory = React.createClass({
     return <div className='summary-history'>
       History
       <hr />
-      {SpeciesStore.getHistory()}
+      <div className='history-text'>
+        {SpeciesStore.getHistory()}
+      </div>
     </div>;
   }
 });
