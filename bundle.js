@@ -31915,7 +31915,7 @@
 	  },
 	
 	  effects: function () {
-	    ethos = this.state.ethos;
+	    var ethos = this.state.ethos;
 	
 	    if (ethos) {
 	      return Object.keys(EthosModifiers[ethos]).map(function (effect) {
@@ -31963,7 +31963,7 @@
 	        React.createElement(
 	          'p',
 	          null,
-	          EthosDescriptions[ethos]
+	          EthosDescriptions[this.state.ethos]
 	        )
 	      )
 	    );

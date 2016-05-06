@@ -11,14 +11,14 @@ var EthosInfo = React.createClass({
 
   componentWillReceiveProps: function () {
     var ethos = this.props.ethos;
-    var pos = this.props.pos
+    var pos = this.props.pos;
     if (ethos) {
       this.setState({ ethos: ethos, pos: pos });
     }
   },
 
   effects: function () {
-    ethos = this.state.ethos;
+    var ethos = this.state.ethos;
 
     if (ethos) {
       return Object.keys(EthosModifiers[ethos]).map (function (effect) {
@@ -44,7 +44,7 @@ var EthosInfo = React.createClass({
             {effects}
           </ul>
           <hr className="ethos-divider" />
-          <p>{EthosDescriptions[ethos]}</p>
+          <p>{EthosDescriptions[this.state.ethos]}</p>
         </section>
       </section>
     );
