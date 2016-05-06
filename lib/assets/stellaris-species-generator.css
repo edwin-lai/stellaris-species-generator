@@ -506,6 +506,8 @@ button:focus {
   color: #939F6D;
 }
 
+/* Weapon Section */
+
 .weapon-box, .ftl-box {
   display: flex;
   flex-wrap: wrap;
@@ -580,4 +582,32 @@ button:focus {
   width: 100%;
   display: flex;
   justify-content: space-around;
+}
+
+/* Species Section */
+
+.species-name, .species-history {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  font-family: inherit;
+  border: 0;
+  background-color: #09110C;
+  background-color: rgba(9, 17, 12, 0.7);
+  color: #FFFFFF;
+  padding: 8px;
+}
+
+.species-name {
+  font-size: 18px;
+}
+
+.species-history {
+  height: 20em;
+  margin-top: 2em;
+}
+
+.species {
+  padding: 16px;
+  box-sizing: border-box;
 }

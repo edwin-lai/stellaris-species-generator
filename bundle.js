@@ -60,6 +60,7 @@
 	var Traits = __webpack_require__(273);
 	var WeaponBox = __webpack_require__(281);
 	var FTLBox = __webpack_require__(285);
+	var Species = __webpack_require__(290);
 	var App = __webpack_require__(289);
 	
 	var routes = React.createElement(
@@ -71,7 +72,7 @@
 	    React.createElement(Route, { path: 'governments', component: Government }),
 	    React.createElement(Route, { path: 'planets', component: Planets }),
 	    React.createElement(Route, { path: 'traits', component: Traits }),
-	    React.createElement(Route, { path: 'ship', component: Traits }),
+	    React.createElement(Route, { path: 'species', component: Species }),
 	    React.createElement(Route, { path: 'weapons', component: WeaponBox }),
 	    React.createElement(Route, { path: 'ftlMethods', component: FTLBox })
 	  )
@@ -34337,6 +34338,116 @@
 	});
 	
 	module.exports = App;
+
+/***/ },
+/* 290 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var SpeciesStore = __webpack_require__(291);
+	var SpeciesActions = __webpack_require__(292);
+	
+	var Species = React.createClass({
+	  displayName: 'Species',
+	
+	  getInitialState: function () {
+	    return {
+	      speciesName: SpeciesStore.getName(),
+	      speciesHistory: SpeciesStore.getHistory()
+	    };
+	  },
+	
+	  setSpeciesName: function (event) {
+	    SpeciesActions.setSpeciesName(event.target.value);
+	    this.setState({ speciesName: event.target.value });
+	  },
+	
+	  setSpeciesHistory: function (event) {
+	    SpeciesActions.setSpeciesHistory(event.target.value);
+	    this.setState({ speciesHistory: event.target.value });
+	  },
+	
+	  render: function () {
+	    return React.createElement(
+	      'div',
+	      { className: 'species' },
+	      React.createElement('input', {
+	        type: 'text',
+	        className: 'species-name',
+	        value: this.state.speciesName,
+	        onChange: this.setSpeciesName,
+	        placeholder: 'Name'
+	      }),
+	      React.createElement('textarea', {
+	        id: 'species-history',
+	        className: 'species-history',
+	        value: this.state.speciesHistory,
+	        onChange: this.setSpeciesHistory,
+	        placeholder: 'History'
+	      })
+	    );
+	  }
+	});
+	
+	module.exports = Species;
+
+/***/ },
+/* 291 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Store = __webpack_require__(229).Store;
+	var AppDispatcher = __webpack_require__(222);
+	
+	var _name, _history;
+	
+	var SpeciesStore = new Store(AppDispatcher);
+	
+	SpeciesStore.__onDispatch = function (payload) {
+	  switch (payload.actionType) {
+	    case 'SET_SPECIES_NAME':
+	      _name = payload.speciesName;
+	      SpeciesStore.__emitChange();
+	      break;
+	    case 'SET_SPECIES_HISTORY':
+	      _history = payload.speciesHistory;
+	      SpeciesStore.__emitChange();
+	      break;
+	  }
+	};
+	
+	SpeciesStore.getName = function () {
+	  return _name;
+	};
+	
+	SpeciesStore.getHistory = function () {
+	  return _history;
+	};
+	
+	module.exports = SpeciesStore;
+
+/***/ },
+/* 292 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var AppDispatcher = __webpack_require__(222);
+	
+	var SpeciesActions = {
+	  setSpeciesName: function (speciesName) {
+	    AppDispatcher.dispatch({
+	      actionType: 'SET_SPECIES_NAME',
+	      speciesName: speciesName
+	    });
+	  },
+	
+	  setSpeciesHistory: function (speciesHistory) {
+	    AppDispatcher.dispatch({
+	      actionType: 'SET_SPECIES_HISTORY',
+	      speciesHistory: speciesHistory
+	    });
+	  }
+	};
+	
+	module.exports = SpeciesActions;
 
 /***/ }
 /******/ ]);
