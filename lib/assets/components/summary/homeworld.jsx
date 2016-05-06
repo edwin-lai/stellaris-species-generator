@@ -9,7 +9,7 @@ var Homeworld = React.createClass({
         {PlanetStore.getHomeworld()}
       </label>
       <img className='summary-planet-image' src={planet.imageUrl} />
-      <label className='summary-planet'>{planet.name + 'World'}</label>
+      <label className='summary-planet'>{planet.name + ' World'}</label>
     </div>;
   }
 });

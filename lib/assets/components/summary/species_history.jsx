@@ -1,9 +1,10 @@
 var React = require('react');
+var SpeciesStore = require('../../stores/species.js');
 
-var Species = React.createClass({
+var SpeciesHistory = React.createClass({
   render: function () {
-    return <div></div>;
+    return <div className='summary-history'>{SpeciesStore.getHistory()}</div>;
   }
 });
 
-module.exports = Species;
+module.exports = SpeciesHistory;

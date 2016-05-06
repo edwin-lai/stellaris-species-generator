@@ -34610,16 +34610,21 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
+	var SpeciesStore = __webpack_require__(290);
 	
-	var Species = React.createClass({
-	  displayName: 'Species',
+	var SpeciesHistory = React.createClass({
+	  displayName: 'SpeciesHistory',
 	
 	  render: function () {
-	    return React.createElement('div', null);
+	    return React.createElement(
+	      'div',
+	      { className: 'summary-history' },
+	      SpeciesStore.getHistory()
+	    );
 	  }
 	});
 	
-	module.exports = Species;
+	module.exports = SpeciesHistory;
 
 /***/ },
 /* 296 */
@@ -34661,7 +34666,7 @@
 	      React.createElement(
 	        'label',
 	        { className: 'summary-planet' },
-	        planet.name + 'World'
+	        planet.name + ' World'
 	      )
 	    );
 	  }
