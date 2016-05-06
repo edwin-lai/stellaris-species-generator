@@ -34575,6 +34575,7 @@
 	var Ships = __webpack_require__(295);
 	var Homeworld = __webpack_require__(296);
 	var Government = __webpack_require__(297);
+	var SpeciesStore = __webpack_require__(290);
 	
 	var Summary = React.createClass({
 	  displayName: 'Summary',
@@ -34582,19 +34583,28 @@
 	  render: function () {
 	    return React.createElement(
 	      'div',
-	      { className: 'summary' },
+	      null,
 	      React.createElement(
-	        'div',
-	        { className: 'summary-left' },
-	        React.createElement(Government, null),
-	        React.createElement(Species, null)
+	        'h1',
+	        { className: 'empire' },
+	        SpeciesStore.getEmpire()
 	      ),
-	      React.createElement(Homeworld, null),
 	      React.createElement(
 	        'div',
-	        { className: 'summary-right' },
-	        React.createElement(Ships, null),
-	        React.createElement(SpeciesHistory, null)
+	        { className: 'summary' },
+	        React.createElement(
+	          'div',
+	          { className: 'summary-left' },
+	          React.createElement(Government, null),
+	          React.createElement(Species, null)
+	        ),
+	        React.createElement(Homeworld, null),
+	        React.createElement(
+	          'div',
+	          { className: 'summary-right' },
+	          React.createElement(Ships, null),
+	          React.createElement(SpeciesHistory, null)
+	        )
 	      )
 	    );
 	  }
