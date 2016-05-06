@@ -10,6 +10,10 @@
   width: 33%;
 }
 
+.summary-left > div {
+  padding: 16px;
+}
+
 .summary-left .summary-gov {
   width: 100%;
   display: flex;
@@ -25,7 +29,7 @@
   list-style: none;
   display: flex;
   padding: 8px;
-  padding-top: 16px;
+  padding-top: 0;
   flex-direction: column;
 }
 
@@ -42,5 +46,18 @@
   margin: 4px 16px 4px 0;
 }
 
-.summary-gov-name {
+.summary .summary-homeworld {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.summary-homeworld-name, .summary-planet {
+  padding: 16px 0;
+}
+
+.summary-planet-image {
+  width: 280px;
+  height: 280px;
 }
