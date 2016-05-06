@@ -25395,6 +25395,7 @@
 	var Store = __webpack_require__(229).Store;
 	var AppDispatcher = __webpack_require__(222);
 	var EthosConstants = __webpack_require__(226);
+	var Util = __webpack_require__(249);
 	
 	var _currentEthos = {};
 	var _ethosPoints = 3;
@@ -25402,12 +25403,18 @@
 	var EthosStore = new Store(AppDispatcher);
 	
 	EthosStore.all = function () {
+	  if (Util.localStorageAvailable && localStorage.currentEthos) {
+	    _currentEthos = JSON.parse(localStorage.currentEthos);
+	  }
 	  return Object.keys(_currentEthos).map(function (key) {
 	    return _currentEthos[key];
 	  });
 	};
 	
 	EthosStore.points = function () {
+	  if (Util.localStorageAvailable && localStorage.ethosPoints !== undefined) {
+	    _ethosPoints = localStorage.ethosPoints;
+	  }
 	  return _ethosPoints;
 	};
 	
@@ -25435,18 +25442,31 @@
 	EthosStore.fullResetEthos = function () {
 	  _currentEthos = {};
 	  _ethosPoints = 3;
+	  if (Util.localStorageAvailable) {
+	    localStorage.currentEthos = JSON.stringify(_currentEthos);
+	    localStorage.ethosPoints = _ethosPoints;
+	  }
 	};
 	
 	EthosStore.addEthos = function (ethos) {
 	  _currentEthos[ethos] = ethos;
+	  if (Util.localStorageAvailable) {
+	    localStorage.currentEthos = JSON.stringify(_currentEthos);
+	  }
 	};
 	
 	EthosStore.removeEthos = function (ethos) {
 	  delete _currentEthos[ethos];
+	  if (Util.localStorageAvailable) {
+	    localStorage.currentEthos = JSON.stringify(_currentEthos);
+	  }
 	};
 	
 	EthosStore.updatePoints = function (points) {
 	  _ethosPoints += points;
+	  if (Util.localStorageAvailable) {
+	    localStorage.ethosPoints = _ethosPoints;
+	  }
 	};
 	
 	module.exports = EthosStore;
@@ -34519,42 +34539,66 @@
 	SpeciesStore.__onDispatch = function (payload) {
 	  switch (payload.actionType) {
 	    case 'SET_SPECIES_NAME':
-	      if (Util.localStorageAvailable) {
-	        localStorage.speciesName = payload.speciesName;
-	      } else {
-	        _name = payload.speciesName;
-	      }
+	      this.setName(payload.speciesName);
 	      SpeciesStore.__emitChange();
 	      break;
 	    case 'SET_SPECIES_HISTORY':
-	      if (Util.localStorageAvailable) {
-	        localStorage.speciesHistory = payload.speciesHistory;
-	      } else {
-	        _history = payload.speciesHistory;
-	      }
+	      this.setHistory(payload.speciesHistory);
 	      SpeciesStore.__emitChange();
 	      break;
 	    case 'SET_EMPIRE':
-	      if (Util.localStorageAvailable) {
-	        localStorage.empire = payload.empire;
-	      } else {
-	        _empire = payload.empire;
-	      }
+	      this.setEmpire(payload.empire);
 	      SpeciesStore.__emitChange();
 	      break;
 	  }
 	};
 	
+	SpeciesStore.setName = function (name) {
+	  if (Util.localStorageAvailable) {
+	    localStorage.speciesName = name;
+	  } else {
+	    _name = name;
+	  }
+	};
+	
+	SpeciesStore.setHistory = function (history) {
+	  if (Util.localStorageAvailable) {
+	    localStorage.speciesHistory = history;
+	  } else {
+	    _history = history;
+	  }
+	};
+	
+	SpeciesStore.setEmpire = function (empire) {
+	  if (Util.localStorageAvailable) {
+	    localStorage.empire = empire;
+	  } else {
+	    _empire = empire;
+	  }
+	};
+	
 	SpeciesStore.getName = function () {
-	  return localStorage.speciesName ? localStorage.speciesName : _name;
+	  if (Util.localStorageAvailable && localStorage.speciesName) {
+	    return localStorage.speciesName;
+	  } else {
+	    return _name;
+	  }
 	};
 	
 	SpeciesStore.getHistory = function () {
-	  return localStorage.speciesHistory ? localStorage.speciesHistory : _history;
+	  if (Util.localStorageAvailable && localStorage.speciesHistory) {
+	    return localStorage.speciesHistory;
+	  } else {
+	    return _history;
+	  }
 	};
 	
 	SpeciesStore.getEmpire = function () {
-	  return localStorage.empire ? localStorage.empire : _empire;
+	  if (Util.localStorageAvailable && localStorage.empire) {
+	    return localStorage.empire;
+	  } else {
+	    return _empire;
+	  }
 	};
 	
 	module.exports = SpeciesStore;
