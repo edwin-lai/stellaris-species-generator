@@ -17,17 +17,17 @@ var GovernmentHover = React.createClass({
   },
 
   requirements: function () {
-    government = this.state.government;
+    var government = this.state.government;
 
-    if (government) {
-      requirements = GovernmentRequirements[government].requires;
-      prohibitations = GovernmentRequirements[government].prohibits.join(', ');
+    if (GovernmentRequirements[government]) {
+      var requirements = GovernmentRequirements[government].requires;
+      var prohibitions = GovernmentRequirements[government].prohibits.join(', ');
       return(
         <li className="criteria" id="government" key={government}>
           <h5 className="criteria-name">Requires:</h5>
           <p className="criteria">{requirements}</p>
           <h5 className="criteria-name">Prohibits:</h5>
-          <p className="criteria">{prohibitations}</p>
+          <p className="criteria">{prohibitions}</p>
         </li>
       );
     }

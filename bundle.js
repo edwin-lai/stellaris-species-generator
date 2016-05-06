@@ -31925,7 +31925,7 @@
 	  effects: function () {
 	    var ethos = this.state.ethos;
 	
-	    if (ethos) {
+	    if (EthosModifiers[ethos]) {
 	      return Object.keys(EthosModifiers[ethos]).map(function (effect) {
 	        return React.createElement(
 	          'li',
@@ -32419,11 +32419,11 @@
 	  },
 	
 	  requirements: function () {
-	    government = this.state.government;
+	    var government = this.state.government;
 	
-	    if (government) {
-	      requirements = GovernmentRequirements[government].requires;
-	      prohibitations = GovernmentRequirements[government].prohibits.join(', ');
+	    if (GovernmentRequirements[government]) {
+	      var requirements = GovernmentRequirements[government].requires;
+	      var prohibitions = GovernmentRequirements[government].prohibits.join(', ');
 	      return React.createElement(
 	        'li',
 	        { className: 'criteria', id: 'government', key: government },
@@ -32445,7 +32445,7 @@
 	        React.createElement(
 	          'p',
 	          { className: 'criteria' },
-	          prohibitations
+	          prohibitions
 	        )
 	      );
 	    }

@@ -20,7 +20,7 @@ var EthosInfo = React.createClass({
   effects: function () {
     var ethos = this.state.ethos;
 
-    if (ethos) {
+    if (EthosModifiers[ethos]) {
       return Object.keys(EthosModifiers[ethos]).map (function (effect) {
         return(
           <li className="effect" id="ethos" key={effect}>
