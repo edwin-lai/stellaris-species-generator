@@ -34145,12 +34145,24 @@
 	
 	var _currentWeapon;
 	
+	var _weaponMap = {
+	  'Projectile Weapons': projectileWeapons,
+	  'Missile Weapons': missileWeapons,
+	  'Energy Weapons': energyWeapons
+	};
+	
 	WeaponStore.all = function () {
 	  return _weapons.slice();
 	};
 	
 	WeaponStore.currentWeapon = function () {
 	  return _currentWeapon;
+	};
+	
+	WeaponStore.currentWeaponImg = function () {
+	  if (_currentWeapon) {
+	    return _weaponMap[_currentWeapon].imageUrl;
+	  }
 	};
 	
 	WeaponStore.__onDispatch = function (payload) {
@@ -34302,7 +34314,7 @@
 	  imageUrl: "http://res.cloudinary.com/dsolojfgkabc/image/upload/v1461877239/warp_hh5r4e.png"
 	},
 	    wormholeTravel = {
-	  name: "Wormhome Travel",
+	  name: "Wormhole Travel",
 	  description: `Wormhole generators tunnel through subspace and estabish a conduit between two points, permitting travel across vast distances. The large generators are too big to be fitted on ships, requiring special Wormhole Stations to operate.`,
 	  recommendation: "(Advanced Players)",
 	  imageUrl: "http://res.cloudinary.com/dsolojfgkabc/image/upload/v1461877239/wormhole_qnzqk9.png"
@@ -34318,12 +34330,24 @@
 	
 	var _currentFTL;
 	
+	var _FTLMap = {
+	  "Warp Travel": warpTravel.imageUrl,
+	  "Wormhole Travel": wormholeTravel.imageUrl,
+	  "Hyperspace Travel": hyperspaceTravel.imageUrl
+	};
+	
 	FTLMethodStore.all = function () {
 	  return _methods.slice();
 	};
 	
 	FTLMethodStore.currentFTL = function () {
 	  return _currentFTL;
+	};
+	
+	FTLMethodStore.currentFTLImg = function () {
+	  if (_currentFTL) {
+	    return _FTLMap[_currentFTL];
+	  }
 	};
 	
 	FTLMethodStore.__onDispatch = function (payload) {
@@ -34631,16 +34655,33 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
+	var WeaponStore = __webpack_require__(282);
+	var FTLStore = __webpack_require__(286);
 	
-	var Species = React.createClass({
-	  displayName: 'Species',
+	var Ships = React.createClass({
+	  displayName: 'Ships',
 	
 	  render: function () {
-	    return React.createElement('div', null);
+	    return React.createElement(
+	      'div',
+	      { className: 'summary-ships' },
+	      React.createElement(
+	        'div',
+	        { className: 'summary-weapon-name' },
+	        WeaponStore.currentWeapon(),
+	        React.createElement('img', { className: 'summary-weapon', src: WeaponStore.currentWeaponImg() })
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'summary-ftl-name' },
+	        FTLStore.currentFTL(),
+	        React.createElement('img', { className: 'summary-ftl', src: FTLStore.currentFTLImg() })
+	      )
+	    );
 	  }
 	});
 	
-	module.exports = Species;
+	module.exports = Ships;
 
 /***/ },
 /* 297 */
