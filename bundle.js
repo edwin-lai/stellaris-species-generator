@@ -32105,6 +32105,18 @@
 	    return str.replace(/_/g, " ").replace(/(\b[a-z](?!\s))/g, function (x) {
 	      return x.toUpperCase();
 	    });
+	  },
+	
+	  localStorageAvailable: function () {
+	    try {
+	      var storage = window['localStorage'],
+	          x = '__storage_test__';
+	      storage.setItem(x, x);
+	      storage.removeItem(x);
+	      return true;
+	    } catch (e) {
+	      return false;
+	    }
 	  }
 	};
 	
@@ -34498,6 +34510,7 @@
 
 	var Store = __webpack_require__(229).Store;
 	var AppDispatcher = __webpack_require__(222);
+	var Util = __webpack_require__(249);
 	
 	var _name, _history, _empire;
 	
@@ -34506,30 +34519,42 @@
 	SpeciesStore.__onDispatch = function (payload) {
 	  switch (payload.actionType) {
 	    case 'SET_SPECIES_NAME':
-	      _name = payload.speciesName;
+	      if (Util.localStorageAvailable) {
+	        localStorage.speciesName = payload.speciesName;
+	      } else {
+	        _name = payload.speciesName;
+	      }
 	      SpeciesStore.__emitChange();
 	      break;
 	    case 'SET_SPECIES_HISTORY':
-	      _history = payload.speciesHistory;
+	      if (Util.localStorageAvailable) {
+	        localStorage.speciesHistory = payload.speciesHistory;
+	      } else {
+	        _history = payload.speciesHistory;
+	      }
 	      SpeciesStore.__emitChange();
 	      break;
 	    case 'SET_EMPIRE':
-	      _empire = payload.empire;
+	      if (Util.localStorageAvailable) {
+	        localStorage.empire = payload.empire;
+	      } else {
+	        _empire = payload.empire;
+	      }
 	      SpeciesStore.__emitChange();
 	      break;
 	  }
 	};
 	
 	SpeciesStore.getName = function () {
-	  return _name;
+	  return localStorage.speciesName ? localStorage.speciesName : _name;
 	};
 	
 	SpeciesStore.getHistory = function () {
-	  return _history;
+	  return localStorage.speciesHistory ? localStorage.speciesHistory : _history;
 	};
 	
 	SpeciesStore.getEmpire = function () {
-	  return _empire;
+	  return localStorage.empire ? localStorage.empire : _empire;
 	};
 	
 	module.exports = SpeciesStore;
