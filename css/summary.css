@@ -1,0 +1,46 @@
+.summary {
+  display: flex;
+  color: white;
+}
+
+.summary > div {
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 8px;
+  width: 33%;
+}
+
+.summary-left .summary-gov {
+  width: 100%;
+  display: flex;
+}
+
+.summary-gov-icon {
+  display: inline;
+  height: 42px;
+  width: 42px;
+}
+
+.summary-gov li {
+  list-style: none;
+  display: flex;
+  padding: 8px;
+  padding-top: 16px;
+  flex-direction: column;
+}
+
+.summary-gov li ul {
+  display: flex;
+  margin: 0;
+}
+
+.summary-ethos {
+  align-items: center;
+}
+
+.summary-ethos-icon {
+  margin: 4px 16px 4px 0;
+}
+
+.summary-gov-name {
+}
