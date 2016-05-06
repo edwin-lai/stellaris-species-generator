@@ -32569,22 +32569,36 @@
 	var Store = __webpack_require__(229).Store;
 	var AppDispatcher = __webpack_require__(222);
 	var GovernmentConstants = __webpack_require__(251);
+	var Util = __webpack_require__(249);
 	
 	var _currentGovernment = "indirect_democracy";
 	
 	var GovernmentStore = new Store(AppDispatcher);
 	
 	GovernmentStore.currentGovernment = function () {
-	  return _currentGovernment;
+	  if (Util.localStorageAvailable && localStorage.currentGovernment) {
+	    return localStorage.currentGovernment;
+	  } else {
+	    return _currentGovernment;
+	  }
 	};
 	
 	GovernmentStore.resetGovernment = function () {
-	  _currentGovernment = "indirect_democracy";
-	  return _currentGovernment;
+	  if (Util.localStorageAvailable) {
+	    localStorage.currentGovernment = "indirect_democracy";
+	    return localStorage.currentGovernment;
+	  } else {
+	    _currentGovernment = "indirect_democracy";
+	    return _currentGovernment;
+	  }
 	};
 	
 	GovernmentStore.updateGovernment = function (government) {
-	  _currentGovernment = government;
+	  if (Util.localStorageAvailable) {
+	    localStorage.currentGovernment = government;
+	  } else {
+	    _currentGovernment = government;
+	  }
 	};
 	
 	GovernmentStore.__onDispatch = function (payload) {
