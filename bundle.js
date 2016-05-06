@@ -61,8 +61,8 @@
 	var WeaponBox = __webpack_require__(281);
 	var FTLBox = __webpack_require__(285);
 	var Species = __webpack_require__(289);
-	var Summary = __webpack_require__(293);
-	var App = __webpack_require__(292);
+	var Summary = __webpack_require__(292);
+	var App = __webpack_require__(300);
 	
 	var routes = React.createElement(
 	  Router,
@@ -34543,27 +34543,11 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	
-	var App = React.createClass({
-	  displayName: 'App',
-	
-	  render: function () {
-	    return this.props.children;
-	  }
-	});
-	
-	module.exports = App;
-
-/***/ },
-/* 293 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-	var Species = __webpack_require__(294);
-	var SpeciesHistory = __webpack_require__(295);
-	var Ships = __webpack_require__(296);
-	var Homeworld = __webpack_require__(297);
-	var Government = __webpack_require__(298);
+	var Species = __webpack_require__(293);
+	var SpeciesHistory = __webpack_require__(294);
+	var Ships = __webpack_require__(295);
+	var Homeworld = __webpack_require__(296);
+	var Government = __webpack_require__(297);
 	
 	var Summary = React.createClass({
 	  displayName: 'Summary',
@@ -34592,7 +34576,7 @@
 	module.exports = Summary;
 
 /***/ },
-/* 294 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -34630,7 +34614,7 @@
 	module.exports = Species;
 
 /***/ },
-/* 295 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -34653,7 +34637,7 @@
 	module.exports = SpeciesHistory;
 
 /***/ },
-/* 296 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -34686,7 +34670,7 @@
 	module.exports = Ships;
 
 /***/ },
-/* 297 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -34718,14 +34702,14 @@
 	module.exports = Homeworld;
 
 /***/ },
-/* 298 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 	var EthosStore = __webpack_require__(228);
 	var GovStore = __webpack_require__(260);
-	var GovIconURLs = __webpack_require__(299);
-	var EthosIconURLs = __webpack_require__(300);
+	var GovIconURLs = __webpack_require__(298);
+	var EthosIconURLs = __webpack_require__(299);
 	var textCleaner = __webpack_require__(249).textCleaner;
 	
 	var Government = React.createClass({
@@ -34761,7 +34745,7 @@
 	module.exports = Government;
 
 /***/ },
-/* 299 */
+/* 298 */
 /***/ function(module, exports) {
 
 	var GovIconURLs = {
@@ -34785,7 +34769,7 @@
 	module.exports = GovIconURLs;
 
 /***/ },
-/* 300 */
+/* 299 */
 /***/ function(module, exports) {
 
 	var EthosIconURLs = {
@@ -34808,6 +34792,22 @@
 	};
 	
 	module.exports = EthosIconURLs;
+
+/***/ },
+/* 300 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	
+	var App = React.createClass({
+	  displayName: 'App',
+	
+	  render: function () {
+	    return this.props.children;
+	  }
+	});
+	
+	module.exports = App;
 
 /***/ }
 /******/ ]);
