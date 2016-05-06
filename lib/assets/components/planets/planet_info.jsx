@@ -28,7 +28,6 @@ var PlanetInfo = React.createClass({
       <section className="planet-info">
         <h3 className="planet-name">{planet.name}</h3>
         <p className="planet-description">{planet.description}</p>
-        <img className="light-bulb" src=""/>
         <h3 className="planet-preference">{planet.name} Preference</h3>
       </section>
     );

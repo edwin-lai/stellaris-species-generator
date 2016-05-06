@@ -24,7 +24,7 @@
 }
 
 .traits-info button {
-  font-family: 'Orbitron' sans-serif;
+  font-family: inherit;
   box-sizing: border-box;
   border: 1px solid #253930;
   background: #192A22;
@@ -77,7 +77,7 @@
   height: 37%;
   margin: 2% 0;
   padding: 1%;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .mouseover-trait h2 {

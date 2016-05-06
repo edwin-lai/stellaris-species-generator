@@ -16,6 +16,7 @@ button:focus {
   width: 150px;
   height: 250px;
   float: right;
+  margin-right: 40px;
 }
 
 .government-roundel {
@@ -149,7 +150,7 @@ button:focus {
   height: 340px;
   padding: 0 20px;
   background-color: rgba(9, 17, 12, 0.7);
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .government-info p {

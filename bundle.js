@@ -33112,7 +33112,6 @@
 	        { className: 'planet-description' },
 	        planet.description
 	      ),
-	      React.createElement('img', { className: 'light-bulb', src: '' }),
 	      React.createElement(
 	        'h3',
 	        { className: 'planet-preference' },
