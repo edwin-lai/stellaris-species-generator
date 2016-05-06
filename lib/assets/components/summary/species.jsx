@@ -5,11 +5,11 @@ var TraitStore = require('../../stores/trait.js');
 var Species = React.createClass({
   render: function () {
     return <div className='summary-species'>
-      <label>{SpeciesStore.getName()}</label>
+      <label className='summary-species-name'>{SpeciesStore.getName()}</label>
       <ul>
         {Array.from(TraitStore.all()).map(function (trait) {
-          return <li key={trait.name}>
-            <img src={trait.icon_url} />
+          return <li key={trait.name} className='summary-trait'>
+            <img src={trait.icon_url} className='summary-trait-icon'/>
             {trait.name}
           </li>;
         })}

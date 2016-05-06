@@ -32905,14 +32905,15 @@
 /***/ function(module, exports) {
 
 	var PlanetInfo = {};
+	
 	PlanetInfo.CONTINENTAL = {
 	  name: "Continental",
 	  description: `Rocky world with a nitrogen-oxygen
-	atmosphere. Active and stable
-	hydrosphere. Landmasses are separated
-	by vast oceans, with large climate
-	variations depending on temperature and
-	precipitation. Significant biosphere.`,
+	    atmosphere. Active and stable
+	    hydrosphere. Landmasses are separated
+	    by vast oceans, with large climate
+	    variations depending on temperature and
+	    precipitation. Significant biosphere.`,
 	  imageUrl: "http://www.stellariswiki.com/images/d/df/Continental.png"
 	};
 	
@@ -34583,7 +34584,7 @@
 	      { className: 'summary-species' },
 	      React.createElement(
 	        'label',
-	        null,
+	        { className: 'summary-species-name' },
 	        SpeciesStore.getName()
 	      ),
 	      React.createElement(
@@ -34592,8 +34593,8 @@
 	        Array.from(TraitStore.all()).map(function (trait) {
 	          return React.createElement(
 	            'li',
-	            { key: trait.name },
-	            React.createElement('img', { src: trait.icon_url }),
+	            { key: trait.name, className: 'summary-trait' },
+	            React.createElement('img', { src: trait.icon_url, className: 'summary-trait-icon' }),
 	            trait.name
 	          );
 	        })
@@ -34641,16 +34642,32 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
+	var PlanetStore = __webpack_require__(266);
 	
-	var Species = React.createClass({
-	  displayName: 'Species',
+	var Homeworld = React.createClass({
+	  displayName: 'Homeworld',
 	
 	  render: function () {
-	    return React.createElement('div', null);
+	    var planet = PlanetStore.currentPlanet();
+	    return React.createElement(
+	      'div',
+	      { className: 'summary-homeworld' },
+	      React.createElement(
+	        'label',
+	        { className: 'summary-homeworld-name' },
+	        PlanetStore.getHomeworld()
+	      ),
+	      React.createElement('img', { className: 'summary-planet-image', src: planet.imageUrl }),
+	      React.createElement(
+	        'label',
+	        { className: 'summary-planet' },
+	        planet.name + 'World'
+	      )
+	    );
 	  }
 	});
 	
-	module.exports = Species;
+	module.exports = Homeworld;
 
 /***/ },
 /* 298 */

@@ -1,9 +1,17 @@
 var React = require('react');
+var PlanetStore = require('../../stores/planet.js');
 
-var Species = React.createClass({
+var Homeworld = React.createClass({
   render: function () {
-    return <div></div>;
+    var planet = PlanetStore.currentPlanet();
+    return <div className='summary-homeworld'>
+      <label className='summary-homeworld-name'>
+        {PlanetStore.getHomeworld()}
+      </label>
+      <img className='summary-planet-image' src={planet.imageUrl} />
+      <label className='summary-planet'>{planet.name + 'World'}</label>
+    </div>;
   }
 });
 
-module.exports = Species;
+module.exports = Homeworld;
