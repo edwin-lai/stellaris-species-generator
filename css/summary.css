@@ -1,0 +1,113 @@
+.summary {
+  display: flex;
+  color: white;
+}
+
+.summary > div {
+  box-sizing: border-box;
+  padding: 8px;
+  width: 33%;
+}
+
+.summary-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.summary-left > div {
+  padding: 16px;
+}
+
+.summary-left .summary-gov {
+  width: 100%;
+  display: flex;
+}
+
+.summary-gov-icon {
+  display: inline;
+  height: 42px;
+  width: 42px;
+}
+
+.summary-gov li {
+  list-style: none;
+  display: flex;
+  padding: 8px;
+  padding-top: 0;
+  flex-direction: column;
+}
+
+.summary-gov li ul {
+  display: flex;
+  margin: 0;
+}
+
+.summary-ethos {
+  align-items: center;
+}
+
+.summary-ethos-icon {
+  margin: 4px 16px 4px 0;
+}
+
+.summary-species > li {
+  margin-bottom: 0;
+}
+
+.summary-trait {
+  display: flex;
+  align-items: center;
+}
+
+.summary-trait-icon {
+  margin: 4px 8px 4px 0;
+}
+
+.summary .summary-homeworld {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.summary-homeworld-name, .summary-planet {
+  padding: 16px 0;
+}
+
+.summary-planet-image {
+  width: 280px;
+  height: 280px;
+}
+
+.summary-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-ships {
+  display: flex;
+  flex-direction: row;
+  height: 50%;
+  padding: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.summary-ships div {
+  width: 50%;
+  display: flex;
+  padding: 8px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.summary-ships div img {
+  width: 100%;
+}
+
+.summary-history {
+  height: 50%;
+  padding: 16px;
+  width: 100%;
+}

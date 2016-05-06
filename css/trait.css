@@ -1,0 +1,120 @@
+.traits {
+  box-sizing: border-box;
+  background-color: rgba(16, 26, 20, 0.7);
+  color: #FFFFFF;
+  font-family: 'Orbitron' sans-serif;
+  font-size: 14px;
+  padding: 2%;
+}
+
+.traits-info {
+  width: 50%;
+  height: 300px;
+  float: left;
+}
+
+.traits-info h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.traits-info hr {
+  border-color: #2C473B;
+}
+
+.traits-info button {
+  font-family: 'Orbitron' sans-serif;
+  box-sizing: border-box;
+  border: 1px solid #253930;
+  background: #192A22;
+  color: #FFFFFF;
+  width: 60%;
+}
+
+.items-left {
+  border: 0;
+  margin-bottom: 2%;
+}
+
+.unselected-traits {
+  background-color: rgba(9, 17, 12, 0.7);
+  width: 23%;
+  margin: 0 1%;
+  height: 300px;
+  overflow-y: scroll;
+  display: inline-block;
+}
+
+.selected-traits {
+  background-color: rgba(9, 17, 12, 0.7);
+  float: right;
+  height: 300px;
+  margin: 0 1%;
+  width: 23%;
+}
+
+.trait {
+  background: #1E2D24;
+  list-style: none;
+  margin: 4px 8px;
+  padding: 1%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.disabled img {
+  -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+  -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+  -webkit-filter: grayscale(100%);
+  filter: gray;
+}
+
+.mouseover-trait {
+  background-color: rgba(9, 17, 12, 0.7);
+  width: 95%;
+  height: 37%;
+  margin: 2% 0;
+  padding: 1%;
+  overflow-y: scroll;
+}
+
+.mouseover-trait h2 {
+  font-size: 18px;
+  margin: 0;
+  font-weight: normal;
+}
+
+.trait-description {
+  font-size: 14px;
+  color: #8D8A7D;
+}
+
+.trait-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.trait-name {
+  font-size: 12px;
+  padding-left: 8px;
+  white-space: nowrap;
+}
+
+.trait-cost {
+  font-size: 12px;
+  padding-right: 8px;
+}
+
+.good {
+  color: #45A641;
+}
+
+.bad {
+  color: red;
+}
+
+.neutral {
+  color: #939F6D;
+}

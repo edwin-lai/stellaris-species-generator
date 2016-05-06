@@ -1,0 +1,75 @@
+.weapon-box, .ftl-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.weapon, .ftl {
+  display: flex;
+  margin: 10px;
+  background-color: rgb(14, 20, 16);
+  position: relative;
+}
+
+.weapon img, .ftl img {
+  height: 100px;
+  width: 160px;
+  margin: 10px
+}
+
+.weapon h3, .ftl h3 {
+  font-size: 14px;
+  color: white;
+  margin: 10px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+  display: inline-block;
+}
+
+.weapon p, .ftl p {
+  font-size: 11px;
+  color: rgb(140, 136, 122);
+  margin: 10px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+}
+
+.weapon div, .ftl div {
+  width: 325px;
+}
+
+.weapon a, .ftl a {
+  border: 2px solid rgb(14, 20, 16);
+  display: inherit;
+  flex-wrap: wrap;
+}
+
+.weapon.selected a, .ftl.selected a {
+  background-color: rgba(144, 124, 74, 0.5);
+  border: 2px solid rgb(144, 124, 74);
+  text-decoration: none;
+  outline: none;
+}
+
+.weapon a:hover, .ftl a:hover {
+  text-decoration: none;
+}
+
+.ftl .recommendation {
+  float: right;
+  font-size: 12px;
+}
+
+.weapon-box button, .ftl-box button {
+  font-family: 'Orbitron' sans-serif;
+  display: inline-block;
+  box-sizing: border-box;
+  border: 1px solid #253930;
+  background: #192A22;
+  color: #FFFFFF;
+  width: 48%;
+  margin: 10px;
+}
+
+.button-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
