@@ -27,7 +27,7 @@ var Species = React.createClass({
         className='species-name'
         value={this.state.speciesName}
         onChange={this.setSpeciesName}
-        placeholder='Name'
+        placeholder='Species Name'
         />
       <textarea
         id='species-history'

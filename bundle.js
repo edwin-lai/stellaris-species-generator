@@ -34427,7 +34427,7 @@
 	        className: 'species-name',
 	        value: this.state.speciesName,
 	        onChange: this.setSpeciesName,
-	        placeholder: 'Name'
+	        placeholder: 'Species Name'
 	      }),
 	      React.createElement('textarea', {
 	        id: 'species-history',
