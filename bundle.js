@@ -25403,7 +25403,7 @@
 	var EthosStore = new Store(AppDispatcher);
 	
 	EthosStore.all = function () {
-	  if (Util.localStorageAvailable && localStorage.currentEthos) {
+	  if (Util.localStorageAvailable() && localStorage.currentEthos) {
 	    _currentEthos = JSON.parse(localStorage.currentEthos);
 	  }
 	  return Object.keys(_currentEthos).map(function (key) {
@@ -25412,7 +25412,7 @@
 	};
 	
 	EthosStore.points = function () {
-	  if (Util.localStorageAvailable && localStorage.ethosPoints !== undefined) {
+	  if (Util.localStorageAvailable() && localStorage.ethosPoints !== undefined) {
 	    _ethosPoints = localStorage.ethosPoints;
 	  }
 	  return _ethosPoints;
@@ -25442,7 +25442,7 @@
 	EthosStore.fullResetEthos = function () {
 	  _currentEthos = {};
 	  _ethosPoints = 3;
-	  if (Util.localStorageAvailable) {
+	  if (Util.localStorageAvailable()) {
 	    localStorage.currentEthos = JSON.stringify(_currentEthos);
 	    localStorage.ethosPoints = _ethosPoints;
 	  }
@@ -25450,21 +25450,21 @@
 	
 	EthosStore.addEthos = function (ethos) {
 	  _currentEthos[ethos] = ethos;
-	  if (Util.localStorageAvailable) {
+	  if (Util.localStorageAvailable()) {
 	    localStorage.currentEthos = JSON.stringify(_currentEthos);
 	  }
 	};
 	
 	EthosStore.removeEthos = function (ethos) {
 	  delete _currentEthos[ethos];
-	  if (Util.localStorageAvailable) {
+	  if (Util.localStorageAvailable()) {
 	    localStorage.currentEthos = JSON.stringify(_currentEthos);
 	  }
 	};
 	
 	EthosStore.updatePoints = function (points) {
 	  _ethosPoints += points;
-	  if (Util.localStorageAvailable) {
+	  if (Util.localStorageAvailable()) {
 	    localStorage.ethosPoints = _ethosPoints;
 	  }
 	};
@@ -32576,7 +32576,7 @@
 	var GovernmentStore = new Store(AppDispatcher);
 	
 	GovernmentStore.currentGovernment = function () {
-	  if (Util.localStorageAvailable && localStorage.currentGovernment) {
+	  if (Util.localStorageAvailable() && localStorage.currentGovernment) {
 	    return localStorage.currentGovernment;
 	  } else {
 	    return _currentGovernment;
@@ -32584,7 +32584,7 @@
 	};
 	
 	GovernmentStore.resetGovernment = function () {
-	  if (Util.localStorageAvailable) {
+	  if (Util.localStorageAvailable()) {
 	    localStorage.currentGovernment = "indirect_democracy";
 	    return localStorage.currentGovernment;
 	  } else {
@@ -32594,7 +32594,7 @@
 	};
 	
 	GovernmentStore.updateGovernment = function (government) {
-	  if (Util.localStorageAvailable) {
+	  if (Util.localStorageAvailable()) {
 	    localStorage.currentGovernment = government;
 	  } else {
 	    _currentGovernment = government;
@@ -32916,7 +32916,7 @@
 	};
 	
 	PlanetStore.setHomeworld = function (homeworld) {
-	  if (Util.localStorageAvailable) {
+	  if (Util.localStorageAvailable()) {
 	    localStorage.homeworld = homeworld;
 	  } else {
 	    _homeworld = homeworld;
@@ -32924,7 +32924,7 @@
 	};
 	
 	PlanetStore.setStar = function (star) {
-	  if (Util.localStorageAvailable) {
+	  if (Util.localStorageAvailable()) {
 	    localStorage.star = star;
 	  } else {
 	    _star = star;
@@ -32932,7 +32932,7 @@
 	};
 	
 	PlanetStore.updatePlanet = function (planet) {
-	  if (Util.localStorageAvailable) {
+	  if (Util.localStorageAvailable()) {
 	    localStorage.currentPlanet = JSON.stringify(PlanetData[planet]);
 	  } else {
 	    _currentPlanet = PlanetData[planet];
@@ -32940,7 +32940,7 @@
 	};
 	
 	PlanetStore.currentPlanet = function () {
-	  if (Util.localStorageAvailable && localStorage.currentPlanet) {
+	  if (Util.localStorageAvailable() && localStorage.currentPlanet) {
 	    return JSON.parse(localStorage.currentPlanet);
 	  } else {
 	    return _currentPlanet;
@@ -32948,7 +32948,7 @@
 	};
 	
 	PlanetStore.getHomeworld = function () {
-	  if (Util.localStorageAvailable && localStorage.homeworld) {
+	  if (Util.localStorageAvailable() && localStorage.homeworld) {
 	    return localStorage.homeworld;
 	  } else {
 	    return _homeworld;
@@ -32956,7 +32956,7 @@
 	};
 	
 	PlanetStore.getStar = function () {
-	  if (Util.localStorageAvailable && localStorage.star) {
+	  if (Util.localStorageAvailable() && localStorage.star) {
 	    return localStorage.star;
 	  } else {
 	    return _star;
@@ -33393,7 +33393,8 @@
 	// saves and loads trait *names* to localStorage
 	
 	TraitStore.save = function () {
-	  if (Util.localStorageAvailable) {
+	  debugger;
+	  if (Util.localStorageAvailable()) {
 	    localStorage.selectedTraits = JSON.stringify([..._selectedTraits].map(function (trait) {
 	      return trait.name.replace(' ', '_').toLowerCase();
 	    }));
@@ -33405,7 +33406,7 @@
 	};
 	
 	TraitStore.load = function () {
-	  if (Util.localStorageAvailable && localStorage.selectedTraits && localStorage.excludedTraits && localStorage.traitPoints) {
+	  if (Util.localStorageAvailable() && localStorage.selectedTraits && localStorage.excludedTraits && localStorage.traitPoints) {
 	    _selectedTraits = new Set(JSON.parse(localStorage.selectedTraits).map(function (key) {
 	      return Traits[key];
 	    }));
@@ -34259,7 +34260,7 @@
 	};
 	
 	WeaponStore.currentWeapon = function () {
-	  if (Util.localStorageAvailable && localStorage.currentWeapon) {
+	  if (Util.localStorageAvailable() && localStorage.currentWeapon) {
 	    return localStorage.currentWeapon;
 	  } else {
 	    return _currentWeapon;
@@ -34268,7 +34269,7 @@
 	
 	WeaponStore.currentWeaponImg = function () {
 	  var currentWeapon;
-	  if (Util.localStorageAvailable && localStorage.currentWeapon) {
+	  if (Util.localStorageAvailable() && localStorage.currentWeapon) {
 	    currentWeapon = localStorage.currentWeapon;
 	  } else {
 	    currentWeapon = _currentWeapon;
@@ -34287,7 +34288,7 @@
 	};
 	
 	WeaponStore.setFTL = function (weapon) {
-	  if (Util.localStorageAvailable) {
+	  if (Util.localStorageAvailable()) {
 	    localStorage.currentWeapon = weapon;
 	  } else {
 	    _currentWeapon = weapon;
@@ -34463,7 +34464,7 @@
 	};
 	
 	FTLMethodStore.currentFTL = function () {
-	  if (Util.localStorageAvailable && localStorage.currentFTL) {
+	  if (Util.localStorageAvailable() && localStorage.currentFTL) {
 	    return localStorage.currentFTL;
 	  } else {
 	    return _currentFTL;
@@ -34472,7 +34473,7 @@
 	
 	FTLMethodStore.currentFTLImg = function () {
 	  var currentFTL;
-	  if (Util.localStorageAvailable && localStorage.currentFTL) {
+	  if (Util.localStorageAvailable() && localStorage.currentFTL) {
 	    currentFTL = localStorage.currentFTL;
 	  } else {
 	    currentFTL = _currentFTL;
@@ -34491,7 +34492,7 @@
 	};
 	
 	FTLMethodStore.setFTL = function (ftl) {
-	  if (Util.localStorageAvailable) {
+	  if (Util.localStorageAvailable()) {
 	    localStorage.currentFTL = ftl;
 	  } else {
 	    _currentFTL = ftl;
@@ -34663,7 +34664,7 @@
 	};
 	
 	SpeciesStore.setName = function (name) {
-	  if (Util.localStorageAvailable) {
+	  if (Util.localStorageAvailable()) {
 	    localStorage.speciesName = name;
 	  } else {
 	    _name = name;
@@ -34671,7 +34672,7 @@
 	};
 	
 	SpeciesStore.setHistory = function (history) {
-	  if (Util.localStorageAvailable) {
+	  if (Util.localStorageAvailable()) {
 	    localStorage.speciesHistory = history;
 	  } else {
 	    _history = history;
@@ -34679,7 +34680,7 @@
 	};
 	
 	SpeciesStore.setEmpire = function (empire) {
-	  if (Util.localStorageAvailable) {
+	  if (Util.localStorageAvailable()) {
 	    localStorage.empire = empire;
 	  } else {
 	    _empire = empire;
@@ -34687,7 +34688,7 @@
 	};
 	
 	SpeciesStore.getName = function () {
-	  if (Util.localStorageAvailable && localStorage.speciesName) {
+	  if (Util.localStorageAvailable() && localStorage.speciesName) {
 	    return localStorage.speciesName;
 	  } else {
 	    return _name;
@@ -34695,7 +34696,7 @@
 	};
 	
 	SpeciesStore.getHistory = function () {
-	  if (Util.localStorageAvailable && localStorage.speciesHistory) {
+	  if (Util.localStorageAvailable() && localStorage.speciesHistory) {
 	    return localStorage.speciesHistory;
 	  } else {
 	    return _history;
@@ -34703,7 +34704,7 @@
 	};
 	
 	SpeciesStore.getEmpire = function () {
-	  if (Util.localStorageAvailable && localStorage.empire) {
+	  if (Util.localStorageAvailable() && localStorage.empire) {
 	    return localStorage.empire;
 	  } else {
 	    return _empire;
