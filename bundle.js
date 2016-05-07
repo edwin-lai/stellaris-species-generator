@@ -33390,6 +33390,8 @@
 	  this.save();
 	};
 	
+	// saves and loads trait *names* to localStorage
+	
 	TraitStore.save = function () {
 	  if (Util.localStorageAvailable) {
 	    localStorage.selectedTraits = JSON.stringify([..._selectedTraits].map(function (trait) {
