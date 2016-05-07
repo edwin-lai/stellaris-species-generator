@@ -23,7 +23,6 @@ var PlanetSelector = React.createClass({
 
   planetItems: function () {
     return Object.keys(PlanetData).map ( function(planet, index) {
-      debugger;
       if (PlanetStore.currentPlanet().name.toUpperCase() === planet){
         return(
           <img id={planet} key={planet} className="planet-pic planet-highlight" src={PlanetData[planet].imageUrl}/>

@@ -33393,7 +33393,6 @@
 	// saves and loads trait *names* to localStorage
 	
 	TraitStore.save = function () {
-	  debugger;
 	  if (Util.localStorageAvailable()) {
 	    localStorage.selectedTraits = JSON.stringify([..._selectedTraits].map(function (trait) {
 	      return trait.name.replace(' ', '_').toLowerCase();
