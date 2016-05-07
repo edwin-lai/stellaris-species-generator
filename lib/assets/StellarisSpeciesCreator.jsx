@@ -16,6 +16,8 @@ var WeaponBox = require('./components/ship/weapon_box');
 var FTLBox = require('./components/ship/ftl_box');
 var Species = require('./components/species.jsx');
 var Summary = require('./components/summary/summary.jsx');
+var Export = require('./components/export.jsx');
+var Import = require('./components/import.jsx');
 var App = require('./components/app.jsx');
 
 var routes = (
@@ -28,6 +30,8 @@ var routes = (
       <Route path='weapons' component={WeaponBox} />
       <Route path='ftlMethods' component={FTLBox} />
       <Route path='summary' component={Summary} />
+      <Route path='export' component={Export} />
+      <Route path='import' component={Import} />
     </Route>
   </Router>
 );

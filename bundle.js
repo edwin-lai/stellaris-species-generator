@@ -62,6 +62,8 @@
 	var FTLBox = __webpack_require__(285);
 	var Species = __webpack_require__(289);
 	var Summary = __webpack_require__(292);
+	var Export = __webpack_require__(302);
+	var Import = __webpack_require__(303);
 	var App = __webpack_require__(300);
 	
 	var routes = React.createElement(
@@ -76,7 +78,9 @@
 	    React.createElement(Route, { path: 'species', component: Species }),
 	    React.createElement(Route, { path: 'weapons', component: WeaponBox }),
 	    React.createElement(Route, { path: 'ftlMethods', component: FTLBox }),
-	    React.createElement(Route, { path: 'summary', component: Summary })
+	    React.createElement(Route, { path: 'summary', component: Summary }),
+	    React.createElement(Route, { path: 'export', component: Export }),
+	    React.createElement(Route, { path: 'import', component: Import })
 	  )
 	);
 	
@@ -35062,6 +35066,103 @@
 	};
 	
 	module.exports = MouseoverStore;
+
+/***/ },
+/* 302 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var Util = __webpack_require__(249);
+	
+	var Export = React.createClass({
+	  displayName: 'Export',
+	
+	  selectAll: function () {
+	    document.getElementById('export-text').focus();
+	    document.getElementById('export-text').select();
+	  },
+	
+	  exportData: function () {
+	    if (Util.localStorageAvailable()) {
+	      return JSON.stringify(localStorage);
+	    } else {
+	      return 'ERROR: Local storage not available! Do not try to import this.';
+	    }
+	  },
+	
+	  render: function () {
+	    return React.createElement(
+	      'div',
+	      { className: 'import-export' },
+	      React.createElement(
+	        'div',
+	        null,
+	        'Copy the text below and paste it into an import box to transfer your species to your friends!'
+	      ),
+	      React.createElement('hr', null),
+	      React.createElement('textarea', {
+	        id: 'export-text',
+	        className: 'import-export-text',
+	        value: this.exportData(),
+	        onClick: this.selectAll,
+	        readOnly: 'readOnly' })
+	    );
+	  }
+	});
+	
+	module.exports = Export;
+
+/***/ },
+/* 303 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var Util = __webpack_require__(249);
+	
+	var Export = React.createClass({
+	  displayName: 'Export',
+	
+	  getInitialState: function () {
+	    return { importText: '' };
+	  },
+	
+	  setImportText: function (event) {
+	    this.setState({ importText: event.target.value });
+	  },
+	
+	  importData: function () {
+	    try {
+	      var data = JSON.parse(this.state.importText);
+	      for (var property in data) {
+	        if (data.hasOwnProperty(property)) {
+	          localStorage[property] = data[property];
+	        }
+	      }
+	      this.props.history.push('/summary');
+	    } catch (e) {
+	      alert('Import failed!');
+	    }
+	  },
+	
+	  render: function () {
+	    return React.createElement(
+	      'div',
+	      { className: 'import-export' },
+	      React.createElement('textarea', {
+	        className: 'import-export-text',
+	        value: this.state.importText,
+	        onChange: this.setImportText,
+	        placeholder: 'Paste import text here.' }),
+	      React.createElement(
+	        'button',
+	        { onClick: this.importData },
+	        'Import'
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = Export;
 
 /***/ }
 /******/ ]);

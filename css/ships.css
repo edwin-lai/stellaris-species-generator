@@ -73,3 +73,9 @@
   display: flex;
   justify-content: space-around;
 }
+
+.button-box button {
+  font-family: inherit;
+  font-color: white;
+  padding-top: 6px;
+}
