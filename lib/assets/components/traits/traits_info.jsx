@@ -2,17 +2,18 @@ var React = require('react');
 var TraitStore = require('../../stores/trait.js');
 var TraitActions = require('../../actions/trait_actions.js');
 var TraitList = require('../../constants/traits.js');
+var MouseoverStore = require('../../stores/trait_mouseover.js');
 
 var getTraitsState = function () {
   return {
-    trait: TraitStore.mouseover(),
+    trait: MouseoverStore.mouseover(),
     pointsLeft: TraitStore.pointsLeft(),
     picksLeft: TraitStore.picksLeft()
   };
 };
 
 var effectValue = function (name) {
-  var activeTrait = TraitStore.mouseover();
+  var activeTrait = MouseoverStore.mouseover();
   var result = activeTrait.effects[name].toString();
   if (!activeTrait.not_percentage) {
     result += '%';
@@ -34,7 +35,7 @@ var TraitsInfo = React.createClass({
 
   componentDidMount: function () {
     var that = this;
-    this.listener = TraitStore.addListener(that._onChange);
+    this.listener = MouseoverStore.addListener(that._onChange);
   },
 
   componentWillUnmount: function () {

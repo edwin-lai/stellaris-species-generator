@@ -33274,9 +33274,6 @@
 
 	var React = __webpack_require__(1);
 	var TraitStore = __webpack_require__(274);
-	var TraitActions = __webpack_require__(275);
-	var TraitList = __webpack_require__(276);
-	var Trait = __webpack_require__(277);
 	var UnselectedTraits = __webpack_require__(278);
 	var SelectedTraits = __webpack_require__(279);
 	var TraitsInfo = __webpack_require__(280);
@@ -33303,9 +33300,9 @@
 
 	var Store = __webpack_require__(229).Store;
 	var AppDispatcher = __webpack_require__(222);
+	var Util = __webpack_require__(249);
 	
-	var _mouseoverTrait;
-	var _selectedTraits = {};
+	var _selectedTraits = new Set();
 	var _excludedTraits = new Set();
 	var _traitPoints = 2;
 	var TRAIT_PICKS = 4;
@@ -33317,7 +33314,9 @@
 	};
 	
 	TraitStore.hasSelected = function (trait) {
-	  return _selectedTraits.has(trait);
+	  return new Set([..._selectedTraits].map(function (el) {
+	    return JSON.stringify(el);
+	  })).has(JSON.stringify(trait));
 	};
 	
 	TraitStore.pointsLeft = function () {
@@ -33325,6 +33324,7 @@
 	};
 	
 	TraitStore.picksLeft = function () {
+	
 	  return TRAIT_PICKS - _selectedTraits.size;
 	};
 	
@@ -33333,19 +33333,14 @@
 	};
 	
 	TraitStore.hasExcluded = function (trait) {
-	  return _excludedTraits.has(trait);
-	};
-	
-	TraitStore.mouseover = function () {
-	  return _mouseoverTrait;
+	  return new Set([..._excludedTraits].map(function (el) {
+	    return JSON.stringify(el);
+	  })).has(JSON.stringify(trait));
 	};
 	
 	TraitStore.__onDispatch = function (payload) {
 	  switch (payload.actionType) {
-	    case 'MOUSEOVER':
-	      TraitStore.setTooltip(payload.trait);
-	      TraitStore.__emitChange();
-	      break;
+	
 	    case 'ADD_TRAIT':
 	      if (payload.trait.cost <= _traitPoints && TraitStore.picksLeft() > 0) {
 	        TraitStore.addTrait(payload.trait);
@@ -33363,18 +33358,16 @@
 	  }
 	};
 	
-	TraitStore.setTooltip = function (trait) {
-	  _mouseoverTrait = trait;
-	};
-	
 	TraitStore.addTrait = function (trait) {
-	  _selectedTraits[trait.name] = trait;
+	  _selectedTraits.add(trait);
 	  if (trait.excludes) {
 	    trait.excludes().forEach(function (oppositeTrait) {
 	      _excludedTraits.add(oppositeTrait);
 	    });
 	  }
 	  _traitPoints -= trait.cost;
+	
+	  this.save();
 	};
 	
 	TraitStore.removeTrait = function (trait) {
@@ -33390,13 +33383,32 @@
 	  if (_traitPoints < 0) {
 	    TraitStore.resetTraits();
 	  }
+	
+	  this.save();
 	};
 	
 	TraitStore.resetTraits = function () {
-	  _mouseoverTrait = undefined;
 	  _selectedTraits.clear();
 	  _excludedTraits.clear();
 	  _traitPoints = 2;
+	
+	  this.save();
+	};
+	
+	TraitStore.save = function () {
+	  if (Util.localStorageAvailable) {
+	    localStorage.selectedTraits = JSON.stringify([..._selectedTraits]);
+	    localStorage.excludedTraits = JSON.stringify([..._excludedTraits]);
+	    localStorage.traitPoints = _traitPoints.toString();
+	  }
+	};
+	
+	TraitStore.load = function () {
+	  if (Util.localStorageAvailable && localStorage.selectedTraits && localStorage.excludedTraits && localStorage.traitPoints) {
+	    _selectedTraits = new Set(JSON.parse(localStorage.selectedTraits));
+	    _excludedTraits = new Set(JSON.parse(localStorage.excludedTraits));
+	    _traitPoints = parseInt(localStorage.traitPoints);
+	  }
 	};
 	
 	module.exports = TraitStore;
@@ -33452,7 +33464,7 @@
 	      habitability: 10
 	    },
 	    excludes: function () {
-	      return exclusions('adaptive', 'extremely_adaptive');
+	      return exclusions('extremely_adaptive', 'nonadaptive');
 	    },
 	    cost: 2,
 	    description: 'This species is highly adaptive when it comes to foreign environments.',
@@ -33862,11 +33874,19 @@
 	var Trait = __webpack_require__(277);
 	
 	var getTraitsState = function () {
+	  var activeStrings = new Set([...TraitStore.all()].map(function (trait) {
+	    return JSON.stringify(trait);
+	  }));
+	  var bannedStrings = new Set([...TraitStore.excludedTraits()].map(function (trait) {
+	    return JSON.stringify(trait);
+	  }));
 	  return {
-	    active: TraitStore.all(),
-	    banned: TraitStore.excludedTraits()
+	    active: activeStrings,
+	    banned: bannedStrings
 	  };
 	};
+	
+	window.getTraitsState = getTraitsState;
 	
 	var UnselectedTraits = React.createClass({
 	  displayName: 'UnselectedTraits',
@@ -33878,6 +33898,7 @@
 	  componentDidMount: function () {
 	    var that = this;
 	    this.listener = TraitStore.addListener(that._onChange);
+	    this.setState(getTraitsState());
 	  },
 	
 	  componentWillUnmount: function () {
@@ -33896,7 +33917,7 @@
 	      { className: 'unselected-traits' },
 	      Object.keys(TraitList).map(function (key) {
 	        var value = TraitList[key];
-	        if (!that.state.active.has(value)) {
+	        if (!that.state.active.has(JSON.stringify(value))) {
 	          return React.createElement(Trait, {
 	            key: key,
 	            trait: value,
@@ -33920,8 +33941,11 @@
 	var Trait = __webpack_require__(277);
 	
 	var getTraitsState = function () {
+	  var traitStrings = new Set([...TraitStore.all()].map(function (trait) {
+	    return JSON.stringify(trait);
+	  }));
 	  return {
-	    active: TraitStore.all()
+	    active: traitStrings
 	  };
 	};
 	
@@ -33935,6 +33959,7 @@
 	  componentDidMount: function () {
 	    var that = this;
 	    this.listener = TraitStore.addListener(that._onChange);
+	    this.setState(getTraitsState());
 	  },
 	
 	  componentWillUnmount: function () {
@@ -33952,7 +33977,7 @@
 	      'div',
 	      { className: 'selected-traits' },
 	      Object.keys(TraitList).map(function (key) {
-	        if (that.state.active.has(TraitList[key])) {
+	        if (that.state.active.has(JSON.stringify(TraitList[key]))) {
 	          return React.createElement(Trait, { key: key, trait: TraitList[key] });
 	        }
 	      })
@@ -33970,17 +33995,18 @@
 	var TraitStore = __webpack_require__(274);
 	var TraitActions = __webpack_require__(275);
 	var TraitList = __webpack_require__(276);
+	var MouseoverStore = __webpack_require__(301);
 	
 	var getTraitsState = function () {
 	  return {
-	    trait: TraitStore.mouseover(),
+	    trait: MouseoverStore.mouseover(),
 	    pointsLeft: TraitStore.pointsLeft(),
 	    picksLeft: TraitStore.picksLeft()
 	  };
 	};
 	
 	var effectValue = function (name) {
-	  var activeTrait = TraitStore.mouseover();
+	  var activeTrait = MouseoverStore.mouseover();
 	  var result = activeTrait.effects[name].toString();
 	  if (!activeTrait.not_percentage) {
 	    result += '%';
@@ -34004,7 +34030,7 @@
 	
 	  componentDidMount: function () {
 	    var that = this;
-	    this.listener = TraitStore.addListener(that._onChange);
+	    this.listener = MouseoverStore.addListener(that._onChange);
 	  },
 	
 	  componentWillUnmount: function () {
@@ -34993,9 +35019,14 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
+	var TraitStore = __webpack_require__(274);
 	
 	var App = React.createClass({
 	  displayName: 'App',
+	
+	  componentWillMount: function () {
+	    TraitStore.load();
+	  },
 	
 	  render: function () {
 	    return this.props.children;
@@ -35003,6 +35034,36 @@
 	});
 	
 	module.exports = App;
+
+/***/ },
+/* 301 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Store = __webpack_require__(229).Store;
+	var AppDispatcher = __webpack_require__(222);
+	
+	var _mouseoverTrait;
+	
+	var MouseoverStore = new Store(AppDispatcher);
+	
+	MouseoverStore.mouseover = function () {
+	  return _mouseoverTrait;
+	};
+	
+	MouseoverStore.setTooltip = function (trait) {
+	  _mouseoverTrait = trait;
+	};
+	
+	MouseoverStore.__onDispatch = function (payload) {
+	  switch (payload.actionType) {
+	    case 'MOUSEOVER':
+	      this.setTooltip(payload.trait);
+	      this.__emitChange();
+	      break;
+	  }
+	};
+	
+	module.exports = MouseoverStore;
 
 /***/ }
 /******/ ]);
