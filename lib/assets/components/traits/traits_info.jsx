@@ -35,12 +35,14 @@ var TraitsInfo = React.createClass({
 
   componentDidMount: function () {
     var that = this;
-    this.listener = MouseoverStore.addListener(that._onChange);
+    this.mouseoverListener = MouseoverStore.addListener(that._onChange);
+    this.traitListener = TraitStore.addListener(that._onChange);
   },
 
   componentWillUnmount: function () {
     var that = this;
-    this.listener.remove();
+    this.mouseoverListener.remove();
+    this.traitListener.remove();
   },
 
   _onChange: function () {

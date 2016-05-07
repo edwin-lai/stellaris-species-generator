@@ -5,17 +5,9 @@ var TraitList = require('../../constants/traits.js');
 var Trait = require('./trait.jsx');
 
 var getTraitsState = function () {
-  var activeStrings = new Set([...TraitStore.all()].map(function (trait) {
-    return JSON.stringify(trait);
-  }));
-  var bannedStrings = new Set([...TraitStore.excludedTraits()].map(
-    function (trait) {
-      return JSON.stringify(trait);
-    }
-  ));
   return {
-    active: activeStrings,
-    banned: bannedStrings
+    active: TraitStore.all(),
+    banned: TraitStore.excludedTraits()
   };
 };
 
@@ -46,7 +38,7 @@ var UnselectedTraits = React.createClass({
     return <div className='unselected-traits'>
       {Object.keys(TraitList).map(function(key) {
         var value = TraitList[key];
-        if (!that.state.active.has(JSON.stringify(value))) {
+        if (!that.state.active.has(value)) {
           return <Trait
               key={key}
               trait={value}

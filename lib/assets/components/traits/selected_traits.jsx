@@ -5,11 +5,8 @@ var TraitList = require('../../constants/traits.js');
 var Trait = require('./trait.jsx');
 
 var getTraitsState = function () {
-  var traitStrings = new Set([...TraitStore.all()].map(function (trait) {
-    return JSON.stringify(trait);
-  }));
   return {
-    active: traitStrings,
+    active: TraitStore.all(),
   };
 };
 
@@ -37,7 +34,7 @@ var SelectedTraits = React.createClass({
     var that = this;
     return <div className='selected-traits'>
       {Object.keys(TraitList).map(function(key) {
-        if (that.state.active.has(JSON.stringify(TraitList[key]))) {
+        if (that.state.active.has(TraitList[key])) {
           return <Trait key={key} trait={TraitList[key]}/>;
         }
       })}

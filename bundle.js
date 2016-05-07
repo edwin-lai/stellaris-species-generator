@@ -33301,6 +33301,7 @@
 	var Store = __webpack_require__(229).Store;
 	var AppDispatcher = __webpack_require__(222);
 	var Util = __webpack_require__(249);
+	var Traits = __webpack_require__(276);
 	
 	var _selectedTraits = new Set();
 	var _excludedTraits = new Set();
@@ -33314,9 +33315,7 @@
 	};
 	
 	TraitStore.hasSelected = function (trait) {
-	  return new Set([..._selectedTraits].map(function (el) {
-	    return JSON.stringify(el);
-	  })).has(JSON.stringify(trait));
+	  return _selectedTraits.has(trait);
 	};
 	
 	TraitStore.pointsLeft = function () {
@@ -33324,7 +33323,6 @@
 	};
 	
 	TraitStore.picksLeft = function () {
-	
 	  return TRAIT_PICKS - _selectedTraits.size;
 	};
 	
@@ -33333,14 +33331,11 @@
 	};
 	
 	TraitStore.hasExcluded = function (trait) {
-	  return new Set([..._excludedTraits].map(function (el) {
-	    return JSON.stringify(el);
-	  })).has(JSON.stringify(trait));
+	  return _excludedTraits.has(trait);
 	};
 	
 	TraitStore.__onDispatch = function (payload) {
 	  switch (payload.actionType) {
-	
 	    case 'ADD_TRAIT':
 	      if (payload.trait.cost <= _traitPoints && TraitStore.picksLeft() > 0) {
 	        TraitStore.addTrait(payload.trait);
@@ -33397,16 +33392,24 @@
 	
 	TraitStore.save = function () {
 	  if (Util.localStorageAvailable) {
-	    localStorage.selectedTraits = JSON.stringify([..._selectedTraits]);
-	    localStorage.excludedTraits = JSON.stringify([..._excludedTraits]);
+	    localStorage.selectedTraits = JSON.stringify([..._selectedTraits].map(function (trait) {
+	      return trait.name.replace(' ', '_').toLowerCase();
+	    }));
+	    localStorage.excludedTraits = JSON.stringify([..._excludedTraits].map(function (trait) {
+	      return trait.name.replace(' ', '_').toLowerCase();
+	    }));
 	    localStorage.traitPoints = _traitPoints.toString();
 	  }
 	};
 	
 	TraitStore.load = function () {
 	  if (Util.localStorageAvailable && localStorage.selectedTraits && localStorage.excludedTraits && localStorage.traitPoints) {
-	    _selectedTraits = new Set(JSON.parse(localStorage.selectedTraits));
-	    _excludedTraits = new Set(JSON.parse(localStorage.excludedTraits));
+	    _selectedTraits = new Set(JSON.parse(localStorage.selectedTraits).map(function (key) {
+	      return Traits[key];
+	    }));
+	    _excludedTraits = new Set(JSON.parse(localStorage.excludedTraits).map(function (key) {
+	      return Traits[key];
+	    }));
 	    _traitPoints = parseInt(localStorage.traitPoints);
 	  }
 	};
@@ -33874,15 +33877,9 @@
 	var Trait = __webpack_require__(277);
 	
 	var getTraitsState = function () {
-	  var activeStrings = new Set([...TraitStore.all()].map(function (trait) {
-	    return JSON.stringify(trait);
-	  }));
-	  var bannedStrings = new Set([...TraitStore.excludedTraits()].map(function (trait) {
-	    return JSON.stringify(trait);
-	  }));
 	  return {
-	    active: activeStrings,
-	    banned: bannedStrings
+	    active: TraitStore.all(),
+	    banned: TraitStore.excludedTraits()
 	  };
 	};
 	
@@ -33917,7 +33914,7 @@
 	      { className: 'unselected-traits' },
 	      Object.keys(TraitList).map(function (key) {
 	        var value = TraitList[key];
-	        if (!that.state.active.has(JSON.stringify(value))) {
+	        if (!that.state.active.has(value)) {
 	          return React.createElement(Trait, {
 	            key: key,
 	            trait: value,
@@ -33941,11 +33938,8 @@
 	var Trait = __webpack_require__(277);
 	
 	var getTraitsState = function () {
-	  var traitStrings = new Set([...TraitStore.all()].map(function (trait) {
-	    return JSON.stringify(trait);
-	  }));
 	  return {
-	    active: traitStrings
+	    active: TraitStore.all()
 	  };
 	};
 	
@@ -33977,7 +33971,7 @@
 	      'div',
 	      { className: 'selected-traits' },
 	      Object.keys(TraitList).map(function (key) {
-	        if (that.state.active.has(JSON.stringify(TraitList[key]))) {
+	        if (that.state.active.has(TraitList[key])) {
 	          return React.createElement(Trait, { key: key, trait: TraitList[key] });
 	        }
 	      })
@@ -34030,12 +34024,14 @@
 	
 	  componentDidMount: function () {
 	    var that = this;
-	    this.listener = MouseoverStore.addListener(that._onChange);
+	    this.mouseoverListener = MouseoverStore.addListener(that._onChange);
+	    this.traitListener = TraitStore.addListener(that._onChange);
 	  },
 	
 	  componentWillUnmount: function () {
 	    var that = this;
-	    this.listener.remove();
+	    this.mouseoverListener.remove();
+	    this.traitListener.remove();
 	  },
 	
 	  _onChange: function () {
