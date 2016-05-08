@@ -4,13 +4,12 @@ var Util = require('../util/util_functions.js');
 
 var App = React.createClass({
   componentWillMount: function () {
-    TraitStore.load();
     if (Util.localStorageAvailable) {
       try {
         JSON.parse(localStorage.currentPlanet);
         localStorage.clear();
       } catch (e) {
-        
+        TraitStore.load();
       }
     }
   },

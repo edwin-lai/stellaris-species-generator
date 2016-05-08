@@ -35028,12 +35028,13 @@
 	  displayName: 'App',
 	
 	  componentWillMount: function () {
-	    TraitStore.load();
 	    if (Util.localStorageAvailable) {
 	      try {
 	        JSON.parse(localStorage.currentPlanet);
 	        localStorage.clear();
-	      } catch (e) {}
+	      } catch (e) {
+	        TraitStore.load();
+	      }
 	    }
 	  },
 	
@@ -35125,6 +35126,7 @@
 
 	var React = __webpack_require__(1);
 	var Util = __webpack_require__(249);
+	var TraitStore = __webpack_require__(274);
 	
 	var Export = React.createClass({
 	  displayName: 'Export',
@@ -35145,6 +35147,7 @@
 	          localStorage[property] = data[property];
 	        }
 	      }
+	      TraitStore.load();
 	      this.props.history.push('/summary');
 	    } catch (e) {
 	      alert('Import failed!');

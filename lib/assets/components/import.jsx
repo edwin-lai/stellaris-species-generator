@@ -1,5 +1,6 @@
 var React = require('react');
 var Util = require('../util/util_functions.js');
+var TraitStore = require('../stores/trait.js');
 
 var Export = React.createClass({
   getInitialState: function () {
@@ -18,6 +19,7 @@ var Export = React.createClass({
           localStorage[property] = data[property];
         }
       }
+      TraitStore.load();
       this.props.history.push('/summary');
     }
     catch(e) {
