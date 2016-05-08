@@ -25417,7 +25417,7 @@
 	
 	EthosStore.points = function () {
 	  if (Util.localStorageAvailable() && localStorage.ethosPoints !== undefined) {
-	    _ethosPoints = localStorage.ethosPoints;
+	    _ethosPoints = parseInt(localStorage.ethosPoints);
 	  }
 	  return _ethosPoints;
 	};
@@ -25469,7 +25469,7 @@
 	EthosStore.updatePoints = function (points) {
 	  _ethosPoints += points;
 	  if (Util.localStorageAvailable()) {
-	    localStorage.ethosPoints = _ethosPoints;
+	    localStorage.ethosPoints = _ethosPoints.toString();
 	  }
 	};
 	
@@ -32899,7 +32899,7 @@
 	    PlanetData = __webpack_require__(268),
 	    Util = __webpack_require__(249);
 	
-	var _currentPlanet = PlanetData["CONTINENTAL"];
+	var _currentPlanet = "CONTINENTAL";
 	var _homeworld, _star;
 	
 	PlanetStore.__onDispatch = function (payload) {
@@ -32937,17 +32937,17 @@
 	
 	PlanetStore.updatePlanet = function (planet) {
 	  if (Util.localStorageAvailable()) {
-	    localStorage.currentPlanet = JSON.stringify(PlanetData[planet]);
+	    localStorage.currentPlanet = planet;
 	  } else {
-	    _currentPlanet = PlanetData[planet];
+	    _currentPlanet = planet;
 	  }
 	};
 	
 	PlanetStore.currentPlanet = function () {
 	  if (Util.localStorageAvailable() && localStorage.currentPlanet) {
-	    return JSON.parse(localStorage.currentPlanet);
+	    return PlanetData[localStorage.currentPlanet];
 	  } else {
-	    return _currentPlanet;
+	    return PlanetData[_currentPlanet];
 	  }
 	};
 	
@@ -35022,12 +35022,19 @@
 
 	var React = __webpack_require__(1);
 	var TraitStore = __webpack_require__(274);
+	var Util = __webpack_require__(249);
 	
 	var App = React.createClass({
 	  displayName: 'App',
 	
 	  componentWillMount: function () {
 	    TraitStore.load();
+	    if (Util.localStorageAvailable) {
+	      try {
+	        JSON.parse(localStorage.currentPlanet);
+	        localStorage.clear();
+	      } catch (e) {}
+	    }
 	  },
 	
 	  render: function () {
