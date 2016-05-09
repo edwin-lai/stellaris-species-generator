@@ -23,10 +23,12 @@
 
 .planet-naming input {
   border: 0;
-  background-color: rgba(9, 17, 12, 0.7);
+  background-color: rgba(9, 17, 12, 1);
   color: #FFFFFF;
   padding: 4px;
   font-family: inherit;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .planet-info {

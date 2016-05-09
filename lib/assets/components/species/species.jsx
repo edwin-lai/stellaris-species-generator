@@ -68,10 +68,6 @@ var Species = React.createClass({
             src={this.state.portrait}
             className='species-portrait'
             alt='Species Portrait'/>
-          <label className='file-upload' htmlFor='upload'>
-            Upload
-            <input id='upload' type='file' onChange={this.handleFile} />
-          </label>
         </div>
         <div className='name-wrapper'>
           <input
@@ -83,7 +79,7 @@ var Species = React.createClass({
             />
           <input
             type='text'
-            className='species-name'
+            className='empire-name'
             value={this.state.empire}
             onChange={this.setEmpire}
             placeholder='Empire Name'

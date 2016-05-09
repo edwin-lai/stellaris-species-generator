@@ -35323,13 +35323,7 @@
 	          React.createElement('img', {
 	            src: this.state.portrait,
 	            className: 'species-portrait',
-	            alt: 'Species Portrait' }),
-	          React.createElement(
-	            'label',
-	            { className: 'file-upload', htmlFor: 'upload' },
-	            'Upload',
-	            React.createElement('input', { id: 'upload', type: 'file', onChange: this.handleFile })
-	          )
+	            alt: 'Species Portrait' })
 	        ),
 	        React.createElement(
 	          'div',
@@ -35343,7 +35337,7 @@
 	          }),
 	          React.createElement('input', {
 	            type: 'text',
-	            className: 'species-name',
+	            className: 'empire-name',
 	            value: this.state.empire,
 	            onChange: this.setEmpire,
 	            placeholder: 'Empire Name'
