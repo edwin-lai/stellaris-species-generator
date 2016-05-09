@@ -34925,7 +34925,7 @@
 	          modifiers[effect] = {};
 	          modifiers[effect].value = this.state.govt[effect][0];
 	        }
-	        if (effect[1] === 0) {
+	        if (this.state.govt[effect][1] === 0) {
 	          modifiers[effect].not_percentage = true;
 	        }
 	      }
