@@ -111,16 +111,15 @@
   width: 100%;
 }
 
-.summary-history {
+.summary-modifier {
   height: 50%;
   padding: 16px;
   width: 100%;
   box-sizing: border-box;
 }
 
-.history-text {
-  font-size: 12px;
+.modifier-text {
   word-wrap: break-word;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 10em;
 }

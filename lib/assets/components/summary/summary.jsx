@@ -1,6 +1,6 @@
 var React = require('react');
 var Species = require('./species.jsx');
-var SpeciesHistory = require('./species_history.jsx');
+var Modifiers = require('./modifiers.jsx');
 var Ships = require('./ships.jsx');
 var Homeworld = require('./homeworld.jsx');
 var Government = require('./government.jsx');
@@ -18,7 +18,7 @@ var Summary = React.createClass({
         <Homeworld />
         <div className='summary-right'>
           <Ships />
-          <SpeciesHistory />
+          <Modifiers />
         </div>
       </div>
     </div>;
