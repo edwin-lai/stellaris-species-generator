@@ -12,6 +12,12 @@ var Species = React.createClass({
     };
   },
 
+  componentWillUnmount: function () {
+    if (this.listener) {
+      this.reader.removeEventListener('load', this.listener);
+    }
+  },
+
   setSpeciesName: function (event) {
     SpeciesActions.setSpeciesName(event.target.value);
     this.setState({speciesName: event.target.value});
@@ -29,16 +35,18 @@ var Species = React.createClass({
 
   handleFile: function (event) {
     var file = event.target.files[0];
-    var reader = new FileReader();
+    this.reader = new FileReader();
     var that = this;
 
-    reader.addEventListener('load', function () {
-      SpeciesActions.setPortrait(reader.result);
-      that.setState({portrait: reader.result});
+    this.listener = this.reader.addEventListener('load', function () {
+      SpeciesActions.setPortrait(that.reader.result);
+      that.setState({portrait: that.reader.result});
     });
 
     if (file.type.slice(0,5) === 'image') {
-      reader.readAsDataURL(file);
+      this.reader.readAsDataURL(file);
+    } else {
+      alert('Nice try.');
     }
   },
 
