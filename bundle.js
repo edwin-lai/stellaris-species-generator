@@ -24795,7 +24795,7 @@
 	      React.createElement(
 	        'div',
 	        { onClick: this.onClick, className: 'reset-ethos' },
-	        'Cancel'
+	        'Reset'
 	      )
 	    );
 	  }
@@ -34149,7 +34149,7 @@
 	      React.createElement(
 	        'button',
 	        { onClick: TraitActions.resetTraits },
-	        'Cancel'
+	        'Reset'
 	      )
 	    );
 	  }
@@ -34227,21 +34227,7 @@
 	    return React.createElement(
 	      'div',
 	      { className: 'weapon-box' },
-	      this.getWeapons(),
-	      React.createElement(
-	        'div',
-	        { className: 'button-box' },
-	        React.createElement(
-	          'button',
-	          null,
-	          'Cancel'
-	        ),
-	        React.createElement(
-	          'button',
-	          null,
-	          'OK'
-	        )
-	      )
+	      this.getWeapons()
 	    );
 	  }
 	});
@@ -34433,21 +34419,7 @@
 	    return React.createElement(
 	      'div',
 	      { className: 'ftl-box' },
-	      this.getFTLMethods(),
-	      React.createElement(
-	        'div',
-	        { className: 'button-box' },
-	        React.createElement(
-	          'button',
-	          null,
-	          'Cancel'
-	        ),
-	        React.createElement(
-	          'button',
-	          null,
-	          'OK'
-	        )
-	      )
+	      this.getFTLMethods()
 	    );
 	  }
 	});
@@ -34617,7 +34589,6 @@
 	  getInitialState: function () {
 	    return {
 	      speciesName: SpeciesStore.getName(),
-	      speciesHistory: SpeciesStore.getHistory(),
 	      empire: SpeciesStore.getEmpire(),
 	      portrait: SpeciesStore.getPortrait()
 	    };
@@ -34630,9 +34601,6 @@
 	
 	  componentWillUnmount: function () {
 	    this.listener.remove();
-	    if (this.fileListener) {
-	      this.reader.removeEventListener('load', this.fileListener);
-	    }
 	  },
 	
 	  _portraitChange: function () {
@@ -34647,27 +34615,6 @@
 	  setEmpire: function (event) {
 	    SpeciesActions.setEmpire(event.target.value);
 	    this.setState({ empire: event.target.value });
-	  },
-	
-	  setSpeciesHistory: function (event) {
-	    SpeciesActions.setSpeciesHistory(event.target.value);
-	    this.setState({ speciesHistory: event.target.value });
-	  },
-	
-	  handleFile: function (event) {
-	    var file = event.target.files[0];
-	    this.reader = new FileReader();
-	    var that = this;
-	
-	    this.fileListener = this.reader.addEventListener('load', function () {
-	      SpeciesActions.setPortrait(that.reader.result);
-	    });
-	
-	    if (file.type.slice(0, 5) === 'image') {
-	      this.reader.readAsDataURL(file);
-	    } else {
-	      alert('Nice try.');
-	    }
 	  },
 	
 	  render: function () {
@@ -34719,7 +34666,7 @@
 	var AppDispatcher = __webpack_require__(222);
 	var Util = __webpack_require__(246);
 	
-	var _name, _history, _empire, _portrait;
+	var _name, _empire, _portrait;
 	
 	var SpeciesStore = new Store(AppDispatcher);
 	
@@ -34727,10 +34674,6 @@
 	  switch (payload.actionType) {
 	    case 'SET_SPECIES_NAME':
 	      this.setName(payload.speciesName);
-	      SpeciesStore.__emitChange();
-	      break;
-	    case 'SET_SPECIES_HISTORY':
-	      this.setHistory(payload.speciesHistory);
 	      SpeciesStore.__emitChange();
 	      break;
 	    case 'SET_EMPIRE':
@@ -34749,14 +34692,6 @@
 	    localStorage.speciesName = name;
 	  } else {
 	    _name = name;
-	  }
-	};
-	
-	SpeciesStore.setHistory = function (history) {
-	  if (Util.localStorageAvailable()) {
-	    localStorage.speciesHistory = history;
-	  } else {
-	    _history = history;
 	  }
 	};
 	
@@ -34781,14 +34716,6 @@
 	    return localStorage.speciesName;
 	  } else {
 	    return _name;
-	  }
-	};
-	
-	SpeciesStore.getHistory = function () {
-	  if (Util.localStorageAvailable() && localStorage.speciesHistory) {
-	    return localStorage.speciesHistory;
-	  } else {
-	    return _history;
 	  }
 	};
 	
@@ -34821,13 +34748,6 @@
 	    AppDispatcher.dispatch({
 	      actionType: 'SET_SPECIES_NAME',
 	      speciesName: speciesName
-	    });
-	  },
-	
-	  setSpeciesHistory: function (speciesHistory) {
-	    AppDispatcher.dispatch({
-	      actionType: 'SET_SPECIES_HISTORY',
-	      speciesHistory: speciesHistory
 	    });
 	  },
 	

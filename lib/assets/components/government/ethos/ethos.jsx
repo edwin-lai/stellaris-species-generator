@@ -35,7 +35,7 @@ var Ethos = React.createClass({
       <section className="ethos-wrapper">
         <EthosSelector />
         <h3 className="ethos-points">Ethic Points Left: {this.state.ethicsPoints}</h3>
-        <div onClick={this.onClick} className="reset-ethos">Cancel</div>
+        <div onClick={this.onClick} className="reset-ethos">Reset</div>
       </section>
     );
   }

@@ -7,7 +7,6 @@ var Species = React.createClass({
   getInitialState: function () {
     return {
       speciesName: SpeciesStore.getName(),
-      speciesHistory: SpeciesStore.getHistory(),
       empire: SpeciesStore.getEmpire(),
       portrait: SpeciesStore.getPortrait()
     };
@@ -20,9 +19,6 @@ var Species = React.createClass({
 
   componentWillUnmount: function () {
     this.listener.remove();
-    if (this.fileListener) {
-      this.reader.removeEventListener('load', this.fileListener);
-    }
   },
 
   _portraitChange: function () {
@@ -37,27 +33,6 @@ var Species = React.createClass({
   setEmpire: function (event) {
     SpeciesActions.setEmpire(event.target.value);
     this.setState({empire: event.target.value});
-  },
-
-  setSpeciesHistory: function (event) {
-    SpeciesActions.setSpeciesHistory(event.target.value);
-    this.setState({speciesHistory: event.target.value});
-  },
-
-  handleFile: function (event) {
-    var file = event.target.files[0];
-    this.reader = new FileReader();
-    var that = this;
-
-    this.fileListener = this.reader.addEventListener('load', function () {
-      SpeciesActions.setPortrait(that.reader.result);
-    });
-
-    if (file.type.slice(0,5) === 'image') {
-      this.reader.readAsDataURL(file);
-    } else {
-      alert('Nice try.');
-    }
   },
 
   render: function () {

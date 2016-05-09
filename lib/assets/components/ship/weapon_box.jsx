@@ -34,10 +34,6 @@ var WeaponBox = React.createClass({
     return (
       <div className="weapon-box">
         {this.getWeapons()}
-        <div className="button-box">
-          <button>Cancel</button>
-          <button>OK</button>
-        </div>
       </div>
     );
   }
