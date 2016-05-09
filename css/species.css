@@ -17,10 +17,46 @@
 
 .species-history {
   height: 20em;
-  margin-top: 1em;
 }
 
 .species {
   padding: 16px;
   box-sizing: border-box;
+}
+
+.top-wrapper {
+  display: flex;
+}
+
+.portrait-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.name-wrapper {
+  width: 100%;
+  padding: 8px;
+}
+
+.species-portrait {
+  color: white;
+  width: 64px;
+  height: 64px;
+  font-size: 12px;
+  text-align: center;
+  line-height: 32px;
+  padding: 4px;
+}
+
+.file-upload {
+  color: white;
+  box-sizing: border-box;
+  border: 1px solid #253930;
+  background-color: #09110C;
+  background-color: rgba(9, 17, 12, 0.7);
+  padding: 4px;
+}
+
+#upload {
+  display: none;
 }

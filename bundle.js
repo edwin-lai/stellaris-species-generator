@@ -34617,7 +34617,8 @@
 	    return {
 	      speciesName: SpeciesStore.getName(),
 	      speciesHistory: SpeciesStore.getHistory(),
-	      empire: SpeciesStore.getEmpire()
+	      empire: SpeciesStore.getEmpire(),
+	      portrait: SpeciesStore.getPortrait()
 	    };
 	  },
 	
@@ -34636,24 +34637,60 @@
 	    this.setState({ speciesHistory: event.target.value });
 	  },
 	
+	  handleFile: function (event) {
+	    var file = event.target.files[0];
+	    var reader = new FileReader();
+	
+	    reader.addEventListener('load', function () {
+	      SpeciesActions.setPortrait(reader.result);
+	      this.setState({ portrait: reader.result });
+	    });
+	
+	    if (file.type.slice(0, 5) === 'image') {
+	      reader.readAsDataURL(file);
+	    }
+	  },
+	
 	  render: function () {
 	    return React.createElement(
 	      'div',
 	      { className: 'species' },
-	      React.createElement('input', {
-	        type: 'text',
-	        className: 'species-name',
-	        value: this.state.speciesName,
-	        onChange: this.setSpeciesName,
-	        placeholder: 'Species Name'
-	      }),
-	      React.createElement('input', {
-	        type: 'text',
-	        className: 'species-name',
-	        value: this.state.empire,
-	        onChange: this.setEmpire,
-	        placeholder: 'Empire Name'
-	      }),
+	      React.createElement(
+	        'div',
+	        { className: 'top-wrapper' },
+	        React.createElement(
+	          'div',
+	          { className: 'portrait-wrapper' },
+	          React.createElement('img', {
+	            src: this.state.portrait,
+	            className: 'species-portrait',
+	            alt: 'Species Portrait' }),
+	          React.createElement(
+	            'label',
+	            { className: 'file-upload', htmlFor: 'upload' },
+	            'Upload',
+	            React.createElement('input', { id: 'upload', type: 'file', onChange: this.handleFile })
+	          )
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'name-wrapper' },
+	          React.createElement('input', {
+	            type: 'text',
+	            className: 'species-name',
+	            value: this.state.speciesName,
+	            onChange: this.setSpeciesName,
+	            placeholder: 'Species Name'
+	          }),
+	          React.createElement('input', {
+	            type: 'text',
+	            className: 'species-name',
+	            value: this.state.empire,
+	            onChange: this.setEmpire,
+	            placeholder: 'Empire Name'
+	          })
+	        )
+	      ),
 	      React.createElement('textarea', {
 	        id: 'species-history',
 	        className: 'species-history',
@@ -34675,7 +34712,7 @@
 	var AppDispatcher = __webpack_require__(222);
 	var Util = __webpack_require__(246);
 	
-	var _name, _history, _empire;
+	var _name, _history, _empire, _portrait;
 	
 	var SpeciesStore = new Store(AppDispatcher);
 	
@@ -34692,6 +34729,9 @@
 	    case 'SET_EMPIRE':
 	      this.setEmpire(payload.empire);
 	      SpeciesStore.__emitChange();
+	      break;
+	    case 'SET_PORTRAIT':
+	      this.setPortrait(payload.portrait);
 	      break;
 	  }
 	};
@@ -34720,6 +34760,14 @@
 	  }
 	};
 	
+	SpeciesStore.setPortrait = function (portrait) {
+	  if (Util.localStorageAvailable()) {
+	    localStorage.portrait = portrait;
+	  } else {
+	    _portrait = portrait;
+	  }
+	};
+	
 	SpeciesStore.getName = function () {
 	  if (Util.localStorageAvailable() && localStorage.speciesName) {
 	    return localStorage.speciesName;
@@ -34741,6 +34789,14 @@
 	    return localStorage.empire;
 	  } else {
 	    return _empire;
+	  }
+	};
+	
+	SpeciesStore.getPortrait = function () {
+	  if (Util.localStorageAvailable() && localStorage.portrait) {
+	    return localStorage.portrait;
+	  } else {
+	    return _portrait;
 	  }
 	};
 	
@@ -34771,6 +34827,13 @@
 	    AppDispatcher.dispatch({
 	      actionType: 'SET_EMPIRE',
 	      empire: empire
+	    });
+	  },
+	
+	  setPortrait: function (img) {
+	    AppDispatcher.dispatch({
+	      actionType: 'SET_PORTRAIT',
+	      portrait: img
 	    });
 	  }
 	};

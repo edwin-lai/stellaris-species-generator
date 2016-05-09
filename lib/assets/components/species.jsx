@@ -7,7 +7,8 @@ var Species = React.createClass({
     return {
       speciesName: SpeciesStore.getName(),
       speciesHistory: SpeciesStore.getHistory(),
-      empire: SpeciesStore.getEmpire()
+      empire: SpeciesStore.getEmpire(),
+      portrait: SpeciesStore.getPortrait()
     };
   },
 
@@ -26,22 +27,50 @@ var Species = React.createClass({
     this.setState({speciesHistory: event.target.value});
   },
 
+  handleFile: function (event) {
+    var file = event.target.files[0];
+    var reader = new FileReader();
+
+    reader.addEventListener('load', function () {
+      SpeciesActions.setPortrait(reader.result);
+      this.setState({portrait: reader.result});
+    });
+
+    if (file.type.slice(0,5) === 'image') {
+      reader.readAsDataURL(file);
+    }
+  },
+
   render: function () {
     return <div className='species'>
-      <input
-        type='text'
-        className='species-name'
-        value={this.state.speciesName}
-        onChange={this.setSpeciesName}
-        placeholder='Species Name'
-        />
-      <input
-        type='text'
-        className='species-name'
-        value={this.state.empire}
-        onChange={this.setEmpire}
-        placeholder='Empire Name'
-        />
+      <div className='top-wrapper'>
+        <div className='portrait-wrapper'>
+          <img
+            src={this.state.portrait}
+            className='species-portrait'
+            alt='Species Portrait'/>
+          <label className='file-upload' htmlFor='upload'>
+            Upload
+            <input id='upload' type='file' onChange={this.handleFile} />
+          </label>
+        </div>
+        <div className='name-wrapper'>
+          <input
+            type='text'
+            className='species-name'
+            value={this.state.speciesName}
+            onChange={this.setSpeciesName}
+            placeholder='Species Name'
+            />
+          <input
+            type='text'
+            className='species-name'
+            value={this.state.empire}
+            onChange={this.setEmpire}
+            placeholder='Empire Name'
+            />
+        </div>
+      </div>
       <textarea
         id='species-history'
         className='species-history'
