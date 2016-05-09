@@ -60,7 +60,7 @@
 	var Traits = __webpack_require__(273);
 	var WeaponBox = __webpack_require__(282);
 	var FTLBox = __webpack_require__(286);
-	var Species = __webpack_require__(290);
+	var Species = __webpack_require__(304);
 	var Summary = __webpack_require__(293);
 	var Export = __webpack_require__(301);
 	var Import = __webpack_require__(302);
@@ -34603,117 +34603,7 @@
 	module.exports = FTLMethod;
 
 /***/ },
-/* 290 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-	var SpeciesStore = __webpack_require__(291);
-	var SpeciesActions = __webpack_require__(292);
-	
-	var Species = React.createClass({
-	  displayName: 'Species',
-	
-	  getInitialState: function () {
-	    return {
-	      speciesName: SpeciesStore.getName(),
-	      speciesHistory: SpeciesStore.getHistory(),
-	      empire: SpeciesStore.getEmpire(),
-	      portrait: SpeciesStore.getPortrait()
-	    };
-	  },
-	
-	  componentWillUnmount: function () {
-	    if (this.listener) {
-	      this.reader.removeEventListener('load', this.listener);
-	    }
-	  },
-	
-	  setSpeciesName: function (event) {
-	    SpeciesActions.setSpeciesName(event.target.value);
-	    this.setState({ speciesName: event.target.value });
-	  },
-	
-	  setEmpire: function (event) {
-	    SpeciesActions.setEmpire(event.target.value);
-	    this.setState({ empire: event.target.value });
-	  },
-	
-	  setSpeciesHistory: function (event) {
-	    SpeciesActions.setSpeciesHistory(event.target.value);
-	    this.setState({ speciesHistory: event.target.value });
-	  },
-	
-	  handleFile: function (event) {
-	    var file = event.target.files[0];
-	    this.reader = new FileReader();
-	    var that = this;
-	
-	    this.listener = this.reader.addEventListener('load', function () {
-	      SpeciesActions.setPortrait(that.reader.result);
-	      that.setState({ portrait: that.reader.result });
-	    });
-	
-	    if (file.type.slice(0, 5) === 'image') {
-	      this.reader.readAsDataURL(file);
-	    } else {
-	      alert('Nice try.');
-	    }
-	  },
-	
-	  render: function () {
-	    return React.createElement(
-	      'div',
-	      { className: 'species' },
-	      React.createElement(
-	        'div',
-	        { className: 'top-wrapper' },
-	        React.createElement(
-	          'div',
-	          { className: 'portrait-wrapper' },
-	          React.createElement('img', {
-	            src: this.state.portrait,
-	            className: 'species-portrait',
-	            alt: 'Species Portrait' }),
-	          React.createElement(
-	            'label',
-	            { className: 'file-upload', htmlFor: 'upload' },
-	            'Upload',
-	            React.createElement('input', { id: 'upload', type: 'file', onChange: this.handleFile })
-	          )
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'name-wrapper' },
-	          React.createElement('input', {
-	            type: 'text',
-	            className: 'species-name',
-	            value: this.state.speciesName,
-	            onChange: this.setSpeciesName,
-	            placeholder: 'Species Name'
-	          }),
-	          React.createElement('input', {
-	            type: 'text',
-	            className: 'species-name',
-	            value: this.state.empire,
-	            onChange: this.setEmpire,
-	            placeholder: 'Empire Name'
-	          })
-	        )
-	      ),
-	      React.createElement('textarea', {
-	        id: 'species-history',
-	        className: 'species-history',
-	        value: this.state.speciesHistory,
-	        onChange: this.setSpeciesHistory,
-	        placeholder: 'History'
-	      })
-	    );
-	  }
-	});
-	
-	module.exports = Species;
-
-/***/ },
+/* 290 */,
 /* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -34741,6 +34631,7 @@
 	      break;
 	    case 'SET_PORTRAIT':
 	      this.setPortrait(payload.portrait);
+	      SpeciesStore.__emitChange();
 	      break;
 	  }
 	};
@@ -35350,6 +35241,258 @@
 	});
 	
 	module.exports = App;
+
+/***/ },
+/* 304 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var SpeciesStore = __webpack_require__(291);
+	var SpeciesActions = __webpack_require__(292);
+	var Portraits = __webpack_require__(305);
+	
+	var Species = React.createClass({
+	  displayName: 'Species',
+	
+	  getInitialState: function () {
+	    return {
+	      speciesName: SpeciesStore.getName(),
+	      speciesHistory: SpeciesStore.getHistory(),
+	      empire: SpeciesStore.getEmpire(),
+	      portrait: SpeciesStore.getPortrait()
+	    };
+	  },
+	
+	  componentDidMount: function () {
+	    var that = this;
+	    this.listener = SpeciesStore.addListener(that._portraitChange);
+	  },
+	
+	  componentWillUnmount: function () {
+	    this.listener.remove();
+	    if (this.fileListener) {
+	      this.reader.removeEventListener('load', this.fileListener);
+	    }
+	  },
+	
+	  _portraitChange: function () {
+	    this.setState({ portrait: SpeciesStore.getPortrait() });
+	  },
+	
+	  setSpeciesName: function (event) {
+	    SpeciesActions.setSpeciesName(event.target.value);
+	    this.setState({ speciesName: event.target.value });
+	  },
+	
+	  setEmpire: function (event) {
+	    SpeciesActions.setEmpire(event.target.value);
+	    this.setState({ empire: event.target.value });
+	  },
+	
+	  setSpeciesHistory: function (event) {
+	    SpeciesActions.setSpeciesHistory(event.target.value);
+	    this.setState({ speciesHistory: event.target.value });
+	  },
+	
+	  handleFile: function (event) {
+	    var file = event.target.files[0];
+	    this.reader = new FileReader();
+	    var that = this;
+	
+	    this.fileListener = this.reader.addEventListener('load', function () {
+	      SpeciesActions.setPortrait(that.reader.result);
+	    });
+	
+	    if (file.type.slice(0, 5) === 'image') {
+	      this.reader.readAsDataURL(file);
+	    } else {
+	      alert('Nice try.');
+	    }
+	  },
+	
+	  render: function () {
+	    return React.createElement(
+	      'div',
+	      { className: 'species' },
+	      React.createElement(
+	        'div',
+	        { className: 'top-wrapper' },
+	        React.createElement(
+	          'div',
+	          { className: 'portrait-wrapper' },
+	          React.createElement('img', {
+	            src: this.state.portrait,
+	            className: 'species-portrait',
+	            alt: 'Species Portrait' }),
+	          React.createElement(
+	            'label',
+	            { className: 'file-upload', htmlFor: 'upload' },
+	            'Upload',
+	            React.createElement('input', { id: 'upload', type: 'file', onChange: this.handleFile })
+	          )
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'name-wrapper' },
+	          React.createElement('input', {
+	            type: 'text',
+	            className: 'species-name',
+	            value: this.state.speciesName,
+	            onChange: this.setSpeciesName,
+	            placeholder: 'Species Name'
+	          }),
+	          React.createElement('input', {
+	            type: 'text',
+	            className: 'species-name',
+	            value: this.state.empire,
+	            onChange: this.setEmpire,
+	            placeholder: 'Empire Name'
+	          })
+	        )
+	      ),
+	      React.createElement(Portraits, null)
+	    );
+	  }
+	});
+	
+	module.exports = Species;
+
+/***/ },
+/* 305 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var Portrait = __webpack_require__(312);
+	var mammalian = __webpack_require__(306);
+	var arthropoid = __webpack_require__(307);
+	var avian = __webpack_require__(308);
+	var fungoid = __webpack_require__(309);
+	var molluscoid = __webpack_require__(310);
+	var reptilian = __webpack_require__(311);
+	
+	var Portraits = React.createClass({
+	  displayName: 'Portraits',
+	
+	  render: function () {
+	    return React.createElement(
+	      'div',
+	      { className: 'portraits' },
+	      React.createElement(
+	        'h2',
+	        { className: 'portrait-type' },
+	        'Mammalian'
+	      ),
+	      React.createElement('hr', null),
+	      mammalian.map(function (el) {
+	        return React.createElement(Portrait, { key: el, url: el });
+	      }),
+	      React.createElement(
+	        'h2',
+	        { className: 'portrait-type' },
+	        'Reptilian'
+	      ),
+	      React.createElement('hr', null),
+	      reptilian.map(function (el) {
+	        return React.createElement(Portrait, { key: el, url: el });
+	      }),
+	      React.createElement(
+	        'h2',
+	        { className: 'portrait-type' },
+	        'Avian'
+	      ),
+	      React.createElement('hr', null),
+	      avian.map(function (el) {
+	        return React.createElement(Portrait, { key: el, url: el });
+	      }),
+	      React.createElement(
+	        'h2',
+	        { className: 'portrait-type' },
+	        'Arthropoid'
+	      ),
+	      React.createElement('hr', null),
+	      arthropoid.map(function (el) {
+	        return React.createElement(Portrait, { key: el, url: el });
+	      }),
+	      React.createElement(
+	        'h2',
+	        { className: 'portrait-type' },
+	        'Molluscoid'
+	      ),
+	      React.createElement('hr', null),
+	      molluscoid.map(function (el) {
+	        return React.createElement(Portrait, { key: el, url: el });
+	      }),
+	      React.createElement(
+	        'h2',
+	        { className: 'portrait-type' },
+	        'Fungoid'
+	      ),
+	      React.createElement('hr', null),
+	      fungoid.map(function (el) {
+	        return React.createElement(Portrait, { key: el, url: el });
+	      })
+	    );
+	  }
+	});
+	
+	module.exports = Portraits;
+
+/***/ },
+/* 306 */
+/***/ function(module, exports) {
+
+	module.exports = ["http://www.stellariswiki.com/images/thumb/6/6e/Human.png/89px-Human.png", "http://www.stellariswiki.com/images/thumb/3/3c/Mammalian_slender_05.png/90px-Mammalian_slender_05.png", "http://www.stellariswiki.com/images/thumb/6/61/Mammalian_massive_13.png/100px-Mammalian_massive_13.png", "http://www.stellariswiki.com/images/thumb/0/09/Mammalian_normal_10.png/71px-Mammalian_normal_10.png", "http://www.stellariswiki.com/images/thumb/9/90/Mammalian_massive_14.png/93px-Mammalian_massive_14.png", "http://www.stellariswiki.com/images/thumb/7/7f/Mammalian_slender_04.png/87px-Mammalian_slender_04.png", "http://www.stellariswiki.com/images/thumb/c/cc/Mammalian_normal_09.png/81px-Mammalian_normal_09.png", "http://www.stellariswiki.com/images/thumb/7/75/Mammalian_massive_11.png/85px-Mammalian_massive_11.png", "http://www.stellariswiki.com/images/thumb/a/a8/Mammalian_normal_06.png/86px-Mammalian_normal_06.png", "http://www.stellariswiki.com/images/thumb/4/47/Mammalian_slender_03.png/65px-Mammalian_slender_03.png", "http://www.stellariswiki.com/images/thumb/a/ad/Mammalian_massive_12.png/97px-Mammalian_massive_12.png", "http://www.stellariswiki.com/images/thumb/3/30/Mammalian_normal_07.png/75px-Mammalian_normal_07.png", "http://www.stellariswiki.com/images/thumb/d/d7/Mammalian_massive_15.png/90px-Mammalian_massive_15.png", "http://www.stellariswiki.com/images/thumb/e/e5/Mammalian_slender_02.png/78px-Mammalian_slender_02.png", "http://www.stellariswiki.com/images/thumb/9/9c/Mammalian_normal_08.png/81px-Mammalian_normal_08.png", "http://www.stellariswiki.com/images/thumb/2/21/Mammalian_slender_01.png/100px-Mammalian_slender_01.png", "http://www.stellariswiki.com/images/thumb/6/65/Mammalian_massive_16.png/100px-Mammalian_massive_16.png", "http://www.stellariswiki.com/images/thumb/9/9c/Mammalian_massive_17.png/91px-Mammalian_massive_17.png"];
+
+/***/ },
+/* 307 */
+/***/ function(module, exports) {
+
+	module.exports = ["http://www.stellariswiki.com/images/thumb/6/6a/Arthropoid_massive_14.png/72px-Arthropoid_massive_14.png", "http://www.stellariswiki.com/images/thumb/e/e7/Arthropoid_normal_07.png/61px-Arthropoid_normal_07.png", "http://www.stellariswiki.com/images/thumb/9/94/Arthropoid_massive_12.png/92px-Arthropoid_massive_12.png", "http://www.stellariswiki.com/images/thumb/0/0f/Arthropoid_normal_06.png/70px-Arthropoid_normal_06.png", "http://www.stellariswiki.com/images/thumb/a/ab/Arthropoid_slender_01.png/78px-Arthropoid_slender_01.png", "http://www.stellariswiki.com/images/thumb/5/59/Arthropoid_massive_13.png/93px-Arthropoid_massive_13.png", "http://www.stellariswiki.com/images/thumb/8/8d/Arthropoid_normal_08.png/71px-Arthropoid_normal_08.png", "http://www.stellariswiki.com/images/thumb/e/ed/Arthropoid_slender_03.png/66px-Arthropoid_slender_03.png", "http://www.stellariswiki.com/images/thumb/0/00/Arthropoid_slender_05.png/92px-Arthropoid_slender_05.png", "http://www.stellariswiki.com/images/thumb/0/05/Arthropoid_normal_09.png/80px-Arthropoid_normal_09.png", "http://www.stellariswiki.com/images/thumb/7/7a/Arthropoid_normal_10.png/72px-Arthropoid_normal_10.png", "http://www.stellariswiki.com/images/thumb/1/16/Arthropoid_massive_11.png/94px-Arthropoid_massive_11.png", "http://www.stellariswiki.com/images/thumb/0/05/Arthropoid_massive_15.png/91px-Arthropoid_massive_15.png", "http://www.stellariswiki.com/images/thumb/b/b0/Arthropoid_massive_16.png/89px-Arthropoid_massive_16.png", "http://www.stellariswiki.com/images/thumb/4/42/Arthropoid_massive_17.png/92px-Arthropoid_massive_17.png"];
+
+/***/ },
+/* 308 */
+/***/ function(module, exports) {
+
+	module.exports = ["http://www.stellariswiki.com/images/thumb/4/46/Avian_slender_01.png/65px-Avian_slender_01.png", "http://www.stellariswiki.com/images/thumb/5/51/Avian_slender_02.png/77px-Avian_slender_02.png", "http://www.stellariswiki.com/images/thumb/d/d7/Avian_slender_03.png/100px-Avian_slender_03.png", "http://www.stellariswiki.com/images/thumb/d/db/Avian_slender_04.png/68px-Avian_slender_04.png", "http://www.stellariswiki.com/images/thumb/3/33/Avian_slender_05.png/91px-Avian_slender_05.png", "http://www.stellariswiki.com/images/thumb/a/ad/Avian_normal_06.png/82px-Avian_normal_06.png", "http://www.stellariswiki.com/images/thumb/4/45/Avian_normal_07.png/89px-Avian_normal_07.png", "http://www.stellariswiki.com/images/thumb/e/e4/Avian_normal_08.png/77px-Avian_normal_08.png", "http://www.stellariswiki.com/images/thumb/5/50/Avian_normal_09.png/82px-Avian_normal_09.png", "http://www.stellariswiki.com/images/thumb/f/fc/Avian_normal_10.png/89px-Avian_normal_10.png", "http://www.stellariswiki.com/images/thumb/3/3d/Avian_massive_11.png/90px-Avian_massive_11.png", "http://www.stellariswiki.com/images/thumb/e/e3/Avian_massive_12.png/92px-Avian_massive_12.png", "http://www.stellariswiki.com/images/thumb/7/7c/Avian_massive_13.png/95px-Avian_massive_13.png", "http://www.stellariswiki.com/images/thumb/4/46/Avian_massive_14.png/90px-Avian_massive_14.png", "http://www.stellariswiki.com/images/thumb/2/25/Avian_massive_15.png/90px-Avian_massive_15.png", "http://www.stellariswiki.com/images/thumb/4/47/Avian_massive_16.png/97px-Avian_massive_16.png", "http://www.stellariswiki.com/images/thumb/9/95/Avian_massive_17.png/85px-Avian_massive_17.png"];
+
+/***/ },
+/* 309 */
+/***/ function(module, exports) {
+
+	module.exports = ["http://www.stellariswiki.com/images/thumb/4/4d/Fungoid_slender_01.png/86px-Fungoid_slender_01.png", "http://www.stellariswiki.com/images/thumb/1/1b/Fungoid_slender_02.png/92px-Fungoid_slender_02.png", "http://www.stellariswiki.com/images/thumb/5/5a/Fungoid_slender_03.png/59px-Fungoid_slender_03.png", "http://www.stellariswiki.com/images/thumb/5/59/Fungoid_slender_04.png/86px-Fungoid_slender_04.png", "http://www.stellariswiki.com/images/thumb/4/45/Fungoid_normal_06.png/90px-Fungoid_normal_06.png", "http://www.stellariswiki.com/images/thumb/8/86/Fungoid_normal_07.png/89px-Fungoid_normal_07.png", "http://www.stellariswiki.com/images/thumb/4/45/Fungoid_normal_08.png/75px-Fungoid_normal_08.png", "http://www.stellariswiki.com/images/thumb/8/85/Fungoid_normal_09.png/83px-Fungoid_normal_09.png", "http://www.stellariswiki.com/images/thumb/e/e1/Fungoid_normal_10.png/83px-Fungoid_normal_10.png", "http://www.stellariswiki.com/images/thumb/2/2a/Fungoid_massive_11.png/91px-Fungoid_massive_11.png", "http://www.stellariswiki.com/images/thumb/a/ab/Fungoid_massive_12.png/93px-Fungoid_massive_12.png", "http://www.stellariswiki.com/images/thumb/9/9d/Fungoid_massive_13.png/74px-Fungoid_massive_13.png", "http://www.stellariswiki.com/images/thumb/4/48/Fungoid_massive_14.png/90px-Fungoid_massive_14.png", "http://www.stellariswiki.com/images/thumb/d/dc/Fungoid_massive_15.png/91px-Fungoid_massive_15.png", "http://www.stellariswiki.com/images/thumb/d/d0/Fungoid_massive_16.png/93px-Fungoid_massive_16.png"];
+
+/***/ },
+/* 310 */
+/***/ function(module, exports) {
+
+	module.exports = ["http://www.stellariswiki.com/images/thumb/d/d4/Molluscoid_slender_01.png/73px-Molluscoid_slender_01.png", "http://www.stellariswiki.com/images/thumb/b/b0/Molluscoid_slender_02.png/62px-Molluscoid_slender_02.png", "http://www.stellariswiki.com/images/thumb/a/ac/Molluscoid_slender_03.png/74px-Molluscoid_slender_03.png", "http://www.stellariswiki.com/images/thumb/6/62/Molluscoid_slender_04.png/79px-Molluscoid_slender_04.png", "http://www.stellariswiki.com/images/thumb/2/22/Molluscoid_slender_05.png/70px-Molluscoid_slender_05.png", "http://www.stellariswiki.com/images/thumb/e/e2/Molluscoid_normal_06.png/91px-Molluscoid_normal_06.png", "http://www.stellariswiki.com/images/thumb/d/dd/Molluscoid_normal_07.png/85px-Molluscoid_normal_07.png", "http://www.stellariswiki.com/images/thumb/2/2e/Molluscoid_normal_08.png/66px-Molluscoid_normal_08.png", "http://www.stellariswiki.com/images/thumb/9/94/Molluscoid_massive_11.png/92px-Molluscoid_massive_11.png", "http://www.stellariswiki.com/images/thumb/9/95/Molluscoid_massive_12.png/91px-Molluscoid_massive_12.png", "http://www.stellariswiki.com/images/thumb/2/29/Molluscoid_massive_13.png/91px-Molluscoid_massive_13.png", "http://www.stellariswiki.com/images/thumb/1/12/Molluscoid_massive_14.png/91px-Molluscoid_massive_14.png", "http://www.stellariswiki.com/images/thumb/1/10/Molluscoid_massive_15.png/91px-Molluscoid_massive_15.png", "http://www.stellariswiki.com/images/thumb/8/88/Molluscoid_massive_16.png/93px-Molluscoid_massive_16.png"];
+
+/***/ },
+/* 311 */
+/***/ function(module, exports) {
+
+	module.exports = ["http://www.stellariswiki.com/images/thumb/3/3b/Reptilian_slender_01.png/78px-Reptilian_slender_01.png", "http://www.stellariswiki.com/images/thumb/d/da/Reptilian_slender_02.png/80px-Reptilian_slender_02.png", "http://www.stellariswiki.com/images/thumb/c/c0/Reptilian_slender_03.png/93px-Reptilian_slender_03.png", "http://www.stellariswiki.com/images/thumb/e/e2/Reptilian_slender_04.png/94px-Reptilian_slender_04.png", "http://www.stellariswiki.com/images/thumb/f/f0/Reptilian_slender_05.png/79px-Reptilian_slender_05.png", "http://www.stellariswiki.com/images/thumb/9/99/Reptilian_normal_06.png/76px-Reptilian_normal_06.png", "http://www.stellariswiki.com/images/thumb/3/3e/Reptilian_normal_07.png/90px-Reptilian_normal_07.png", "http://www.stellariswiki.com/images/thumb/4/45/Reptilian_normal_08.png/73px-Reptilian_normal_08.png", "http://www.stellariswiki.com/images/thumb/d/d8/Reptilian_normal_09.png/75px-Reptilian_normal_09.png", "http://www.stellariswiki.com/images/thumb/0/0f/Reptilian_normal_10.png/84px-Reptilian_normal_10.png", "http://www.stellariswiki.com/images/thumb/e/e0/Reptilian_massive_11.png/86px-Reptilian_massive_11.png", "http://www.stellariswiki.com/images/thumb/4/48/Reptilian_massive_12.png/92px-Reptilian_massive_12.png", "http://www.stellariswiki.com/images/thumb/d/d3/Reptilian_massive_13.png/91px-Reptilian_massive_13.png", "http://www.stellariswiki.com/images/thumb/3/34/Reptilian_massive_14.png/92px-Reptilian_massive_14.png", "http://www.stellariswiki.com/images/thumb/4/43/Reptilian_massive_15.png/92px-Reptilian_massive_15.png"];
+
+/***/ },
+/* 312 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var SpeciesActions = __webpack_require__(292);
+	
+	var Portrait = React.createClass({
+	  displayName: 'Portrait',
+	
+	  handleClick: function () {
+	    SpeciesActions.setPortrait(this.props.url);
+	  },
+	
+	  render: function () {
+	    return React.createElement('img', { className: 'portrait', src: this.props.url, onClick: this.handleClick });
+	  }
+	});
+	
+	module.exports = Portrait;
 
 /***/ }
 /******/ ]);

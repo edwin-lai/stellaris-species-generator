@@ -1,6 +1,7 @@
 var React = require('react');
-var SpeciesStore = require('../stores/species.js');
-var SpeciesActions = require('../actions/species_actions.js');
+var SpeciesStore = require('../../stores/species.js');
+var SpeciesActions = require('../../actions/species_actions.js');
+var Portraits = require('./portraits.jsx');
 
 var Species = React.createClass({
   getInitialState: function () {
@@ -12,10 +13,20 @@ var Species = React.createClass({
     };
   },
 
+  componentDidMount: function () {
+    var that = this;
+    this.listener = SpeciesStore.addListener(that._portraitChange);
+  },
+
   componentWillUnmount: function () {
-    if (this.listener) {
-      this.reader.removeEventListener('load', this.listener);
+    this.listener.remove();
+    if (this.fileListener) {
+      this.reader.removeEventListener('load', this.fileListener);
     }
+  },
+
+  _portraitChange: function () {
+    this.setState({portrait: SpeciesStore.getPortrait()});
   },
 
   setSpeciesName: function (event) {
@@ -38,9 +49,8 @@ var Species = React.createClass({
     this.reader = new FileReader();
     var that = this;
 
-    this.listener = this.reader.addEventListener('load', function () {
+    this.fileListener = this.reader.addEventListener('load', function () {
       SpeciesActions.setPortrait(that.reader.result);
-      that.setState({portrait: that.reader.result});
     });
 
     if (file.type.slice(0,5) === 'image') {
@@ -80,13 +90,7 @@ var Species = React.createClass({
             />
         </div>
       </div>
-      <textarea
-        id='species-history'
-        className='species-history'
-        value={this.state.speciesHistory}
-        onChange={this.setSpeciesHistory}
-        placeholder='History'
-      />
+      <Portraits />
     </div>;
   }
 });

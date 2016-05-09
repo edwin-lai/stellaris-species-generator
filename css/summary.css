@@ -62,12 +62,11 @@
 
 .summary-species-wrapper {
   display: flex;
+  align-items: flex-start;
 }
 
 .summary-portrait {
   margin: 1em 1em 0 0;
-  width: 64px;
-  height: 64px;
   padding-top: 4px;
 }
 

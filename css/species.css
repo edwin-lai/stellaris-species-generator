@@ -48,6 +48,24 @@
   padding: 4px;
 }
 
+.portraits {
+  height: 20em;
+  overflow-y: scroll;
+}
+
+.portrait-type {
+  color: white;
+}
+
+.portrait {
+  margin: 4px;
+  border: 1px solid transparent;
+}
+
+.portrait:hover {
+  border: 1px solid rgb(144, 124, 74);
+}
+
 .file-upload {
   color: white;
   box-sizing: border-box;
