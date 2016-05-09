@@ -35032,9 +35032,9 @@
 	
 	  computeModifiers: function () {
 	    var modifiers = {};
-	    for (let trait of this.state.traits) {
+	    for (var trait of this.state.traits) {
 	      let effects = trait.effects;
-	      for (let effect in effects) {
+	      for (var effect in effects) {
 	        if (effects.hasOwnProperty(effect)) {
 	          if (modifiers[effect]) {
 	            modifiers[effect].value += effects[effect];
@@ -35048,8 +35048,8 @@
 	        }
 	      }
 	    }
-	    for (let ethic of this.state.ethos) {
-	      for (let effect in ethic) {
+	    for (var ethic of this.state.ethos) {
+	      for (effect in ethic) {
 	        if (ethic.hasOwnProperty(effect)) {
 	          if (modifiers[effect]) {
 	            modifiers[effect].value += ethic[effect];
@@ -35060,7 +35060,7 @@
 	        }
 	      }
 	    }
-	    for (let effect in this.state.govt) {
+	    for (effect in this.state.govt) {
 	      if (this.state.govt.hasOwnProperty(effect) && effect.slice(0, 3) !== 'txt') {
 	        if (modifiers[effect]) {
 	          modifiers[effect].value += this.state.govt[effect][0];
