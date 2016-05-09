@@ -1,5 +1,7 @@
 #Stellaris Species Creator
 
+Single page web app for creating species in the space strategy game Stellaris. Over 8800 users and counting!
+
 ##Name & Portrait
 
 Users can enter a name for their species and their empire. They can also select an appearance for their species.
