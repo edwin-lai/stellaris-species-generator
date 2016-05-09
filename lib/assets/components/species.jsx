@@ -30,10 +30,11 @@ var Species = React.createClass({
   handleFile: function (event) {
     var file = event.target.files[0];
     var reader = new FileReader();
+    var that = this;
 
     reader.addEventListener('load', function () {
       SpeciesActions.setPortrait(reader.result);
-      this.setState({portrait: reader.result});
+      that.setState({portrait: reader.result});
     });
 
     if (file.type.slice(0,5) === 'image') {
