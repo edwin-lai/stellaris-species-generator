@@ -1,6 +1,6 @@
 .traits {
   box-sizing: border-box;
-  background-color: rgba(16, 26, 20, 0.7);
+  background-color: rgba(16, 26, 20, 1);
   color: #FFFFFF;
   font-family: 'Orbitron' sans-serif;
   font-size: 14px;
@@ -40,7 +40,7 @@
 }
 
 .unselected-traits {
-  background-color: rgba(9, 17, 12, 0.7);
+  background-color: rgba(9, 17, 12, 1);
   width: 23%;
   margin: 0 1%;
   height: 300px;
@@ -49,7 +49,7 @@
 }
 
 .selected-traits {
-  background-color: rgba(9, 17, 12, 0.7);
+  background-color: rgba(9, 17, 12, 1);
   float: right;
   height: 300px;
   margin: 0 1%;
@@ -74,7 +74,7 @@
 }
 
 .mouseover-trait {
-  background-color: rgba(9, 17, 12, 0.7);
+  background-color: rgba(9, 17, 12, 1);
   width: 95%;
   height: 37%;
   margin: 2% 0;
